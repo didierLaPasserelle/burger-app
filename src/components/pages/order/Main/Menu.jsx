@@ -11,10 +11,11 @@ export default function Menu() {
     <MenuStyled className="menu">
       {menu?.map((product) => (
         <Product 
-          key={product.id} 
-          title={product.title} 
-          imageSource={product.imageSource}
-          price={product.price}
+          // key={product.id} 
+          // title={product.title} 
+          // imageSource={product.imageSource}
+          // price={product.price}
+          {...product}
           />
       ))}
     </MenuStyled>
