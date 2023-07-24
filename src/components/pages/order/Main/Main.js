@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
+import Menu from "./Menu"
 
 export default function Main() {
   return (
     <MainStyled className="main">
       <div className="basket">basket</div>
-      <div className="menu">menu</div>
+      <Menu />
     </MainStyled>
   );
 }
@@ -25,7 +26,4 @@ const MainStyled = styled.div`
     background: red;
   }
 
-  .menu {
-    background: purple;
-  }
 `;
