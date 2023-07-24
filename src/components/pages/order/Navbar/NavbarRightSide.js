@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Profile from "./Profile";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 
 export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled className="right-side">
-      <div className="admin-button">Admin button</div>
-      <Profile username={username} />
+      <ToggleButton 
+        labelIfUnchecked="ACTIVER LE MODE ADMIN"
+        labelIfChecked="DESACTIVER LE MODE ADMIN"
+        />
+      <Profile username={username} className={"profile"} />
     </NavbarRightSideStyled>
   );
 }
@@ -16,11 +20,4 @@ const NavbarRightSideStyled = styled.div`
   align-items: center;
   padding-right: 50px;
 
-  /* .admin-button {
-    background: lightcyan;
-  } */
-
-  .profile {
-    background: yellow;
-  }
 `;
