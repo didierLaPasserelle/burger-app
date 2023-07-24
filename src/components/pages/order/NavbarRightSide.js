@@ -6,15 +6,15 @@ export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled className="right-side">
       <div className="admin-button">Admin button</div>
-     <Profile />
+     <Profile username={username}/>
     </NavbarRightSideStyled>
   );
 }
 
 const NavbarRightSideStyled = styled.div`
-  background: purple;
   display: flex;
   align-items: center;
+  padding-right: 50px;
 
   /* .admin-button {
     background: lightcyan;
