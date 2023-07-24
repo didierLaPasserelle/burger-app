@@ -55,7 +55,7 @@ const CardStyled = styled.div`
       bottom: 10px;
       font-weight: ${theme.fonts.weights.bold};
       color: ${theme.colors.dark};
-      text-align: left;
+      text-align: center;
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
@@ -81,7 +81,7 @@ const CardStyled = styled.div`
 
       .right-description {
         display: flex;
-        justify-content: flex-end;
+        
         align-items: center;
         font-size: ${theme.fonts.size.P1};
 
