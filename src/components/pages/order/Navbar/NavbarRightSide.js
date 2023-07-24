@@ -6,7 +6,7 @@ export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled className="right-side">
       <div className="admin-button">Admin button</div>
-     <Profile username={username}/>
+      <Profile username={username} />
     </NavbarRightSideStyled>
   );
 }
