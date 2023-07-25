@@ -35,6 +35,7 @@ export default function NavbarRightSide({ username }) {
         labelIfUnchecked="ACTIVER LE MODE ADMIN"
         labelIfChecked="DESACTIVER LE MODE ADMIN"
         onToggle={displayToastNotification}
+        isChecked={!isModeAdmin}
         />
       <Profile username={username} className={"profile"} />
       <AdminToast />
