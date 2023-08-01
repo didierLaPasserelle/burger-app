@@ -32,7 +32,7 @@ border: 1px solid blue;
   grid-column-gap: 60px;
   padding: 50px 50px 150px;
   justify-content: center;
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: ${theme.shadows.strong};
   overflow: scroll;
   
 
