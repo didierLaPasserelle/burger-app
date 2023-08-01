@@ -15,7 +15,7 @@ export const getTabsConfig = (currentTabSelected) => [
       Icon: <AiOutlinePlus />,
       // onClick: () => selectTab("add"),
       // className: isAddSelected ? "is-active" : "",
-      className: currentTabSelected === "add" ? "is-active" : "",
+      // className: currentTabSelected === "add" ? "is-active" : "",
     },
     {
       index: "edit",
@@ -23,6 +23,8 @@ export const getTabsConfig = (currentTabSelected) => [
       Icon: <MdModeEditOutline />,
       // onClick: () => selectTab("edit"),
       // className: isEditSelected ? "is-active" : "",
-      className: currentTabSelected === "edit" ? "is-active" : "",
+      // className: currentTabSelected === "edit" ? "is-active" : "",
     }
   ];
+
+  export const getTabSelected = (tabs, currentTabSelected) => tabs.find((tab) => tab.index === currentTabSelected)
