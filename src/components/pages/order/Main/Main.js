@@ -2,14 +2,19 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Menu from "./Menu";
 import Admin from "./Admin/Admin";
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function Main() {
+  
+ const { isModeAdmin }= useContext(OrderContext)
+
   return (
     <MainStyled className="main">
-      <div className="basket">basket</div>
-      <div className="menu-and-admin">
+      {/* <div className="basket">basket</div> */}
+      <div className="menu-and-panel-admin">
         <Menu />
-        <Admin />
+        {isModeAdmin && <Admin />}
       </div>
     </MainStyled>
   );
@@ -30,7 +35,7 @@ const MainStyled = styled.div`
     background: red;
   }
 
-  .menu-and-admin {
+  .menu-and-panel-admin {
     position: relative;
     overflow-y: hidden;
     display: grid;
