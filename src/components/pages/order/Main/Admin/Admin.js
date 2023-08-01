@@ -8,8 +8,6 @@ export default function Admin() {
 
   const {
     isCollapsed,
-    setIsCollapsed,
-    isAddSelected,
   } = useContext(OrderContext);
 
 
