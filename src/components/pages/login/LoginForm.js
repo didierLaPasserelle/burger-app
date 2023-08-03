@@ -1,27 +1,33 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import styled from "styled-components"
-import { IoChevronForward } from "react-icons/io5"
-import { BsPersonCircle } from "react-icons/bs"
-import TextInput from "../../reusable-ui/TextInput"
-import PrimaryButton from "../../reusable-ui/PrimaryButton"
-import { theme } from "../../../theme"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { IoChevronForward } from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
+import { RiLockPasswordFill } from "react-icons/ri";
+import TextInput from "../../reusable-ui/TextInput";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import { theme } from "../../../theme";
 
 export default function LoginForm() {
   // state
-  const [inputValue, setInputValue] = useState("")
-  const navigate = useNavigate()
+  const [inputValue, setInputValue] = useState("");
+  const [inputPassword, setInputPassword] = useState("")
+  const navigate = useNavigate();
 
   // comportements
   const handleSubmit = (event) => {
-    console.log("submitted")
-    event.preventDefault()
-    setInputValue("")
-    navigate(`order/${inputValue}`)
-  }
+    console.log(event);
+    event.preventDefault();
+    setInputValue("");
+    navigate(`order/${inputValue}`);
+  };
 
   const handleChange = (event) => {
-    setInputValue(event.target.value)
+    setInputValue(event.target.value);
+  };
+
+  const handleChangePassword = (e) => {
+    setInputPassword(e.target.value)
   }
 
   // affichage
@@ -36,9 +42,16 @@ export default function LoginForm() {
         <TextInput
           value={inputValue}
           onChange={handleChange}
-          placeholder={"Entrez votre prénom"}
+          placeholder={"Entrez votre pseudo"}
           required
           Icon={<BsPersonCircle className="icon" />}
+        />
+        <TextInput
+          value={inputPassword}
+          onChange={handleChangePassword}
+          placeholder={"Entrez votre mot de passe"}
+          required
+          Icon={<RiLockPasswordFill className="icon" />}
         />
 
         <PrimaryButton
@@ -47,7 +60,7 @@ export default function LoginForm() {
         />
       </div>
     </LoginFormStyled>
-  )
+  );
 }
 
 const LoginFormStyled = styled.form`
@@ -79,7 +92,7 @@ const LoginFormStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     margin-left: 10px;
   }
-`
+`;

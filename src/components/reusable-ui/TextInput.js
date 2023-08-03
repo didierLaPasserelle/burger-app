@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { theme } from "../../theme"
+import styled from "styled-components";
+import { theme } from "../../theme";
 
 export default function TextInput({ value, onChange, Icon, ...extraProps }) {
   return (
@@ -7,7 +7,7 @@ export default function TextInput({ value, onChange, Icon, ...extraProps }) {
       {Icon && Icon}
       <input onChange={onChange} type="text" {...extraProps} />
     </InputStyled>
-  )
+  );
 }
 
 const InputStyled = styled.div`
@@ -20,7 +20,7 @@ const InputStyled = styled.div`
   /* white-space: nowrap; */
 
   .icon {
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     margin-right: 8px;
     color: ${theme.colors.greySemiDark};
     /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
@@ -28,15 +28,14 @@ const InputStyled = styled.div`
 
   input {
     border: none;
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.dark};
     width: 100%;
     /* display: flex; */
-
 
     &::placeholder {
       background: ${theme.colors.white};
       color: ${theme.colors.greyMedium};
     }
   }
-`
+`;
