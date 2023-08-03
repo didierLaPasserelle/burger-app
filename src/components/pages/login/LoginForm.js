@@ -10,8 +10,8 @@ import { theme } from "../../../theme";
 
 export default function LoginForm() {
   // state
-  const [inputValue, setInputValue] = useState("");
-  const [inputPassword, setInputPassword] = useState("")
+  const [inputValue, setInputValue] = useState("didier");
+  const [inputPassword, setInputPassword] = useState("password")
   const navigate = useNavigate();
 
   // comportements
@@ -42,14 +42,14 @@ export default function LoginForm() {
         <TextInput
           value={inputValue}
           onChange={handleChange}
-          placeholder={"Entrez votre pseudo"}
+          placeholder={"Veuillez entrer votre pseusdo"}
           required
           Icon={<BsPersonCircle className="icon" />}
         />
         <TextInput
           value={inputPassword}
           onChange={handleChangePassword}
-          placeholder={"Entrez votre mot de passe"}
+          placeholder={"Veuillez entrer votre mot de passe"}
           required
           Icon={<RiLockPasswordFill className="icon" />}
         />

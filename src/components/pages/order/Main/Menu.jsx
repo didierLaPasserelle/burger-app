@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu.js";
+import { fakeMenu } from "../../../../fakeData/fakeMenu.js";
 import { theme } from "../../../../theme";
 import Card from "../../../reusable-ui/Card.js";
 import { formatPrice } from "../../../utils/maths.js"
 
 export default function Menu() {
-  const [menu, setMenu] = useState(fakeMenu2);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
   return (
     <MenuStyled className="menu">
