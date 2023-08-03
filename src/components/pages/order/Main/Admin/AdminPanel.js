@@ -2,22 +2,20 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../context/OrderContext";
-import { getTabsConfig, getTabSelected } from "../../Main/Admin/getTabsConfig"
-
+import { tabsConfig, getTabSelected } from "../../Main/Admin/getTabsConfig";
 
 export default function AdminPanel() {
-  const {
-    currentTabSelected
-  } = useContext(OrderContext);
+  const { currentTabSelected } = useContext(OrderContext);
 
-  const tabs = getTabsConfig(currentTabSelected)
-  const tabSelected = getTabSelected(tabs, currentTabSelected)
+  const tabs = tabsConfig;
+  const tabSelected = getTabSelected(tabs, currentTabSelected);
 
   return (
     <AdminPanelStyled>
-      {currentTabSelected === tabSelected.index && tabSelected.label}
+      {/* {currentTabSelected === tabSelected.index && tabSelected.label} */}
+      {tabSelected.label}
     </AdminPanelStyled>
-  ) 
+  );
 }
 
 const AdminPanelStyled = styled.div`
