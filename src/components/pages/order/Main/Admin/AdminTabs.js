@@ -4,7 +4,7 @@ import Tab from "../../../../reusable-ui/Tab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../context/OrderContext";
-import { tabsConfig } from "./getTabsConfig";
+import { tabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
   const {

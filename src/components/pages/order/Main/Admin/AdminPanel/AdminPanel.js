@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import OrderContext from "../../../../../context/OrderContext";
-import { tabsConfig, getTabSelected } from "../../Main/Admin/getTabsConfig";
+import { theme } from "../../../../../../theme";
+import OrderContext from "../../../../../../context/OrderContext";
+import { tabsConfig, getTabSelected } from "../tabsConfig";
 
 export default function AdminPanel() {
   const { currentTabSelected } = useContext(OrderContext);
@@ -13,7 +13,7 @@ export default function AdminPanel() {
   return (
     <AdminPanelStyled>
       {/* {currentTabSelected === tabSelected.index && tabSelected.label} */}
-      {tabSelected.label}
+      {tabSelected && tabSelected.Content}
     </AdminPanelStyled>
   );
 }
