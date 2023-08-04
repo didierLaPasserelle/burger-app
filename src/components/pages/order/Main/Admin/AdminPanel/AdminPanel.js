@@ -20,9 +20,11 @@ export default function AdminPanel() {
 
 const AdminPanelStyled = styled.div`
   height: 250px;
+  background: ${theme.colors.white};
+  border: 1px solid ${theme.colors.white};
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  background: ${theme.colors.white};
   border-top: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.subtle};
+  padding: 30px 5%;
 `;
