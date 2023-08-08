@@ -1,24 +1,35 @@
-import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
-import { FaHamburger } from 'react-icons/fa';
+import { FaHamburger } from "react-icons/fa";
+import { useContext } from "react";
+import OrderContext from "../../../../../../context/OrderContext";
 
 export default function AddForm() {
+
+  const { handleAdd } = useContext(OrderContext);
+
+  const newProduct = {
+    id: new Date().getTime(),
+    title: "Nouveau Produit",
+    imageSource: "",
+    price: 2.5,
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAdd(newProduct)
+    console.log(e);
+  };
+
   return (
-    <AddFormStyled>
-      {/* <div className="image-preview">ImagePreview</div>
-      <div className="input-fields">input-fields</div>
-      <div className="submit-button">submit-button</div> */}
-      {/* <div className="grid-container"> */}
+    <AddFormStyled onSubmit={handleSubmit}>
       <img src="/images/burger5.png" alt="logo burger" />
-      <form action="">
-        
-        
-      {/* <FaHamburger /> */}
+      <div className="input-container">
+        {/* <FaHamburger /> */}
         <input
           className="input1"
           type="text"
-          placeholder="Nom du produit (ex: Super Burger"
+          placeholder="Nom du produit (ex: Super Burger)"
         />
         <input
           type="text"
@@ -27,7 +38,7 @@ export default function AddForm() {
         />
         <input className="input3" type="text" placeholder="Prix :" />
         <input type="submit" value="Ajouter un nouveau produit au menu" />
-      </form>
+      </div>
     </AddFormStyled>
   );
 }
@@ -36,6 +47,7 @@ const AddFormStyled = styled.form`
   border: 1px solid black;
   display: grid;
   grid-template-columns: 30% 70%;
+  max-width: 1000px;
 
   img {
     border: 1px solid black;
@@ -45,7 +57,7 @@ const AddFormStyled = styled.form`
     place-self: center;
   }
 
-  form {
+  .input-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -64,6 +76,8 @@ const AddFormStyled = styled.form`
     border-radius: 5px;
     width: 80%;
     height: 40px;
+    max-width: 900px;
+    text-overflow: ellipsis;
   }
 
   .input1 {
@@ -80,6 +94,8 @@ const AddFormStyled = styled.form`
 
   input[type="submit"] {
     background: ${theme.colors.green};
-    color: ${theme.colors.background_white}
+    color: ${theme.colors.background_white};
+    cursor: pointer;
+    text-overflow: ellipsis;
   }
 `;

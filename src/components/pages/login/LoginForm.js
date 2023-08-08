@@ -11,7 +11,7 @@ import { theme } from "../../../theme";
 export default function LoginForm() {
   // state
   const [inputValue, setInputValue] = useState("didier");
-  const [inputPassword, setInputPassword] = useState("password")
+  const [inputPassword, setInputPassword] = useState("password");
   const navigate = useNavigate();
 
   // comportements
@@ -27,8 +27,8 @@ export default function LoginForm() {
   };
 
   const handleChangePassword = (e) => {
-    setInputPassword(e.target.value)
-  }
+    setInputPassword(e.target.value);
+  };
 
   // affichage
   return (
