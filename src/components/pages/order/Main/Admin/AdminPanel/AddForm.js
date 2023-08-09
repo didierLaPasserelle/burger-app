@@ -96,6 +96,9 @@ const AddFormStyled = styled.form`
     background: ${theme.colors.green};
     color: ${theme.colors.background_white};
     cursor: pointer;
-    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
   }
 `;
+  
