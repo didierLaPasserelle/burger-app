@@ -1,24 +1,42 @@
+import { useState, useContext } from "react";
+import OrderContext from "../../../../../../context/OrderContext";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import { FaHamburger } from "react-icons/fa";
-import { useContext } from "react";
-import OrderContext from "../../../../../../context/OrderContext";
+
+const EMPTY_PRODUCT = {
+  title: "",
+  imageSource: "",
+  price: 14,
+};
 
 export default function AddForm() {
-
   const { handleAdd } = useContext(OrderContext);
 
-  const newProduct = {
-    id: new Date().getTime(),
-    title: "Nouveau Produit",
-    imageSource: "",
-    price: 2.5,
-  };
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAdd(newProduct)
-    console.log(e);
+
+    const newProductToAdd = {
+      ...newProduct,
+      id: new Date().getTime()
+      // id: new Date().getTime(),
+      // title: newProduct.title,
+      // imageSource: newProduct.imageSource,
+      // price: newProduct.price,
+    };
+
+    handleAdd(newProductToAdd);
+  };
+
+  const handleChange = (e) => {
+    console.log(e.target);
+    const newValue = e.target.value;
+    const name = e.target.name
+    setNewProduct({
+      ...newProduct, [name]: newValue
+    });
   };
 
   return (
@@ -27,16 +45,29 @@ export default function AddForm() {
       <div className="input-container">
         {/* <FaHamburger /> */}
         <input
+          name="title"
+          value={newProduct.title}
           className="input1"
           type="text"
           placeholder="Nom du produit (ex: Super Burger)"
+          onChange={handleChange}
         />
         <input
+          name="imageSource"
           type="text"
           className="input2"
+          value={newProduct.imageSource}
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+          onChange={handleChange}
         />
-        <input className="input3" type="text" placeholder="Prix :" />
+        <input
+          name="price"
+          value={newProduct.price}
+          className="input3"
+          type="text"
+          placeholder="Prix : "
+          onChange={handleChange}
+        />
         <input type="submit" value="Ajouter un nouveau produit au menu" />
       </div>
     </AddFormStyled>
@@ -101,4 +132,3 @@ const AddFormStyled = styled.form`
     /* text-overflow: ellipsis; */
   }
 `;
-  
