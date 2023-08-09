@@ -20,7 +20,7 @@ export default function AddForm() {
 
     const newProductToAdd = {
       ...newProduct,
-      id: new Date().getTime()
+      id: crypto.randomUUID()
       // id: new Date().getTime(),
       // title: newProduct.title,
       // imageSource: newProduct.imageSource,
@@ -31,11 +31,9 @@ export default function AddForm() {
   };
 
   const handleChange = (e) => {
-    console.log(e.target);
-    const newValue = e.target.value;
-    const name = e.target.name
+    const { name, value} = e.target.value
     setNewProduct({
-      ...newProduct, [name]: newValue
+      ...newProduct, [name]: value
     });
   };
 
