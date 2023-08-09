@@ -7,7 +7,7 @@ import { FaHamburger } from "react-icons/fa";
 const EMPTY_PRODUCT = {
   title: "",
   imageSource: "",
-  price: 14,
+  price: "",
 };
 
 export default function AddForm() {
@@ -28,10 +28,11 @@ export default function AddForm() {
     };
 
     handleAdd(newProductToAdd);
+    setNewProduct(EMPTY_PRODUCT)
   };
 
   const handleChange = (e) => {
-    const { name, value} = e.target.value
+    const { name, value} = e.target
     setNewProduct({
       ...newProduct, [name]: value
     });
@@ -39,7 +40,11 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <img src="/images/burger5.png" alt="logo burger" />
+      {newProduct.imageSource ? (
+        <img src={newProduct.imageSource} alt={newProduct.title} />
+      ) : (
+       <p>Aucune image</p>
+      )}
       <div className="input-container">
         {/* <FaHamburger /> */}
         <input
@@ -78,7 +83,7 @@ const AddFormStyled = styled.form`
   grid-template-columns: 30% 70%;
   max-width: 1000px;
 
-  img {
+  img, p{
     border: 1px solid black;
     padding: 20px;
     width: 50%;
