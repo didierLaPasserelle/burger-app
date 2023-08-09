@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
-import { FaHamburger } from "react-icons/fa";
+import { FiCheckCircle } from "react-icons/fi";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -14,13 +14,14 @@ export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newProductToAdd = {
       ...newProduct,
-      id: crypto.randomUUID()
+      id: crypto.randomUUID(),
       // id: new Date().getTime(),
       // title: newProduct.title,
       // imageSource: newProduct.imageSource,
@@ -28,13 +29,23 @@ export default function AddForm() {
     };
 
     handleAdd(newProductToAdd);
-    setNewProduct(EMPTY_PRODUCT)
+    setNewProduct(EMPTY_PRODUCT);
+    displaySucessMessage();
+  };
+
+  const displaySucessMessage = () => {
+    setIsSubmitted(true);
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 2000);
   };
 
   const handleChange = (e) => {
-    const { name, value} = e.target
+    const { name, value } = e.target;
     setNewProduct({
-      ...newProduct, [name]: value
+      ...newProduct,
+      [name]: value,
     });
   };
 
@@ -43,7 +54,7 @@ export default function AddForm() {
       {newProduct.imageSource ? (
         <img src={newProduct.imageSource} alt={newProduct.title} />
       ) : (
-       <p>Aucune image</p>
+        <p>Aucune image</p>
       )}
       <div className="input-container">
         {/* <FaHamburger /> */}
@@ -72,6 +83,12 @@ export default function AddForm() {
           onChange={handleChange}
         />
         <input type="submit" value="Ajouter un nouveau produit au menu" />
+        {isSubmitted && 
+          <div className="success-icon">
+            <FiCheckCircle />
+          <span>Ajouté avec succès !</span>
+          </div>
+          }
       </div>
     </AddFormStyled>
   );
@@ -83,7 +100,8 @@ const AddFormStyled = styled.form`
   grid-template-columns: 30% 70%;
   max-width: 1000px;
 
-  img, p{
+  img,
+  p {
     border: 1px solid black;
     padding: 20px;
     width: 50%;
@@ -133,5 +151,12 @@ const AddFormStyled = styled.form`
     /* white-space: nowrap; */
     overflow: hidden;
     /* text-overflow: ellipsis; */
+  }
+
+  .success-icon{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: ${theme.colors.green};
   }
 `;
