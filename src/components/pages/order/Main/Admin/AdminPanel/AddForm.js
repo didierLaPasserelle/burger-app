@@ -54,7 +54,9 @@ export default function AddForm() {
       {newProduct.imageSource ? (
         <img src={newProduct.imageSource} alt={newProduct.title} />
       ) : (
-        <p>Aucune image</p>
+        <div className="empty-image-container">
+          <p>Aucune image</p>
+        </div>
       )}
       <div className="input-container">
         {/* <FaHamburger /> */}
@@ -83,12 +85,12 @@ export default function AddForm() {
           onChange={handleChange}
         />
         <input type="submit" value="Ajouter un nouveau produit au menu" />
-        {isSubmitted && 
+        {isSubmitted && (
           <div className="success-icon">
             <FiCheckCircle />
-          <span>Ajouté avec succès !</span>
+            <span>Ajouté avec succès !</span>
           </div>
-          }
+        )}
       </div>
     </AddFormStyled>
   );
@@ -100,13 +102,27 @@ const AddFormStyled = styled.form`
   grid-template-columns: 30% 70%;
   max-width: 1000px;
 
-  img,
-  p {
-    border: 1px solid black;
-    padding: 20px;
-    width: 50%;
+  img {
+    /* border: 1px solid black; */
+    width: 90%;
+    height: 90%;
     object-fit: cover;
     place-self: center;
+  }
+
+  .empty-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      border: 1px solid black;
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .input-container {
@@ -153,7 +169,7 @@ const AddFormStyled = styled.form`
     /* text-overflow: ellipsis; */
   }
 
-  .success-icon{
+  .success-icon {
     display: flex;
     align-items: center;
     gap: 8px;
