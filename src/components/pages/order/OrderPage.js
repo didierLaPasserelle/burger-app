@@ -12,9 +12,9 @@ export default function OrderPage() {
   // state
   const { username } = useParams();
   const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState(fakeMenu.EMPTY);
 
   const handleAdd = (newProduct) => { 
     const menuCopy = [...menu];
@@ -29,6 +29,10 @@ export default function OrderPage() {
     console.log(menuUpdatedCopy);
   }
 
+  const resetMenu = () => {
+    setMenu(fakeMenu.SMALL)
+  }
+
   // comportements
   const orderContextValue = {
     isModeAdmin,
@@ -39,7 +43,8 @@ export default function OrderPage() {
     setCurrentTabSelected,
     menu,
     handleAdd,
-    handleDelete
+    handleDelete,
+    resetMenu
   };
 
   //affichage
@@ -56,14 +61,14 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background: orange;
+  /* background: orange; */
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .container {
-    background: red;
+    /* background: red; */
     height: 95vh;
     width: 1400px;
     display: flex;

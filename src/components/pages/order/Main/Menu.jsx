@@ -4,14 +4,20 @@ import { theme } from "../../../../theme";
 import Card from "../../../reusable-ui/Card.js";
 import { formatPrice } from "../../../utils/maths.js";
 import OrderContext from "../../../../context/OrderContext";
+import { fakeMenu } from "../../../../fakeData/fakeMenu";
 
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
+  const { menu, resetMenu, isModeAdmin, handleDelete } = useContext(OrderContext);
 
-const { menu, isModeAdmin, handleDelete } = useContext(OrderContext)
 
-
+  if (menu.length === 0) 
+    return (
+    <div>
+      <span>Pas de produit</span>
+      <button onClick={resetMenu}>Générer de nouveaux produits</button>
+    </div>)
 
   return (
     <MenuStyled className="menu">
