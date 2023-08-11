@@ -9,6 +9,7 @@ import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 export const EMPTY_PRODUCT = {
   title: "",
@@ -97,10 +98,7 @@ export default function AddForm() {
             version="success"
           />
           {isSubmitted && (
-            <div className="submit-message">
-              <FiCheckCircle className="icon" />
-              <span className="message">Ajouté avec succès !</span>
-            </div>
+            <SubmitMessage />
           )}
         </div>
       
