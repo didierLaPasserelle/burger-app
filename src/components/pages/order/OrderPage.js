@@ -11,10 +11,10 @@ import { fakeMenu } from "../../../fakeData/fakeMenu"
 export default function OrderPage() {
   // state
   const { username } = useParams();
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.EMPTY);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
   const handleAdd = (newProduct) => { 
     const menuCopy = [...menu];
@@ -69,7 +69,7 @@ const OrderPageStyled = styled.div`
 
   .container {
     /* background: red; */
-    height: 95vh;
+    height: 100vh;
     width: 1400px;
     display: flex;
     flex-direction: column;

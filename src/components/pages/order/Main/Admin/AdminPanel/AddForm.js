@@ -3,6 +3,10 @@ import OrderContext from "../../../../../../context/OrderContext";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import { FiCheckCircle } from "react-icons/fi";
+import { FaHamburger } from "react-icons/fa";
+import { BsFillCameraFill } from "react-icons/bs";
+import { MdOutlineEuro } from "react-icons/md";
+import TextInput from "../../../../../reusable-ui/TextInput";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -59,32 +63,38 @@ export default function AddForm() {
         </div>
       )}
       <div className="input-container">
-        {/* <FaHamburger /> */}
-        <input
+        <TextInput
           name="title"
           value={newProduct.title}
           className="input1"
           type="text"
           placeholder="Nom du produit (ex: Super Burger)"
           onChange={handleChange}
+          Icon={<FaHamburger />}
+          version="minimalist"
         />
-        <input
+        <TextInput
           name="imageSource"
           type="text"
           className="input2"
           value={newProduct.imageSource}
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           onChange={handleChange}
+          Icon={<BsFillCameraFill />}
         />
-        <input
+        <TextInput
           name="price"
           value={newProduct.price}
           className="input3"
           type="text"
           placeholder="Prix : "
           onChange={handleChange}
+          Icon={<MdOutlineEuro />}
         />
-        <input type="submit" value="Ajouter un nouveau produit au menu" />
+        <input 
+          type="submit" 
+          value="Ajouter un nouveau produit au menu" 
+          />
         {isSubmitted && (
           <div className="success-icon">
             <FiCheckCircle />
@@ -104,8 +114,8 @@ const AddFormStyled = styled.form`
 
   img {
     /* border: 1px solid black; */
-    width: 90%;
-    height: 90%;
+    width: 70%;
+    height: 70%;
     object-fit: cover;
     place-self: center;
   }

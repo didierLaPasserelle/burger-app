@@ -11,7 +11,7 @@ import { theme } from "../../../theme";
 export default function LoginForm() {
   // state
   const [inputValue, setInputValue] = useState("didier");
-  const [inputPassword, setInputPassword] = useState("password");
+  // const [inputPassword, setInputPassword] = useState("password");
   const navigate = useNavigate();
 
   // comportements
@@ -26,9 +26,9 @@ export default function LoginForm() {
     setInputValue(event.target.value);
   };
 
-  const handleChangePassword = (e) => {
-    setInputPassword(e.target.value);
-  };
+  // const handleChangePassword = (e) => {
+  //   setInputPassword(e.target.value);
+  // };
 
   // affichage
   return (
@@ -46,18 +46,21 @@ export default function LoginForm() {
           required
           Icon={<BsPersonCircle />}
           className="input-login"
+          version="normal"
         />
-        <TextInput
+        {/* <TextInput
           value={inputPassword}
           onChange={handleChangePassword}
           placeholder={"Veuillez entrer votre mot de passe"}
           required
           Icon={<RiLockPasswordFill />}
-        />
+          className="input-login"
+          version="normal"
+        /> */}
 
         <PrimaryButton
           label={"Accéder à mon espace"}
-          Icon={<IoChevronForward/>}
+          Icon={<IoChevronForward />}
         />
       </div>
     </LoginFormStyled>
@@ -90,6 +93,7 @@ const LoginFormStyled = styled.form`
   }
 
   .input-login {
-    margin:18px 0;
+    padding: 18px 24px;
+    margin: 18px 0;
   }
 `;

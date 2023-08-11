@@ -34,7 +34,7 @@ export default function AdminTabs() {
           label={tab.label}
           Icon={tab.Icon}
           onClick={() => selectTab(tab.index)}
-          className={isCollapsed ? "is-active" : ""}
+          className={currentTabSelected === tab.index ? "is-active" : ""}
           />
       ))}
     </AdminTabStyled>
