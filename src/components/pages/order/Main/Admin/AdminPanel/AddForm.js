@@ -8,17 +8,18 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
+import ImagePreview from "./ImagePreview";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   title: "",
   imageSource: "",
   price: "",
 };
 
 export default function AddForm() {
-  const { handleAdd } = useContext(OrderContext);
+  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
 
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  // const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
@@ -56,13 +57,7 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      {newProduct.imageSource ? (
-        <img src={newProduct.imageSource} alt={newProduct.title} />
-      ) : (
-        <div className="image-preview">
-          <p>Aucune image</p>
-        </div>
-      )}
+      <ImagePreview imageSource={newProduct.imageSource}title={newProduct.title} />
       <div className="input-fields">
         <TextInput
           name="title"
@@ -94,6 +89,7 @@ export default function AddForm() {
           Icon={<MdOutlineEuro />}
           version="minimalist"
         />
+        </div>
         <div className="submit">
           <Button
             className="submit-button"
@@ -107,7 +103,7 @@ export default function AddForm() {
             </div>
           )}
         </div>
-      </div>
+      
     </AddFormStyled>
   );
 }
