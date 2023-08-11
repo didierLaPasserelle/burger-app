@@ -6,9 +6,10 @@ export default function Button({
   Icon,
   className,
   version = "normal",
+  onClick,
 }) {
   return (
-    <ButtonStyled version={version}>
+    <ButtonStyled className={className} version={version} onClick={onClick}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
@@ -16,10 +17,7 @@ export default function Button({
 }
 
 const ButtonStyled = styled.button`
-  ${(props) => props.version === "normal" && extraStylePrimary}
-  ${(props) => props.version === "success" && extraStyleSuccess}
-
-  ${(props) => extraStyle[props.version]}
+  ${({ version }) => extraStyle[version]};
 `;
 
 const extraStylePrimary = css`
@@ -41,32 +39,45 @@ const extraStylePrimary = css`
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
 
-  &:hover:not(:disabled) {
-    cursor: pointer;
-    background-color: white;
-    color: #ff9f1b;
-    border: 1px solid #ff9f1b;
+  :hover {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
-
-  &:active {
-    color: white;
-    background-color: #ff9f1b;
-    border: 1px solid #ff9f1b;
+  :active {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
   }
 
-  &:disabled {
-    opacity: 0.6;
+  &.is-disabled {
+    opacity: 50%;
     cursor: not-allowed;
+    z-index: 2;
+  }
+
+  &.with-focus {
+    border: 1px solid white;
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.primary};
+    :hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+    }
+    :active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
   }
 
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
   }
 `;
+
 const extraStyleSuccess = css`
   cursor: pointer;
   color: ${theme.colors.white};
@@ -87,8 +98,7 @@ const extraStyleSuccess = css`
     border: 1px solid ${theme.colors.success};
   }
 `;
-
 const extraStyle = {
-  Primary: extraStylePrimary,
-  Succes: extraStyleSuccess
-}
+  normal: extraStylePrimary,
+  success: extraStyleSuccess,
+};

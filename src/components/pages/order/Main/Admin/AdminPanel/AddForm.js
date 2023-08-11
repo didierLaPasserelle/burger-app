@@ -94,18 +94,19 @@ export default function AddForm() {
           Icon={<MdOutlineEuro />}
           version="minimalist"
         />
-        <Button
-          className={"submit-button"}
-          label={"Ajouter un nouveau produit"}
-          version="success"
-        />
-
-        {isSubmitted && (
-          <div className="success-icon">
-            <FiCheckCircle />
-            <span>Ajouté avec succès !</span>
-          </div>
-        )}
+        <div className="submit">
+          <Button
+            className="submit-button"
+            label={"Ajouter un nouveau produit"}
+            version="success"
+          />
+          {isSubmitted && (
+            <div className="submit-message">
+              <FiCheckCircle className="icon" />
+              <span className="message">Ajouté avec succès !</span>
+            </div>
+          )}
+        </div>
       </div>
     </AddFormStyled>
   );
@@ -139,6 +140,28 @@ const AddFormStyled = styled.form`
     .submit-button {
       /* width: 50%; */
       height: 100%;
+    }
+
+    .submit-message {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 5px;
+
+      .icon {
+        color: ${theme.colors.success};
+        margin-left: 10px;
+        width: 1rem;
+        height: 1rem;
+        border: 1px solid ${theme.colors.success};
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .message {
+        margin-left: 5px;
+        font-size: ${theme.fonts.size.SM};
+        color: ${theme.colors.success};
+      }
     }
   }
 `;
