@@ -7,6 +7,7 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../reusable-ui/TextInput";
+import Button from "../../../../../reusable-ui/Button";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -58,11 +59,11 @@ export default function AddForm() {
       {newProduct.imageSource ? (
         <img src={newProduct.imageSource} alt={newProduct.title} />
       ) : (
-        <div className="empty-image-container">
+        <div className="image-preview">
           <p>Aucune image</p>
         </div>
       )}
-      <div className="input-container">
+      <div className="input-fields">
         <TextInput
           name="title"
           value={newProduct.title}
@@ -93,10 +94,12 @@ export default function AddForm() {
           Icon={<MdOutlineEuro />}
           version="minimalist"
         />
-        <input 
-          type="submit" 
-          value="Ajouter un nouveau produit au menu" 
-          />
+        <Button
+          className={"submit-button"}
+          label={"Ajouter un nouveau produit"}
+          version="success"
+        />
+
         {isSubmitted && (
           <div className="success-icon">
             <FiCheckCircle />
@@ -109,82 +112,33 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  border: 1px solid black;
+  /* border: 2px solid black; */
   display: grid;
-  grid-template-columns: 30% 70%;
-  max-width: 1000px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  width: 70%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
 
-  img {
-    /* border: 1px solid black; */
-    width: 70%;
-    height: 70%;
-    object-fit: cover;
-    place-self: center;
-  }
-
-  .empty-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    p {
-      border: 1px solid black;
-      width: 80%;
-      height: 80%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  .input-container {
+  .input-fields {
+    /* background: blue; */
+    grid-area: 1 / 2 / -2 / 3;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-      "i1 i1"
-      "i2 i2"
-      "i3 i3"
-      "bt vi";
+    grid-row-gap: 8px;
   }
 
-  input {
-    margin: 5px;
-    border: 1px solid darkblue;
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 5px;
-    width: 80%;
-    height: 40px;
-    max-width: 900px;
-    text-overflow: ellipsis;
-  }
-
-  .input1 {
-    grid-area: i1;
-  }
-
-  .input2 {
-    grid-area: i2;
-  }
-
-  .input3 {
-    grid-area: i3;
-  }
-
-  input[type="submit"] {
-    background: ${theme.colors.green};
-    color: ${theme.colors.background_white};
-    cursor: pointer;
-    /* white-space: nowrap; */
-    overflow: hidden;
-    /* text-overflow: ellipsis; */
-  }
-
-  .success-icon {
+  .submit {
+    /* background: green; */
+    grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: ${theme.colors.green};
+    position: relative;
+    top: 3px;
+
+    .submit-button {
+      /* width: 50%; */
+      height: 100%;
+    }
   }
 `;
