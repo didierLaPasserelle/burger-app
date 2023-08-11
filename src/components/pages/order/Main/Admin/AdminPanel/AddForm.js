@@ -81,6 +81,7 @@ export default function AddForm() {
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           onChange={handleChange}
           Icon={<BsFillCameraFill />}
+          version="minimalist"
         />
         <TextInput
           name="price"
@@ -90,6 +91,7 @@ export default function AddForm() {
           placeholder="Prix : "
           onChange={handleChange}
           Icon={<MdOutlineEuro />}
+          version="minimalist"
         />
         <input 
           type="submit" 
