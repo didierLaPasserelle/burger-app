@@ -8,5 +8,13 @@ export default createContext({
   setIsCollapsed: () => {},
 
   currentTabSelected: false,
-  setCurrentTabSelected: () => {}
+  setCurrentTabSelected: () => {},
+
+  menu: [],
+  handleAdd: () => {},
+  handleDelete: () => {},
+  resetMenu: () => {},
+
+  newProduct: [],
+  setNewProduct: () => {}
  })

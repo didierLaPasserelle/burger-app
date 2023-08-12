@@ -1,10 +1,26 @@
-import styled from "styled-components"
-import { theme } from "../../theme"
-import PrimaryButton from "./PrimaryButton"
+import styled from "styled-components";
+import { theme } from "../../theme";
+import Button from "./Button";
+import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, imageSource, leftDescription }) {
+export default function Card({
+  title,
+  imageSource,
+  leftDescription,
+  hasDeleteButton,
+  onDelete,
+}) {
   return (
     <CardStyled className="produit">
+      {hasDeleteButton && (
+        <button
+          className="delete-btn"
+          aria-label="delete-button"
+          onClick={onDelete}
+        >
+          <TiDelete className="icon" />
+        </button>
+      )}
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -13,12 +29,12 @@ export default function Card({ title, imageSource, leftDescription }) {
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" label={"Ajouter"} />
+            <Button className="primary-button" label={"Ajouter"} />
           </div>
         </div>
       </div>
     </CardStyled>
-  )
+  );
 }
 
 const CardStyled = styled.div`
@@ -30,6 +46,31 @@ const CardStyled = styled.div`
   padding: 20px 20px 10px;
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
+
+  .delete-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    color: ${theme.colors.primary};
+    border: none;
+    background: none;
+    /* z-index: 2;
+    padding: 0; */
+
+    .icon {
+      width: 30px;
+      height: 30px;
+
+      :hover {
+        color: ${theme.colors.red};
+      }
+      :active {
+        color: ${theme.colors.primary};
+      }
+    }
+  }
 
   .image {
     width: 100%;
@@ -81,7 +122,7 @@ const CardStyled = styled.div`
 
       .right-description {
         display: flex;
-        
+
         align-items: center;
         font-size: ${theme.fonts.size.P1};
 
@@ -93,4 +134,4 @@ const CardStyled = styled.div`
       }
     }
   }
-`
+`;
