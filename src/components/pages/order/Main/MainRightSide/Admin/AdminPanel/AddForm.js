@@ -1,12 +1,12 @@
 import { useContext, useState } from "react"
 import styled from "styled-components"
-import OrderContext from "../../../../../../context/OrderContext"
+import OrderContext from "../../../../../../../context/OrderContext"
 
-import TextInput from "../../../../../reusable-ui/TextInput"
-import Button from "../../../../../reusable-ui/Button"
+import TextInput from "../../../../../../reusable-ui/TextInput"
+import Button from "../../../../../../reusable-ui/Button"
 import ImagePreview from "./ImagePreview"
 import SubmitMessage from "./SubmitMessage"
-import { getInputTextsConfig } from "./InputTextConfig"
+import { getInputTextsConfig } from "./inputTextConfig"
 
 export const EMPTY_PRODUCT = {
   id: "",

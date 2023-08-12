@@ -9,7 +9,11 @@ export default function Button({
   onClick,
 }) {
   return (
-    <ButtonStyled className={className} version={version} onClick={onClick}>
+    <ButtonStyled   
+      className={className} 
+      version={version} 
+      onClick={onClick}
+    >
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
