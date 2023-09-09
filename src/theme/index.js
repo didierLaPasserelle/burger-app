@@ -50,8 +50,12 @@ const fonts = {
     bold: 700,
     heavy: 800,
   },
+  families: {
+    stylish : `"Amatic SC", cursive`
+  }
 }
 const gridUnit = 8
+
 const borderRadius = {
   subtle: 1,
   round: "5px",

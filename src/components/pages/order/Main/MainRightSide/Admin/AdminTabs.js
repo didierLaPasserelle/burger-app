@@ -13,7 +13,7 @@ export default function AdminTabs() {
 
   // comportements
   const selectTab = (tabSelected) => {
-    setIsCollapsed(false) // tu m'ouvres le pannel
+    setIsCollapsed(false) // tu m'ouvres le panel
     setCurrentTabSelected(tabSelected)
   }
 
