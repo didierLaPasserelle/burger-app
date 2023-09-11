@@ -5,7 +5,7 @@ import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu } from "../../../fakeData/fakeMenu"
-import { EMPTY_PRODUCT } from "./Main/MainRightSide/Admin/AdminPanel/AddForm"
+import { EMPTY_PRODUCT } from "../../enums/product"
 
 export default function OrderPage() {
   // state
@@ -14,11 +14,12 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit")
   const [menu, setMenu] = useState(fakeMenu.MEDIUM)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [cardClickedOn, setCardClickedOn] = useState(EMPTY_PRODUCT)
 
   // comportements
   const handleAdd = (newProduct) => {
     // 1. copie du tableau
-    const menuCopy = [...menu]
+    const menuCopy = JSON.parse(JSON.stringify(menu))
 
     // 2. manip de la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy]
@@ -29,7 +30,7 @@ export default function OrderPage() {
 
   const handleDelete = (idOfProductToDelete) => {
     //1. copy du state
-    const menuCopy = [...menu]
+    const menuCopy = JSON.parse(JSON.stringify(menu))
 
     //2. manip de la copie state
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
@@ -37,6 +38,19 @@ export default function OrderPage() {
 
     //3. update du state
     setMenu(menuUpdated)
+  }
+
+  const handleEdit = (productBeingEdited) => {
+     //1. copy du state
+     const menuCopy = JSON.parse(JSON.stringify(menu))
+
+     //2. manip de la copie state
+    const indexOfProductToEdit = menu.findIndex((product) => product.id === productBeingEdited.id);
+
+    menuCopy[indexOfProductToEdit] = productBeingEdited
+    
+     //3. update du state
+     setMenu(menuCopy)
   }
 
   const resetMenu = () => {
@@ -53,9 +67,12 @@ export default function OrderPage() {
     menu,
     handleAdd,
     handleDelete,
+    handleEdit,
     resetMenu,
     newProduct,
     setNewProduct,
+    cardClickedOn,
+    setCardClickedOn
   }
 
   //affichage
