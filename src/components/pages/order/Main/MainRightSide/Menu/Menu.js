@@ -6,6 +6,7 @@ import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../../reusable-ui/Card"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
+import { checkIfProductIsClicked } from "./helper"
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -18,7 +19,6 @@ export default function Menu() {
     const cardClickedOn = menu.find((card) => 
     card.id === cardId)
     setCardClickedOn(cardClickedOn)
-
   }
 
   // affichage
@@ -40,6 +40,8 @@ export default function Menu() {
             onDelete={() => handleDelete(id)}
             onClick={()=>handleClick(id)}
             isHoverable={isModeAdmin}
+            // isSelected={id === cardClickedOn.id}
+            isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
           />
         )
       })}

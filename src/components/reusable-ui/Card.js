@@ -11,10 +11,11 @@ export default function Card({
   onDelete,
   onClick,
   isHoverable,
+  isSelected
 }) {
   return (
     <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable}>
-      <div className="card">
+      <div className="card" style = { isSelected ? { backgroundColor: "orange"} : {} }>
         {hasDeleteButton && (
           <button
             className="delete-btn"
@@ -150,5 +151,6 @@ const HoverableStyle = css`
     transform: scale(1.05);
     transition: ease-out 0.4s;
     box-shadow: ${theme.shadows.orangeHighLight};
+    cursor: pointer;
   }
 `
