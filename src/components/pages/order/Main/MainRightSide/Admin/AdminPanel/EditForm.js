@@ -43,6 +43,7 @@ export default function EditForm() {
     </EditFormStyled>
   );
 }
+
 const EditFormStyled = styled.form`
   /* border: 2px solid black; */
   display: grid;

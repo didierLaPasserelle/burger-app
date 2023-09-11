@@ -73,7 +73,7 @@ export default function OrderPage() {
     newProduct,
     setNewProduct,
     cardClickedOn,
-    setCardClickedOn
+    setCardClickedOn,
   }
 
   //affichage
