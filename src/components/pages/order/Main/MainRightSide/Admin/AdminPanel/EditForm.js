@@ -4,11 +4,12 @@ import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
+import { theme } from "../../../../../../../theme";
 
 export default function EditForm() {
   const { cardClickedOn, setCardClickedOn, handleEdit, titleEditRef } =
     useContext(OrderContext);
-  
+
   const inputTexts = getInputTextsConfig(cardClickedOn);
 
   const handleChange = (e) => {
@@ -34,11 +35,16 @@ export default function EditForm() {
             key={input.id}
             onChange={handleChange}
             version="minimalist"
-            ref={input.name === "title" ? titleEditRef: null}
+            ref={input.name === "title" ? titleEditRef : null}
           />
         ))}
       </div>
-      <div className="submit"></div>
+      <div className="submit">
+        <span className="sentence">
+          Cliquer sur un produit pour le modifier{" "}
+          <span className="live-update">en temps réel</span>
+        </span>
+      </div>
     </EditFormStyled>
   );
 }
@@ -69,9 +75,13 @@ const EditFormStyled = styled.form`
     position: relative;
     top: 3px;
 
-    .submit-button {
-      /* width: 50%; */
-      height: 100%;
+    .sentence {
+      color: ${theme.colors.primary};
+      font-size: ${theme.fonts.size.SM};
+
+      .live-update {
+        text-decoration: underline;
+      }
     }
   }
 `;
