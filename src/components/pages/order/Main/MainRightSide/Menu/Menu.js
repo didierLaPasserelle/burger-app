@@ -11,12 +11,15 @@ import { checkIfProductIsClicked } from "./helper"
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu, cardClickedOn, setCardClickedOn } = useContext(OrderContext)
+  const { menu, isModeAdmin, handleDelete, resetMenu, cardClickedOn, setCardClickedOn, setIsCollapsed, setCurrentTabSelected } = useContext(OrderContext)
   // state
 
   // gestionnaire d'évent ou event handlers
   const handleClick = (cardId) => {
     if(!isModeAdmin) return; 
+    
+    setIsCollapsed(false)
+    setCurrentTabSelected("edit")
     const cardClickedOn = menu.find((card) => 
     card.id === cardId)
     setCardClickedOn(cardClickedOn)
