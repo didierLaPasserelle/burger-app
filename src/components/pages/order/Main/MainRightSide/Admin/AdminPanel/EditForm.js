@@ -1,14 +1,12 @@
-import { useContext, useState } from "react";
-import EmptyEditFormMessage from "../AdminPanel/EmptyEditFormMessage";
+import { useContext, useRef } from "react";
 import OrderContext from "../../../../../../../context/OrderContext";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function EditForm() {
-  const { cardClickedOn, setCardClickedOn, handleEdit } =
+  const { cardClickedOn, setCardClickedOn, handleEdit, titleEditRef } =
     useContext(OrderContext);
   
   const inputTexts = getInputTextsConfig(cardClickedOn);
@@ -36,6 +34,7 @@ export default function EditForm() {
             key={input.id}
             onChange={handleChange}
             version="minimalist"
+            ref={input.name === "title" ? titleEditRef: null}
           />
         ))}
       </div>

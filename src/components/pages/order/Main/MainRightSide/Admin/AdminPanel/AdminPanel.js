@@ -8,6 +8,7 @@ export default function AdminPanel() {
   const { currentTabSelected } = useContext(OrderContext)
 
   const tabs = tabsConfig
+  
   const tabSelected = getTabSelected(tabs, currentTabSelected)
 
   return <AdminPanelStyled>{tabSelected && tabSelected.Content}</AdminPanelStyled>

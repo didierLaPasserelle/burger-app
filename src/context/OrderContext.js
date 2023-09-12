@@ -20,6 +20,8 @@ export default createContext({
   setNewProduct: () => {},
 
   cardClickedOn: {},
-  setCardClickedOn: () => {}
+  setCardClickedOn: () => {},
+
+  titleEditRef: {},
 
  })
