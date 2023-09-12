@@ -14,8 +14,9 @@ export default function Menu() {
   const { menu, isModeAdmin, handleDelete, resetMenu, cardClickedOn, setCardClickedOn } = useContext(OrderContext)
   // state
 
-  // comportements
+  // gestionnaire d'évent ou event handlers
   const handleClick = (cardId) => {
+    if(!isModeAdmin) return; 
     const cardClickedOn = menu.find((card) => 
     card.id === cardId)
     setCardClickedOn(cardClickedOn)
