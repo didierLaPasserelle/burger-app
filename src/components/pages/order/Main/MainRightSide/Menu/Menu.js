@@ -7,6 +7,7 @@ import Card from "../../../../../reusable-ui/Card"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
+import { EMPTY_PRODUCT } from "../../../../../enums/product"
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -30,6 +31,8 @@ export default function Menu() {
     const handleCardDelete = (e, idProductToDelete) => {
       e.stopPropagation()
       handleDelete(idProductToDelete)
+      idProductToDelete === cardClickedOn.id && setCardClickedOn(EMPTY_PRODUCT)
+      titleEditRef.current.focus()
     }
   
   // affichage
