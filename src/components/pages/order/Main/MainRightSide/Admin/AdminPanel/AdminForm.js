@@ -25,7 +25,7 @@ const AdminForm = React.forwardRef(
           ))}
         </div>
 
-        <div className="submit">{children}</div>
+        <div className="footer">{children}</div>
       </AdminFormStyled>
     );
   }
@@ -51,7 +51,7 @@ const AdminFormStyled = styled.form`
     grid-row-gap: 8px;
   }
 
-  .submit {
+  .footer {
     /* background: green; */
     grid-area: 4 / -2 / -1 / -1;
     display: flex;
