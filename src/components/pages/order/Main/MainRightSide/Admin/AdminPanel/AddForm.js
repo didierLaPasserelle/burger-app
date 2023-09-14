@@ -5,6 +5,7 @@ import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import AdminForm from "./AdminForm";
 import Button from "../../../../../../reusable-ui/Button"
 import SubmitMessage from "./SubmitMessage"
+import SubmitButton from "./SubmitButton";
 
 export default function AddForm() {
   // state
@@ -47,14 +48,7 @@ export default function AddForm() {
       product={newProduct}
       isSubmitted={isSubmitted}
     >
-      <>
-        <Button
-          className="submit-button"
-          label={"Ajouter un nouveau produit au menu"}
-          version="success"
-        />
-        {isSubmitted && <SubmitMessage />}
-      </>
+      <SubmitButton isSubmitted={isSubmitted}/>
     </AdminForm>
   );
 }
