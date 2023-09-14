@@ -9,8 +9,8 @@ export default function Basket() {
         <p>0,00</p>
       </div>
 
-    <div className="body">Body</div>
-    <div className="footer">Footer</div>
+      <div className="body">Body</div>
+      <div className="footer">Footer</div>
     </BasketStyled>
   );
 }
@@ -19,16 +19,21 @@ const BasketStyled = styled.div`
   background: pink;
   display: flex;
   flex-direction: column;
-  
+
   .header {
-   background: grey;
+    height: 70px;
+    padding: 0px, 16px, 0px, 16px;
+    background: ${theme.colors.background_dark};
   }
 
-  .body{
-    background: blue;
+  .body {
+    flex: 1;
+    background: ${theme.colors.white};
   }
 
-  .footer{ 
+  .footer {
     background: green;
+    height: 70px;
+    background: ${theme.colors.background_dark};
   }
 `;
