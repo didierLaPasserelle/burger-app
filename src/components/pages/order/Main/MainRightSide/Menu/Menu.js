@@ -6,20 +6,41 @@ import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../../reusable-ui/Card"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
+import { checkIfProductIsClicked } from "./helper"
+import { EMPTY_PRODUCT } from "../../../../../enums/product"
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
+  const { menu, isModeAdmin, handleDelete, resetMenu, cardClickedOn, setCardClickedOn, setIsCollapsed, setCurrentTabSelected, titleEditRef } = useContext(OrderContext)
   // state
 
-  // comportements
+  // gestionnaire d'évent ou event handlers
+  const handleClick = async (cardId) => {
+    if(!isModeAdmin) return; 
+    
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const cardClickedOn = menu.find((card) => 
+    card.id === cardId)
+    await setCardClickedOn(cardClickedOn)
+    titleEditRef.current.focus()
 
+  }
+
+    const handleCardDelete = (e, idProductToDelete) => {
+      e.stopPropagation()
+      handleDelete(idProductToDelete)
+      idProductToDelete === cardClickedOn.id && setCardClickedOn(EMPTY_PRODUCT)
+      titleEditRef.current.focus()
+    }
+  
   // affichage
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu} />
   }
+  
 
   return (
     <MenuStyled className="menu">
@@ -31,7 +52,11 @@ export default function Menu() {
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDelete(id)}
+            onDelete={(e)=> handleCardDelete(e, id)}
+            onClick={()=>handleClick(id)}
+            isHoverable={isModeAdmin}
+            // isSelected={id === cardClickedOn.id}
+            isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
           />
         )
       })}
