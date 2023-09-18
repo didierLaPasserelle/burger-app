@@ -99,11 +99,11 @@ const OrderPageStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 3px solid red ;
 
   .container {
-    background: red;
     height: 95vh;
-    width: 1400px;
+    width: 1200px;
     display: flex;
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
