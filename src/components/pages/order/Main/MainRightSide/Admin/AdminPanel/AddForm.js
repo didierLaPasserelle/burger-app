@@ -9,20 +9,23 @@ import { useSuccessMessage } from "../../../../../../../hooks/useDisplaySuccesMe
 export default function AddForm() {
   // state
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  const { isSubmitted, displaySuccessMessage } = useSuccessMessage(3000);
+  
+  const { isSubmitted, SuccessMessage } = useSuccessMessage(3000);
 
-  // comportements
+  // Event handler
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
     };
 
     handleAdd(newProductToAdd);
+
     setNewProduct(EMPTY_PRODUCT);
 
-    displaySuccessMessage();
+    SuccessMessage();
   };
 
   const handleChange = (event) => {

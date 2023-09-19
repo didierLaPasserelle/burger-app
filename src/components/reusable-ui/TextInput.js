@@ -3,20 +3,15 @@ import { theme } from "../../theme"
 import React from "react";
 
 const TextInput = React.forwardRef(
-  ({
-  onChange,
-  Icon,
-  className,
-  version = "normal",
-  ...extraProps
-}, ref) => {
-  return (
-    <TextInputStyled className={className} version={version}>
-      <div className="icon">{Icon && Icon}</div>
-      <input ref={ref} onChange={onChange} type="text" {...extraProps} />
-    </TextInputStyled>
-  )
-})
+  ({ onChange, Icon, className, version = "normal", ...extraProps }, ref) => {
+    return (
+      <TextInputStyled className={className} version={version}>
+        <div className="icon">{Icon && Icon}</div>
+        <input ref={ref} onChange={onChange} type="text" {...extraProps} />
+      </TextInputStyled>
+    )
+  }
+)
 
 export default TextInput;
 
@@ -35,7 +30,7 @@ const TextInputStyled = styled.div`
     border: none;
     font-size: ${theme.fonts.size.SM};
     width: 100%;
-
+   
     &::placeholder {
       color: ${theme.colors.greyMedium};
     }
@@ -49,6 +44,7 @@ const TextInputStyled = styled.div`
   ${({ version }) => extraStyle[version]}
 `
 
+
 const extraStyleNormal = css`
   background-color: ${theme.colors.white};
   padding: 18px 28px;
@@ -56,6 +52,7 @@ const extraStyleNormal = css`
 
   input {
     color: ${theme.colors.dark};
+    width: 400px;
 
     &::placeholder {
       background: ${theme.colors.white};
@@ -82,3 +79,4 @@ const extraStyle = {
   normal: extraStyleNormal,
   minimalist: extraStyleMinimalist,
 }
+

@@ -33,7 +33,7 @@ export default function LoginForm() {
   // affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <div>
+      <div style={{ margin: "30px 0" }}>
         <h1>Bienvenue chez nous !</h1>
         <hr />
         <h2>Connectez-vous</h2>
@@ -42,21 +42,12 @@ export default function LoginForm() {
         <TextInput
           value={inputValue}
           onChange={handleChange}
-          placeholder={"Veuillez entrer votre pseusdo"}
+          placeholder={"Entrez votre prénom"}
           required
           Icon={<BsPersonCircle />}
           className="input-login"
           version="normal"
         />
-        {/* <TextInput
-          value={inputPassword}
-          onChange={handleChangePassword}
-          placeholder={"Veuillez entrer votre mot de passe"}
-          required
-          Icon={<RiLockPasswordFill />}
-          className="input-login"
-          version="normal"
-        /> */}
 
         <Button label={"Accéder à mon espace"} Icon={<IoChevronForward />} />
       </div>
@@ -76,6 +67,7 @@ const LoginFormStyled = styled.form`
   hr {
     border: 1.5px solid ${theme.colors.loginLine};
     margin-bottom: ${theme.gridUnit * 5}px;
+    margin-top: ${theme.gridUnit * 5}px;;
   }
 
   h1 {
@@ -90,7 +82,6 @@ const LoginFormStyled = styled.form`
   }
 
   .input-login {
-    padding: 18px 24px;
-    margin: 18px 0;
+    margin: 18px 0; // must be handled in Parent
   }
-`;
+`

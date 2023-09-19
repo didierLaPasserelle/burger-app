@@ -13,7 +13,6 @@ export default function Tab({ label, Icon, onClick, className }) {
 }
 
 const TabStyled = styled.button`
-  border: 1px solid blue;
   height: 43px;
   padding: 0 22px;
 
@@ -22,7 +21,7 @@ const TabStyled = styled.button`
   align-items: center;
 
   position: relative;
-  left: 5%;
+  top: 1px;
 
   cursor: pointer;
 
@@ -44,6 +43,7 @@ const TabStyled = styled.button`
 
   &:hover {
     border-radius: ${theme.colors.white};
+    border-bottom: 2px solid ${theme.colors.white};
   }
 
   .icon{

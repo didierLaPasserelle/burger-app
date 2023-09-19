@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
 export default function BasketItems() {
-  return <BasketItemsStyled>Votre commande est vide.</BasketItemsStyled>;
+  return (
+  <BasketItemsStyled>
+    Votre commande est vide.
+  </BasketItemsStyled>
+  )
 }
 
 const BasketItemsStyled = styled.span`
