@@ -5,7 +5,7 @@ import { theme } from "../../../../../theme";
 export default function Header({ amount }) {
   return (
     <HeaderStyled>
-      <span>ToTal</span>
+      <span>Total</span>
       <span>{amount}</span>
     </HeaderStyled>
   );
