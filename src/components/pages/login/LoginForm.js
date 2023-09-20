@@ -33,7 +33,7 @@ export default function LoginForm() {
   // affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <div style={{ margin: "30px 0" }}>
+      <div className="titles">
         <h1>Bienvenue chez nous !</h1>
         <hr />
         <h2>Connectez-vous</h2>
@@ -63,6 +63,10 @@ const LoginFormStyled = styled.form`
   padding: 40px ${theme.spacing.lg};
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
+
+  .titles {
+    margin: 30px 0;
+  }
 
   hr {
     border: 1.5px solid ${theme.colors.loginLine};

@@ -5,11 +5,11 @@ export const useSuccessMessage = (timeDelay = 10000) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   //comportements
-  const SuccessMessage = () => {
+  const showSuccessMessage = () => {
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
     }, timeDelay);
   };
-  return { isSubmitted, SuccessMessage };
+  return { isSubmitted, showSuccessMessage };
 };

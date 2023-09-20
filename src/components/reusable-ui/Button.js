@@ -9,10 +9,11 @@ export default function Button({
   onClick,
 }) {
   return (
-    <ButtonStyled   
-      className={className} 
-      version={version} 
+    <ButtonStyled
+      className={className}
+      version={version}
       onClick={onClick}
+      Icon={Icon}
     >
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
@@ -21,7 +22,11 @@ export default function Button({
 }
 
 const ButtonStyled = styled.button`
-  ${({ version }) => extraStyle[version]};
+  ${({ version }) => extraStyle[version]}
+
+  .icon {
+    margin-left: ${({ Icon }) => Icon ? "10px" : "0"};
+  }
 `;
 
 const extraStylePrimary = css`
