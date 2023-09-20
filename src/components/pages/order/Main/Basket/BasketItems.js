@@ -1,23 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
 
-export default function BasketItems() {
+export default function BasketItems({ basket }) {
   return (
-  <BasketItemsStyled>
-    Votre commande est vide.
-  </BasketItemsStyled>
-  )
+    <BasketItemsStyled>
+      {basket.map((item) => (
+        <div key={item.id}>basket</div>
+      ))}
+    </BasketItemsStyled>
+  );
 }
 
-const BasketItemsStyled = styled.span`
+const BasketItemsStyled = styled.div`
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${theme.colors.white};
-  color: ${theme.colors.greyBlue};
-  box-shadow: ${theme.shadows.basket};
-  font-size: ${theme.fonts.size.P4};
-  line-height: 2;
-`;
+  flex-direction: column;
+  overflow-y: scroll;
+
+  .basket-card {
+    margin: 10px 16px;
+    height: 86px;
+    box-sizing: border-box;
+    :first-child {
+      margin-top: 20px;
+    }
+    :last-child {
+      margin-bottom: 20px;
+    }
+  }
+`
