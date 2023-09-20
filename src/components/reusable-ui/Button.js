@@ -13,10 +13,9 @@ export default function Button({
       className={className}
       version={version}
       onClick={onClick}
-      Icon={Icon}
     >
       <span>{label}</span>
-      <div className="icon">{Icon && Icon}</div>
+      {Icon && <div className="icon">{Icon}</div>}
     </ButtonStyled>
   );
 }
@@ -25,7 +24,7 @@ const ButtonStyled = styled.button`
   ${({ version }) => extraStyle[version]}
 
   .icon {
-    margin-left: ${({ Icon }) => Icon ? "10px" : "0"};
+    margin-left: 10px;
   }
 `;
 
