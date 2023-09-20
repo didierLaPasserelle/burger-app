@@ -20,7 +20,7 @@ const EmptyBasketStyled = styled.div`
     align-items: center;
     align-self: center;
     line-height: 2;
-    font-family: ${theme.fonts.family.stylish};
+    font-family: ${theme.fonts.families.stylish};
     font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
   }
