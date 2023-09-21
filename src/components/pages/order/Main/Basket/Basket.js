@@ -13,9 +13,16 @@ export default function Basket() {
 
   const isEmptyBasket = basket.length === 0;
 
+  const amountToPay = basket.reduce((total, basketItem) => {
+    return total + (basketItem.price * basketItem.quantity)
+  }, 0)
+
+  console.log('sumToPay: ', amountToPay)
+
+
   return (
     <BasketStyled>
-      <Header amount={formatPrice(0)} />
+      <Header amount={formatPrice(amountToPay)} />
       {isEmptyBasket ? <EmptyBasket /> : <BasketItems basket={basket} />}
       <Footer />
     </BasketStyled>
@@ -29,9 +36,9 @@ const BasketStyled = styled.div`
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   font-family: ${theme.fonts.families.stylish};
-  height: 85vh;
+  /* height: 85vh; */
 
-  .head {
+  /* .head {
     position: sticky;
     top: 0;
   }
@@ -40,5 +47,5 @@ const BasketStyled = styled.div`
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     position: sticky;
     bottom: 0;
-  }
+  } */
 `;
