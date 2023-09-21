@@ -13,6 +13,7 @@ export default function Button({
       className={className}
       version={version}
       onClick={onClick}
+      Icon={Icon}
     >
       <span>{label}</span>
       {Icon && <div className="icon">{Icon}</div>}

@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import BasketCard from "./BasketCard";
 
 export default function BasketItems({ basket }) {
   return (
     <BasketItemsStyled>
       {basket.map((item) => (
-        <div key={item.id}>basket</div>
+        <div key={item.id} className="basket-card">
+          <div >{<BasketCard {...item} />}</div>
+        </div>
       ))}
     </BasketItemsStyled>
   );
@@ -28,4 +31,4 @@ const BasketItemsStyled = styled.div`
       margin-bottom: 20px;
     }
   }
-`
+`;
