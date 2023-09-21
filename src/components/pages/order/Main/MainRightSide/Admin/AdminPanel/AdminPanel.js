@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../../context/OrderContext";
 import { theme } from "../../../../../../../theme";
-import { getTabSelected, getTabsConfig } from "../tabsConfig";
+import { getTabsConfig } from "../tabsConfig";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function AdminPanel() {

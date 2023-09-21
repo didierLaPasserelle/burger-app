@@ -5,15 +5,15 @@ import { theme } from "../../theme";
 export default function Tab({ label, Icon, onClick, className }) {
   return (
     <TabStyled onClick={onClick} className={className}>
-        <div className="icon">
-            {Icon && Icon}
-            {label && <span className="label">{label}</span>}
-        </div> 
-    </TabStyled>)
+      <div className="icon">
+        {Icon && Icon}
+        {label && <span className="label">{label}</span>}
+      </div>
+    </TabStyled>
+  );
 }
 
 const TabStyled = styled.button`
-  border: 1px solid blue;
   height: 43px;
   padding: 0 22px;
 
@@ -22,7 +22,7 @@ const TabStyled = styled.button`
   align-items: center;
 
   position: relative;
-  left: 5%;
+  top: 1px;
 
   cursor: pointer;
 
@@ -38,15 +38,15 @@ const TabStyled = styled.button`
   border-color: ${theme.colors.greyLight};
 
   //border-radius
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-radius: ${theme.borderRadius.round};
+  border-top-left-radius: ${theme.borderRadius.round};
+  border-top-right-radius: ${theme.borderRadius.round};
 
   &:hover {
     border-radius: ${theme.colors.white};
+    border-bottom: 2px solid ${theme.colors.white};
   }
 
-  .icon{
+  .icon {
     display: flex;
     justify-content: center;
     align-items: center;

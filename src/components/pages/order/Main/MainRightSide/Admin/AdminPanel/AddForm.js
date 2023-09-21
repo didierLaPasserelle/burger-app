@@ -1,29 +1,31 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../../../../context/OrderContext";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import AdminForm from "./AdminForm";
-import Button from "../../../../../../reusable-ui/Button"
-import SubmitMessage from "./SubmitMessage"
 import SubmitButton from "./SubmitButton";
+import { useSuccessMessage } from "../../../../../../../hooks/useDisplaySuccesMessage";
 
 export default function AddForm() {
   // state
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  const { isSubmitted, showSuccessMessage } = useSuccessMessage(3000);
 
-  // comportements
+  // Event handler
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
     };
 
     handleAdd(newProductToAdd);
+
     setNewProduct(EMPTY_PRODUCT);
 
-    displaySuccessMessage();
+    showSuccessMessage();
   };
 
   const handleChange = (event) => {
@@ -31,12 +33,6 @@ export default function AddForm() {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const displaySuccessMessage = () => {
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2000);
-  };
   const inputTexts = getInputTextsConfig(newProduct);
 
   // affichage
@@ -48,7 +44,7 @@ export default function AddForm() {
       product={newProduct}
       isSubmitted={isSubmitted}
     >
-      <SubmitButton isSubmitted={isSubmitted}/>
+      <SubmitButton isSubmitted={isSubmitted} />
     </AdminForm>
   );
 }

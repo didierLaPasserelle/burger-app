@@ -20,7 +20,7 @@ const LogoStyled = styled.div`
     text-align: center;
     color: ${theme.colors.primary};
     font-size: ${theme.fonts.size.P4};
-    line-height: 1em;
+    line-height: 1rem;
     font-weight: ${theme.fonts.weights.bold};
     text-transform: uppercase;
     letter-spacing: 1.5px;

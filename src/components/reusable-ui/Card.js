@@ -118,7 +118,7 @@ const CardStyled = styled.div`
         bottom: 10px;
         font-weight: ${theme.fonts.weights.bold};
         color: ${theme.colors.dark};
-        text-align: center;
+        text-align: left;
         white-space: nowrap;
         overflow: hidden;
         width: 100%;
