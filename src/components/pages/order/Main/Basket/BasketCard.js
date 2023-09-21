@@ -5,6 +5,7 @@ import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../../theme";
 
 export default function BasketCard({
+  id,
   imageSource,
   title,
   price,

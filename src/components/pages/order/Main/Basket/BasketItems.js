@@ -8,7 +8,10 @@ export default function BasketItems({ basket }) {
     <BasketItemsStyled>
       {basket.map((item) => (
         <div key={item.id} className="basket-card">
-          <div >{<BasketCard {...item} imageSource={item.imageSource ? item.imageSource : IMAGE_BY_DEFAULT} />}</div>
+          <BasketCard
+            {...item}
+            imageSource={item.imageSource ? item.imageSource : IMAGE_BY_DEFAULT}
+          />
         </div>
       ))}
     </BasketItemsStyled>
