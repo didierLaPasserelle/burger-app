@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
+import { IMAGE_BY_DEFAULT } from "../../../../enums/product";
 
 export default function BasketItems({ basket }) {
   return (
     <BasketItemsStyled>
       {basket.map((item) => (
         <div key={item.id} className="basket-card">
-          <div >{<BasketCard {...item} />}</div>
+          <div >{<BasketCard {...item} imageSource={item.imageSource ? item.imageSource : IMAGE_BY_DEFAULT} />}</div>
         </div>
       ))}
     </BasketItemsStyled>
