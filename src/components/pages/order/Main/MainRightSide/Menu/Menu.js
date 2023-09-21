@@ -8,7 +8,6 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
-import { find } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
@@ -22,6 +21,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     handleAddToBasket,
+  
   } = useContext(OrderContext);
   // state
 
@@ -31,7 +31,7 @@ export default function Menu() {
 
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
-    const cardClickedOn = find(menu, cardId);
+    const cardClickedOn = menu.find((item) => item.id === cardId)
     await setCardClickedOn(cardClickedOn);
     titleEditRef.current.focus();
   };
@@ -45,7 +45,7 @@ export default function Menu() {
 
   const handleAddButton = (e, idItemToAdd) => {
     e.stopPropagation();
-    const itemToAddToBasket = find(menu, idItemToAdd);    
+    const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)    
     handleAddToBasket(itemToAddToBasket);
   };
 
