@@ -14,6 +14,7 @@ export default function Basket() {
   const isEmptyBasket = basket.length === 0;
 
   const amountToPay = basket.reduce((total, basketItem) => {
+    if (isNaN(basketItem.price)) return total
     return total + (basketItem.price * basketItem.quantity)
   }, 0)
 
@@ -36,7 +37,8 @@ const BasketStyled = styled.div`
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   font-family: ${theme.fonts.families.stylish};
-  /* height: 85vh; */
+  height: 85vh;
+
 
   /* .head {
     position: sticky;

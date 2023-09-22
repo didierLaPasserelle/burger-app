@@ -23,7 +23,8 @@ const BasketItemsStyled = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-
+  scroll-behavior: smooth;
+  
   .basket-card {
     margin: 10px 16px;
     height: 86px;
