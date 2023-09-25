@@ -9,7 +9,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext);
+  const { basket} = useContext(OrderContext);
 
   const isEmptyBasket = basket.length === 0;
 
@@ -24,7 +24,7 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Header amount={formatPrice(amountToPay)} />
-      {isEmptyBasket ? <EmptyBasket /> : <BasketItems basket={basket} />}
+      {isEmptyBasket ? <EmptyBasket /> : <BasketItems basket={basket}/>}
       <Footer />
     </BasketStyled>
   );

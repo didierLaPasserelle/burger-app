@@ -108,6 +108,7 @@ const CardStyled = styled.div`
     }
 
     .text-info {
+      user-select: none;
       display: grid;
       grid-template-rows: 30% 70%;
       padding: 5px;
