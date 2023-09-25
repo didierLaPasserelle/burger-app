@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Header from "./Header";
-import { formatPrice } from "../../../../utils/maths";
+import { formatPrice, replaceFrenchCommaWithDot } from "../../../../utils/maths";
 import Footer from "./Footer";
 import BasketItems from "./BasketItems";
 import { useContext } from "react";
@@ -14,12 +14,13 @@ export default function Basket() {
   const isEmptyBasket = basket.length === 0;
 
   const amountToPay = basket.reduce((total, basketItem) => {
-   total += basketItem.price * basketItem.quantity
-   return total
-  }, 0)
+    const itemPrice = replaceFrenchCommaWithDot(basketItem.price)
+    total += itemPrice * basketItem.quantity;
+    return total;
+  }, 0);
+  
 
   console.log('sumToPay: ', amountToPay)
-
 
   return (
     <BasketStyled>
@@ -38,7 +39,7 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
-  font-family: ${theme.fonts.families.stylish};
+  /* font-family: ${theme.fonts.families.stylish}; */
   height: 85vh;
 
 
