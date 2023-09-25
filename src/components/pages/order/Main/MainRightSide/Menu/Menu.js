@@ -21,6 +21,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     handleAddToBasket,
+    handleDeleteBasketItem
   
   } = useContext(OrderContext);
   // state
@@ -39,6 +40,7 @@ export default function Menu() {
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
     handleDelete(idProductToDelete);
+    handleDeleteBasketItem(idProductToDelete) // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
     idProductToDelete === cardClickedOn.id && setCardClickedOn(EMPTY_PRODUCT);
     titleEditRef.current.focus();
   };

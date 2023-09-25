@@ -6,7 +6,6 @@ import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../context/OrderContext";
 
 export default function BasketCard({
-  id,
   imageSource,
   title,
   price,
@@ -14,8 +13,7 @@ export default function BasketCard({
   className,
   onDelete,
 }) {
-
-  const { isModeAdmin } = useContext(OrderContext)
+  const { isModeAdmin } = useContext(OrderContext);
 
   return (
     <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
