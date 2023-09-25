@@ -20,4 +20,5 @@ const HeaderStyled = styled.div`
   color: ${theme.colors.primary};
   font-size: ${theme.fonts.size.P4};
   padding: 0px 16px;
+  font-family: ${theme.fonts.families.stylish};
 `;
