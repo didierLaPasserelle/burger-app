@@ -19,9 +19,6 @@ export default function Basket() {
     return total;
   }, 0);
   
-
-  console.log('sumToPay: ', amountToPay)
-
   return (
     <BasketStyled>
       <Header amount={formatPrice(amountToPay)} />

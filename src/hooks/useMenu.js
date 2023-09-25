@@ -25,8 +25,7 @@ export const useMenu = () => {
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
     );
-    console.log("menuUpdated: ", menuUpdated);
-
+  
     //3. update du state
     setMenu(menuUpdated);
   };
