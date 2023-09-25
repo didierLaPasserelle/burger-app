@@ -9,13 +9,13 @@ import OrderContext from "../../../../../context/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 
 export default function Basket() {
-  const { basket} = useContext(OrderContext);
+  const { basket, handleDeleteBasketItem} = useContext(OrderContext);
 
   const isEmptyBasket = basket.length === 0;
 
   const amountToPay = basket.reduce((total, basketItem) => {
-    if (isNaN(basketItem.price)) return total
-    return total + (basketItem.price * basketItem.quantity)
+   total += (basketItem.price * basketItem.quantity)
+   return total
   }, 0)
 
   console.log('sumToPay: ', amountToPay)
@@ -24,7 +24,9 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Header amount={formatPrice(amountToPay)} />
-      {isEmptyBasket ? <EmptyBasket /> : <BasketItems basket={basket}/>}
+      {isEmptyBasket ? <EmptyBasket /> : <BasketItems 
+        basket={basket} 
+        handleDeleteBasketItem={handleDeleteBasketItem}/> }
       <Footer />
     </BasketStyled>
   );
