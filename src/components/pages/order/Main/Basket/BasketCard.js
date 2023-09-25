@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { MdDeleteForever } from "react-icons/md";
 import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../../theme";
+import OrderContext from "../../../../../context/OrderContext";
 
 export default function BasketCard({
   id,
@@ -11,10 +12,14 @@ export default function BasketCard({
   price,
   quantity,
   className,
+  onDelete,
 }) {
+
+  const { isModeAdmin } = useContext(OrderContext)
+
   return (
-    <BasketCardStyled className={className}>
-      <div className="delete-button">
+    <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
+      <div className="delete-btn" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
@@ -36,6 +41,8 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
+  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+
   box-sizing: border-box;
   height: 86px;
   padding: 8px 16px;
@@ -48,19 +55,19 @@ const BasketCardStyled = styled.div`
 
   position: relative;
 
-.image {
-  box-sizing: border-box;
-  height: 70px;
-  img {
-    padding: 5px;
+  .image {
     box-sizing: border-box;
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
+    height: 70px;
+    img {
+      padding: 5px;
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
   }
-}
 
-.text-info {
+  .text-info {
     user-select: none;
     box-sizing: border-box;
 
@@ -108,14 +115,14 @@ const BasketCardStyled = styled.div`
     }
   }
 
-  .delete-button {
+  .delete-btn {
     display: none;
     z-index: 1;
   }
 
   /* hover de la card */
   :hover {
-    .delete-button {
+    .delete-btn {
       border: none;
       box-sizing: border-box;
       position: absolute;
@@ -131,7 +138,6 @@ const BasketCardStyled = styled.div`
       justify-content: center;
       background: ${theme.colors.red};
       color: ${theme.colors.white};
-      cursor: pointer;
 
       .icon {
         width: ${theme.fonts.size.P3};

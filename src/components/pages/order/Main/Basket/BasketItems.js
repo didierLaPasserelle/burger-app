@@ -3,7 +3,12 @@ import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import { IMAGE_BY_DEFAULT } from "../../../../enums/product";
 
-export default function BasketItems({ basket }) {
+export default function BasketItems({ basket, handleDeleteBasketItem }) {
+
+  const handleOnDelete = (id) => {
+    handleDeleteBasketItem(id)
+  }
+
   return (
     <BasketItemsStyled>
       {basket.map((item) => (
@@ -11,6 +16,7 @@ export default function BasketItems({ basket }) {
           <BasketCard
             {...item}
             imageSource={item.imageSource ? item.imageSource : IMAGE_BY_DEFAULT}
+            onDelete={()=> handleOnDelete(item.id)}
           />
         </div>
       ))}

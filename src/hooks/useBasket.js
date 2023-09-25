@@ -20,6 +20,12 @@ export const useBasket = () => {
     incrementItemAlreadyInBasket(basketCopy, itemToAdd);
   };
 
+  const handleDeleteBasketItem = (idOfItemToDelete) => {
+    const basketCopy = deepClone(basket)
+    const basketUpdated = basketCopy.filter((item) => item.id !== idOfItemToDelete)
+    setBasket(basketUpdated)
+  }
+
   //Gestionnaire de state qui appellent directement les setters dédiés
   const incrementItemAlreadyInBasket = (basketCopy, itemToAdd) => {
     const indexOfBasketItemToIncrement = basketCopy.findIndex(
@@ -41,7 +47,8 @@ export const useBasket = () => {
     setBasket(basketUpdated);
   }
 
-  return { basket, handleAddToBasket };
+
+  return { basket, handleAddToBasket, handleDeleteBasketItem };
 };
 
 //handleAddToBasket est un gros gestionnaire de state qui appelle des petits gestionnaires de state  
