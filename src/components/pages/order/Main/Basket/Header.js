@@ -15,10 +15,11 @@ const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  font-family: ${theme.fonts.families.stylish};
   background: ${theme.colors.background_dark};
   color: ${theme.colors.primary};
   font-size: ${theme.fonts.size.P4};
+  font-weight: ${theme.fonts.weights.bold};
   padding: 0px 16px;
-  font-family: ${theme.fonts.families.stylish};
+  height: 70px;
 `;
