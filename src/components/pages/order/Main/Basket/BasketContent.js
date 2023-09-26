@@ -5,7 +5,7 @@ import BasketItems from "./BasketItems";
 export default function BasketContent({
   isEmptyBasket,
   basket,
-  handleDeleteBasketItem,
+  handleDeleteBasketItem
 }) {
   return (
     <>

@@ -24,7 +24,7 @@ export default function Basket() {
       <BasketContent  
         isEmptyBasket={isEmptyBasket}
         basket={basket}
-        handleDeleteBasketItem={handleDeleteBasketItem}
+        handleDeleteBasketItem={handleDeleteBasketItem} 
         />
       <Footer />
     </BasketStyled>

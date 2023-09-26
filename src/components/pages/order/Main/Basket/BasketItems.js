@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import { IMAGE_BY_DEFAULT } from "../../../../enums/product";
+import OrderContext from "../../../../../context/OrderContext";
 
-export default function BasketItems({ basket, handleDeleteBasketItem }) {
+export default function BasketItems({ basket, handleDeleteBasketItem}) {
+
+  const { isModeAdmin } = useContext(OrderContext); 
 
   const handleOnDelete = (id) => {
     handleDeleteBasketItem(id)
@@ -17,6 +20,7 @@ export default function BasketItems({ basket, handleDeleteBasketItem }) {
             {...item}
             imageSource={item.imageSource ? item.imageSource : IMAGE_BY_DEFAULT}
             onDelete={()=> handleOnDelete(item.id)}
+            isModeAdmin={isModeAdmin}
           />
         </div>
       ))}

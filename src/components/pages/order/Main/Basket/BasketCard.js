@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { MdDeleteForever } from "react-icons/md";
 import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../../theme";
-import OrderContext from "../../../../../context/OrderContext";
 
 export default function BasketCard({
   imageSource,
@@ -12,9 +11,9 @@ export default function BasketCard({
   quantity,
   className,
   onDelete,
+  isModeAdmin
 }) {
-  const { isModeAdmin } = useContext(OrderContext);
-
+  
   return (
     <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
       <div className="delete-btn" onClick={onDelete}>
