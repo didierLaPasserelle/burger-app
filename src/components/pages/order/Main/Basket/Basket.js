@@ -3,10 +3,9 @@ import { theme } from "../../../../../theme";
 import Header from "./Header";
 import { formatPrice, replaceFrenchCommaWithDot } from "../../../../utils/maths";
 import Footer from "./Footer";
-import BasketItems from "./BasketItems";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import EmptyBasket from "./EmptyBasket";
+import BasketContent from "./BasketContent";
 
 export default function Basket() {
   const { basket, handleDeleteBasketItem} = useContext(OrderContext);
@@ -22,9 +21,11 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Header amount={formatPrice(amountToPay)} />
-      {isEmptyBasket ? <EmptyBasket /> : <BasketItems 
-        basket={basket} 
-        handleDeleteBasketItem={handleDeleteBasketItem}/> }
+      <BasketContent  
+        isEmptyBasket={isEmptyBasket}
+        basket={basket}
+        handleDeleteBasketItem={handleDeleteBasketItem}
+        />
       <Footer />
     </BasketStyled>
   );
@@ -36,9 +37,7 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
-  /* font-family: ${theme.fonts.families.stylish}; */
   height: 85vh;
-
 
   /* .head {
     position: sticky;
