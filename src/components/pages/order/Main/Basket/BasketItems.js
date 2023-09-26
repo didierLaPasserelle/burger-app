@@ -8,10 +8,6 @@ export default function BasketItems({ basket, handleDeleteBasketItem}) {
 
   const { isModeAdmin } = useContext(OrderContext); 
 
-  const handleOnDelete = (id) => {
-    handleDeleteBasketItem(id)
-  }
-
   return (
     <BasketItemsStyled>
       {basket.map((item) => (
@@ -19,7 +15,7 @@ export default function BasketItems({ basket, handleDeleteBasketItem}) {
           <BasketCard
             {...item}
             imageSource={item.imageSource ? item.imageSource : IMAGE_BY_DEFAULT}
-            onDelete={()=> handleOnDelete(item.id)}
+            onDelete={()=> handleDeleteBasketItem(item.id)}
             isModeAdmin={isModeAdmin}
           />
         </div>
