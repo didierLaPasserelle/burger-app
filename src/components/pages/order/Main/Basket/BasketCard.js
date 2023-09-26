@@ -11,11 +11,11 @@ export default function BasketCard({
   quantity,
   className,
   onDelete,
-  isModeAdmin
+  isClickable
 }) {
   
   return (
-    <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
+    <BasketCardStyled className={className} isClickable={isClickable}>
       <div className="delete-btn" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
@@ -38,7 +38,7 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+  cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
 
   box-sizing: border-box;
   height: 86px;
