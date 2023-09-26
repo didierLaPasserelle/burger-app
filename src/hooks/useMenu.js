@@ -3,7 +3,7 @@ import { fakeMenu } from "../fakeData/fakeMenu";
 import { deepClone } from "../components/utils/array";
 
 export const useMenu = () => {
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
 
   // comportements
   const handleAdd = (newProduct) => {
@@ -25,8 +25,7 @@ export const useMenu = () => {
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
     );
-    console.log("menuUpdated: ", menuUpdated);
-
+  
     //3. update du state
     setMenu(menuUpdated);
   };

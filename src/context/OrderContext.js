@@ -23,5 +23,8 @@ export default createContext({
   setCardClickedOn: () => {},
 
   titleEditRef: {},
+  basket:[],
 
+  handleAddToBasket:() => {}, 
+  handleDeleteBasketItem: () => {}
  })

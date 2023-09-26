@@ -12,6 +12,7 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
+  onAdd
 }) 
 
 
@@ -26,7 +27,7 @@ export default function Card({
       <div className="card">
         {hasDeleteButton && (
           <button
-            className="delete-btn"
+            className="delete-button"
             aria-label="delete-button"
             onClick={onDelete}
           >
@@ -44,7 +45,7 @@ export default function Card({
               <Button 
                 className="primary-button" 
                 label={"Ajouter"}
-                onClick={(event)=> event.stopPropagation()} 
+                onClick={onAdd} 
                 />
             </div>
           </div>
@@ -70,7 +71,7 @@ const CardStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
     position: relative;
 
-    .delete-btn {
+    .delete-button {
       position: absolute;
       top: 15px;
       right: 15px;
@@ -107,6 +108,7 @@ const CardStyled = styled.div`
     }
 
     .text-info {
+      user-select: none;
       display: grid;
       grid-template-rows: 30% 70%;
       padding: 5px;
@@ -212,7 +214,7 @@ const selectedStyle = css`
     }
   }
 
-  .delete-btn {
+  .delete-button {
     color: ${theme.colors.white};
 
     :active {

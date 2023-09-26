@@ -13,6 +13,7 @@ export default function Button({
       className={className}
       version={version}
       onClick={onClick}
+      Icon={Icon}
     >
       <span>{label}</span>
       {Icon && <div className="icon">{Icon}</div>}
@@ -26,6 +27,7 @@ const ButtonStyled = styled.button`
   .icon {
     margin-left: 10px;
   }
+
 `;
 
 const extraStylePrimary = css`

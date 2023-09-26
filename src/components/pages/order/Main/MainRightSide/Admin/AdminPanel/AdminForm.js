@@ -6,6 +6,7 @@ import { getInputTextsConfig } from "./inputTextConfig";
 
 const AdminForm = React.forwardRef(
   ({ product, onSubmit, onChange, children }, ref) => {
+    
     const inputTexts = getInputTextsConfig(product);
 
     // affichage
