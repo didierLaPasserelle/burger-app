@@ -27,7 +27,7 @@ export default function Card({
       <div className="card">
         {hasDeleteButton && (
           <button
-            className="delete-btn"
+            className="delete-button"
             aria-label="delete-button"
             onClick={onDelete}
           >
@@ -71,7 +71,7 @@ const CardStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
     position: relative;
 
-    .delete-btn {
+    .delete-button {
       position: absolute;
       top: 15px;
       right: 15px;
@@ -214,7 +214,7 @@ const selectedStyle = css`
     }
   }
 
-  .delete-btn {
+  .delete-button {
     color: ${theme.colors.white};
 
     :active {
