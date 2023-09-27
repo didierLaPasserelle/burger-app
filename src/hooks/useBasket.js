@@ -5,50 +5,45 @@ import { deepClone } from "../components/utils/array";
 export const useBasket = () => {
   const [basket, setBasket] = useState(fakeBasket.EMPTY);
 
-  const handleAddToBasket = (itemToAdd) => {
+  const handleAddToBasket = (idItemToAdd) => {
     const basketCopy = deepClone(basket);
-    const isItemAlreadyInBasket =
-      basketCopy.find((item) => item.id === itemToAdd.id) !== undefined;
+    const ItemAlreadyInBasket = basketCopy.find(
+      (item) => item.id === idItemToAdd
+    );
 
-    // 1er cas, le produit n'est pas déjà dans le basket
-    if (!isItemAlreadyInBasket) {
-      createNewItemInBasket(itemToAdd, basket, setBasket);
+    console.log("productAlreadyInBasket: ", ItemAlreadyInBasket);
+
+    if (ItemAlreadyInBasket) {
+      incrementItemAlreadyInBasket(idItemToAdd, basketCopy);
       return;
     }
 
-    // 2è cas : le produit est pas dans le basket
-    incrementItemAlreadyInBasket(basketCopy, itemToAdd);
+    createNewBasketItem(idItemToAdd, basketCopy, setBasket);
   };
 
-  const handleDeleteBasketItem = (idOfItemToDelete) => {
-    const basketCopy = deepClone(basket)
-    const basketUpdated = basketCopy.filter((item) => item.id !== idOfItemToDelete)
-    setBasket(basketUpdated)
-  }
-
-  //Gestionnaire de state qui appellent directement les setters dédiés
-  const incrementItemAlreadyInBasket = (basketCopy, itemToAdd) => {
+  //Gestionnaire de state qui appelle directement les setters dédiés
+  const incrementItemAlreadyInBasket = (idItemToAdd, basketCopy) => {
     const indexOfBasketItemToIncrement = basketCopy.findIndex(
-      (item) => (item.id = itemToAdd.id)
+      (item) => item.id === idItemToAdd
     );
     basketCopy[indexOfBasketItemToIncrement].quantity += 1;
     setBasket(basketCopy);
   };
 
   //Gestionnaire de state qui appellent directement les setters dédiés
-  function createNewItemInBasket(itemToAdd, basketCopy, setBasket) {
-    const newItemToAddToBasket = {
-      ...itemToAdd,
-      quantity: 1,
-    };
+  const createNewBasketItem = (idItemToAdd, basketCopy, setBasket) => {
+    const newBasketItem = { id: idItemToAdd, quantity: 1 };
+    const newBasket = [newBasketItem, ...basketCopy];
+    setBasket(newBasket);
+  };
 
-    const basketUpdated = [newItemToAddToBasket, ...basketCopy];
-
+  const handleDeleteBasketItem = (idOfItemToDelete) => {
+    const basketCopy = deepClone(basket);
+    const basketUpdated = basketCopy.filter(
+      (item) => item.id !== idOfItemToDelete
+    );
     setBasket(basketUpdated);
-  }
-
+  };
 
   return { basket, handleAddToBasket, handleDeleteBasketItem };
 };
-
-//handleAddToBasket est un gros gestionnaire de state qui appelle des petits gestionnaires de state  

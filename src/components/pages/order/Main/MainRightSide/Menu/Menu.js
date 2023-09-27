@@ -51,8 +51,8 @@ export default function Menu() {
 
   const handleAddButton = (e, idItemToAdd) => {
     e.stopPropagation();
-    const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)    
-    handleAddToBasket(itemToAddToBasket);
+    // const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)    
+    handleAddToBasket(idItemToAdd);
   };
 
   // affichage
