@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { formatPrice, replaceFrenchCommaWithDot } from "../../../../utils/maths";
+import OrderContext from "../../../../../context/OrderContext";
 
-export default function Header({ amount }) {
+export default function Header() {
+
+  const { basket, menu} = useContext(OrderContext);
+
+  const amountToPay = basket.reduce((total, basketItem) => {
+    const menuItem = menu.find((item) => item.id === basketItem.id);
+    if (menuItem) {
+      total += replaceFrenchCommaWithDot(menuItem.price) * basketItem.quantity
+    }
+    return total;
+  }, 0);
+
   return (
     <HeaderStyled>
       <span>Total</span>
-      <span>{amount}</span>
+      <span>{formatPrice(amountToPay)}</span>
     </HeaderStyled>
   );
 }
