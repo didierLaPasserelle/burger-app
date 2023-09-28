@@ -6,7 +6,12 @@ import OrderContext from "../../../../../context/OrderContext";
 
 export default function BasketItems() {
 
-  const { isModeAdmin, basket, handleDeleteBasketItem, menu } = useContext(OrderContext); 
+  const { isModeAdmin, basket, handleDeleteBasketItem, menu, handleItemSelected } = useContext(OrderContext); 
+
+  const handleOnDelete = (e, id) => {
+    e.stopPropagation()
+    handleDeleteBasketItem(id)
+  }
 
   return (
     <BasketItemsStyled>
@@ -18,8 +23,9 @@ export default function BasketItems() {
             {...menuItem}
             imageSource={menuItem.imageSource ? menuItem.imageSource : IMAGE_BY_DEFAULT}
             quantity={basketItem.quantity}
-            onDelete={()=> handleDeleteBasketItem(basketItem.id)}
+            onDelete={(e)=> handleOnDelete(e, basketItem.id)}
             isClickable={isModeAdmin}
+            onClick={isModeAdmin ? () => handleItemSelected(menuItem.id) : null}
           />
         </div>
       )

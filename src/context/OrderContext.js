@@ -21,10 +21,12 @@ export default createContext({
 
   cardClickedOn: {},
   setCardClickedOn: () => {},
+  handleItemSelected: () => {},
 
   titleEditRef: {},
   basket:[],
 
   handleAddToBasket:() => {}, 
-  handleDeleteBasketItem: () => {}
+  handleDeleteBasketItem: () => {},
+
  })

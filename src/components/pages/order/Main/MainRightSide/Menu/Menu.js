@@ -18,25 +18,17 @@ export default function Menu() {
     resetMenu,
     cardClickedOn,
     setCardClickedOn,
-    setIsCollapsed,
-    setCurrentTabSelected,
-    titleEditRef,
     handleAddToBasket,
-    handleDeleteBasketItem
-  
+    handleDeleteBasketItem,  
+    handleItemSelected
   } = useContext(OrderContext);
   // state
 
   // gestionnaire d'évent ou event handlers
-  const handleClick = async (cardId) => {
-    if (!isModeAdmin) return;
-
-    await setIsCollapsed(false);
-    await setCurrentTabSelected("edit");
-    const cardClickedOn = menu.find((item) => item.id === cardId)
-    await setCardClickedOn(cardClickedOn);
-    titleEditRef.current.focus();
-  };
+  // const handleClick = (cardId) => {
+  //   if (!isModeAdmin) return;
+  //   handleItemSelected(cardId)
+  // };
 
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
@@ -46,8 +38,7 @@ export default function Menu() {
     if (idProductToDelete === cardClickedOn.id) {
       setCardClickedOn(EMPTY_PRODUCT);
     }
-    titleEditRef.current.focus();
-  };
+};
 
   const handleAddButton = (e, idItemToAdd) => {
     e.stopPropagation();
@@ -72,7 +63,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(e) => handleCardDelete(e, id)}
-            onClick={() => handleClick(id)}
+            onClick={ isModeAdmin ? () => handleItemSelected(id): null }
             isHoverable={isModeAdmin}
             // isSelected={id === cardClickedOn.id}
             isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}

@@ -10,7 +10,7 @@ import { useBasket } from "../../../hooks/useBasket";
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -20,6 +20,14 @@ export default function OrderPage() {
 
   const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
   const { basket, handleAddToBasket, handleDeleteBasketItem } = useBasket()
+
+  const  handleItemSelected = async (cardId) => {
+    const itemClickedOn = menu.find((item) => item.id === cardId)
+    await setCardClickedOn(itemClickedOn);
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    titleEditRef.current.focus();
+  }
 
   const orderContextValue = {
     isModeAdmin,
@@ -40,7 +48,8 @@ export default function OrderPage() {
     titleEditRef,
     basket, 
     handleAddToBasket,
-    handleDeleteBasketItem
+    handleDeleteBasketItem,
+    handleItemSelected
   };
 
   //affichage
