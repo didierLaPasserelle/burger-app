@@ -4,22 +4,26 @@ import BasketCard from "./BasketCard";
 import { IMAGE_BY_DEFAULT } from "../../../../enums/product";
 import OrderContext from "../../../../../context/OrderContext";
 
-export default function BasketItems({ basket, handleDeleteBasketItem}) {
+export default function BasketItems() {
 
-  const { isModeAdmin } = useContext(OrderContext); 
+  const { isModeAdmin, basket, handleDeleteBasketItem, menu } = useContext(OrderContext); 
 
   return (
     <BasketItemsStyled>
-      {basket.map((item) => (
-        <div key={item.id} className="basket-card">
+      {basket.map((basketItem) => {
+        const menuItem = menu.find((Item) => Item.id === basketItem.id)
+      return (
+        <div key={menuItem.id} className="basket-card">
           <BasketCard
-            {...item}
-            imageSource={item.imageSource ? item.imageSource : IMAGE_BY_DEFAULT}
-            onDelete={()=> handleDeleteBasketItem(item.id)}
+            {...menuItem}
+            imageSource={menuItem.imageSource ? menuItem.imageSource : IMAGE_BY_DEFAULT}
+            quantity={basketItem.quantity}
+            onDelete={()=> handleDeleteBasketItem(basketItem.id)}
             isClickable={isModeAdmin}
           />
         </div>
-      ))}
+      )
+      })}
     </BasketItemsStyled>
   );
 }
