@@ -15,6 +15,11 @@ export default function BasketItems() {
     cardClickedOn,
   } = useContext(OrderContext);
 
+  const handleCardClickedInBasket = (cardId) => {
+    if (!isModeAdmin) return;
+    handleItemSelected(cardId);
+  };
+
   const handleOnDelete = (e, id) => {
     e.stopPropagation();
     handleDeleteBasketItem(id);
@@ -23,7 +28,7 @@ export default function BasketItems() {
   return (
     <BasketItemsStyled>
       {basket.map((basketItem) => {
-        const menuItem = menu.find((Item) => Item.id === basketItem.id);
+        const menuItem = menu.find((menuItem) => menuItem.id === basketItem.id);
         return (
           <div key={menuItem.id} className="basket-card">
             <BasketCard
@@ -38,9 +43,7 @@ export default function BasketItems() {
                 cardClickedOn.id
               )}
               isClickable={isModeAdmin}
-              onClick={
-                isModeAdmin ? () => handleItemSelected(menuItem.id) : null
-              }
+              onClick={()=>handleCardClickedInBasket(menuItem.id)}
             />
           </div>
         );

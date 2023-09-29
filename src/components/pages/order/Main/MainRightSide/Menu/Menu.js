@@ -25,10 +25,10 @@ export default function Menu() {
   // state
 
   // gestionnaire d'évent ou event handlers
-  // const handleClick = (cardId) => {
-  //   if (!isModeAdmin) return;
-  //   handleItemSelected(cardId)
-  // };
+  const handleCardClicked = (cardId) => {
+    if (!isModeAdmin) return;
+    handleItemSelected(cardId)
+  };
 
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
@@ -63,7 +63,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(e) => handleCardDelete(e, id)}
-            onClick={ isModeAdmin ? () => handleItemSelected(id): null }
+            onClick={() => handleCardClicked(id)}
             isHoverable={isModeAdmin}
             // isSelected={id === cardClickedOn.id}
             isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
