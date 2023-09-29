@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../utils/maths";
+import OrderContext from "../../../../../context/OrderContext";
+import { calculateAmountToPay } from "./helper/mathBasket";
 
-export default function Header({ amount }) {
+export default function Header() {
+  const { basket, menu } = useContext(OrderContext);
+
+  const amountToPay = calculateAmountToPay(basket, menu);
+
   return (
     <HeaderStyled>
       <span>Total</span>
-      <span>{amount}</span>
+      <span>{formatPrice(amountToPay)}</span>
     </HeaderStyled>
   );
 }
