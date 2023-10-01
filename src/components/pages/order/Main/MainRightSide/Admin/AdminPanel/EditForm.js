@@ -7,15 +7,37 @@ export default function EditForm() {
   const { cardClickedOn, setCardClickedOn, handleEdit, titleEditRef } =
     useContext(OrderContext);
 
+  // const handleChange = (e) => {
+
+  //   const inputPrice = e.target.name === "price"
+  //   let newValue = inputPrice.replace(',', '.');
+   
+  //   const productBeingUpdated = {
+  //     ...cardClickedOn,
+  //     [e.target.name]: e.target.value,  
+  //   };
+
+  //   setCardClickedOn(productBeingUpdated); // Cela édite le form
+  //   handleEdit(productBeingUpdated); // cette ligne update le menu
+  // };
+
   const handleChange = (e) => {
+    let defaultValue = e.target.value;
+    const inputPrice = e.target.name === "price";
+  
+    if (inputPrice) {
+      defaultValue = e.target.value.replace(',', '.');
+    }
+     
     const productBeingUpdated = {
       ...cardClickedOn,
-      [e.target.name]: e.target.value,
+      [e.target.name]: defaultValue,  
     };
-
+  
     setCardClickedOn(productBeingUpdated); // Cela édite le form
     handleEdit(productBeingUpdated); // cette ligne update le menu
   };
+  
 
   return (
     <AdminForm
