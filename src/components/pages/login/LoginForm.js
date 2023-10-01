@@ -7,22 +7,25 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
+import { authenticateUsername } from "../../../api/user";
 
 export default function LoginForm() {
   // state
-  const [inputValue, setInputValue] = useState("didier");
+  const [username, setUsername] = useState("didier");
   // const [inputPassword, setInputPassword] = useState("password");
   const navigate = useNavigate();
 
   // comportements
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setInputValue("");
-    navigate(`order/${inputValue}`);
+
+    authenticateUsername(username)
+    setUsername("");
+    navigate(`order/${username}`);
   };
 
   const handleChange = (event) => {
-    setInputValue(event.target.value);
+    setUsername(event.target.value);
   };
 
   // const handleChangePassword = (e) => {
@@ -39,7 +42,7 @@ export default function LoginForm() {
       </div>
       <div>
         <TextInput
-          value={inputValue}
+          value={username}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required
@@ -70,7 +73,7 @@ const LoginFormStyled = styled.form`
   hr {
     border: 1.5px solid ${theme.colors.loginLine};
     margin-bottom: ${theme.gridUnit * 5}px;
-    margin-top: ${theme.gridUnit * 5}px;;
+    margin-top: ${theme.gridUnit * 5}px;
   }
 
   h1 {
@@ -87,4 +90,4 @@ const LoginFormStyled = styled.form`
   .input-login {
     margin: 18px 0; // must be handled in Parent
   }
-`
+`;
