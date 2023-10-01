@@ -11,8 +11,6 @@ export const useBasket = () => {
       (item) => item.id === idItemToAdd
     );
 
-    console.log("productAlreadyInBasket: ", ItemAlreadyInBasket);
-
     if (ItemAlreadyInBasket) {
       incrementItemAlreadyInBasket(idItemToAdd, basketCopy);
       return;
