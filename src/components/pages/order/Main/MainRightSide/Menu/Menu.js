@@ -12,6 +12,7 @@ import { isEmpty } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -32,7 +33,7 @@ export default function Menu() {
 
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
-    handleDelete(idProductToDelete);
+    handleDelete(idProductToDelete, username);
     handleDeleteBasketItem(idProductToDelete) // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
    
     if (idProductToDelete === cardClickedOn.id) {
