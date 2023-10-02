@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
+import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
   // state
@@ -16,20 +17,22 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [cardClickedOn, setCardClickedOn] = useState(EMPTY_PRODUCT);
 
+  const { username } = useParams()
   const titleEditRef = useRef();
 
   const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
-  const { basket, handleAddToBasket, handleDeleteBasketItem } = useBasket()
+  const { basket, handleAddToBasket, handleDeleteBasketItem } = useBasket();
 
-  const  handleItemSelected = async (cardId) => {
-    const itemClickedOn = menu.find((item) => item.id === cardId)
+  const handleItemSelected = async (cardId) => {
+    const itemClickedOn = menu.find((item) => item.id === cardId);
     await setCardClickedOn(itemClickedOn);
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     titleEditRef.current.focus();
-  }
+  };
 
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
@@ -46,10 +49,10 @@ export default function OrderPage() {
     cardClickedOn,
     setCardClickedOn,
     titleEditRef,
-    basket, 
+    basket,
     handleAddToBasket,
     handleDeleteBasketItem,
-    handleItemSelected
+    handleItemSelected,
   };
 
   //affichage
