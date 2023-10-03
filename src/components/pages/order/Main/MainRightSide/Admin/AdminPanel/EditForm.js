@@ -4,22 +4,8 @@ import EditInfoMessage from "./EditInfoMessage";
 import AdminForm from "./AdminForm";
 
 export default function EditForm() {
-  const { cardClickedOn, setCardClickedOn, handleEdit, titleEditRef } =
+  const { username, cardClickedOn, setCardClickedOn, handleEdit, titleEditRef } =
     useContext(OrderContext);
-
-  // const handleChange = (e) => {
-
-  //   const inputPrice = e.target.name === "price"
-  //   let newValue = inputPrice.replace(',', '.');
-   
-  //   const productBeingUpdated = {
-  //     ...cardClickedOn,
-  //     [e.target.name]: e.target.value,  
-  //   };
-
-  //   setCardClickedOn(productBeingUpdated); // Cela édite le form
-  //   handleEdit(productBeingUpdated); // cette ligne update le menu
-  // };
 
   const handleChange = (e) => {
     let defaultValue = e.target.value;
@@ -35,7 +21,7 @@ export default function EditForm() {
     };
   
     setCardClickedOn(productBeingUpdated); // Cela édite le form
-    handleEdit(productBeingUpdated); // cette ligne update le menu
+    handleEdit(productBeingUpdated, username); // cette ligne update le menu
   };
   
 
