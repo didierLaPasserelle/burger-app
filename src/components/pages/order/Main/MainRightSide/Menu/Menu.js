@@ -57,7 +57,7 @@ export default function Menu() {
   // affichage
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
-    return <EmptyMenuAdmin onReset={resetMenu} />;
+    return <EmptyMenuAdmin onReset={()=>resetMenu(username)} />;
   }
 
   return (
@@ -92,5 +92,5 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  overflow-y: scroll;
+
 `;
