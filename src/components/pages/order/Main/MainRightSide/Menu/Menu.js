@@ -9,6 +9,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
+import Loader from "./Loader";
 
 export default function Menu() {
   const {
@@ -21,7 +22,8 @@ export default function Menu() {
     setCardClickedOn,
     handleAddToBasket,
     handleDeleteBasketItem,  
-    handleItemSelected
+    handleItemSelected,
+    isLoading
   } = useContext(OrderContext);
   // state
 
@@ -46,6 +48,11 @@ export default function Menu() {
     // const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)    
     handleAddToBasket(idItemToAdd);
   };
+
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   // affichage
   if (isEmpty(menu)) {

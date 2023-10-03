@@ -14,14 +14,16 @@ export default function OrderPage() {
   // state
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [cardClickedOn, setCardClickedOn] = useState(EMPTY_PRODUCT);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { username } = useParams();
   const titleEditRef = useRef();
 
-  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
+  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
+    useMenu();
   const { basket, handleAddToBasket, handleDeleteBasketItem } = useBasket();
 
   const handleItemSelected = async (cardId) => {
@@ -32,15 +34,17 @@ export default function OrderPage() {
     titleEditRef.current.focus();
   };
 
-  const initializeMenu = async () => {
-    const menuReceived = await getMenu(username);
-    setMenu(menuReceived)
-    console.log("menuReceived: ", menuReceived);
-  };
-
   useEffect(() => {
     initializeMenu();
   }, []);
+
+  const initializeMenu = async () => {
+    const menuReceived = await getMenu(username);
+    setMenu(menuReceived);
+    // console.log("menuReceived: ", menuReceived);
+    setIsLoading(false)
+  };
+
 
   const orderContextValue = {
     username,
@@ -64,6 +68,8 @@ export default function OrderPage() {
     handleAddToBasket,
     handleDeleteBasketItem,
     handleItemSelected,
+    isLoading,
+    setIsLoading
   };
 
   //affichage

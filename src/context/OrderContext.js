@@ -30,4 +30,7 @@ export default createContext({
   handleAddToBasket:() => {}, 
   handleDeleteBasketItem: () => {},
 
+  isLoading: {},
+  setIsLoading: () => {}
+
  })
