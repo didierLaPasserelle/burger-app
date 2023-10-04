@@ -5,7 +5,7 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 
 const AdminForm = React.forwardRef(
-  ({ product, onSubmit, onChange, children }, ref) => {
+  ({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     
     const inputTexts = getInputTextsConfig(product);
 
@@ -21,6 +21,8 @@ const AdminForm = React.forwardRef(
               onChange={onChange}
               version="minimalist"
               ref={ref && input.name === "title" ? ref : null}
+              onFocus={onFocus}
+              onBlur={onBlur}
             />
           ))}
         </div>

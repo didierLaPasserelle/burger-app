@@ -21,43 +21,40 @@ export default function Menu() {
     cardClickedOn,
     setCardClickedOn,
     handleAddToBasket,
-    handleDeleteBasketItem,  
+    handleDeleteBasketItem,
     handleItemSelected,
-    isLoading
+    isLoading,
   } = useContext(OrderContext);
   // state
 
   // gestionnaire d'évent ou event handlers
   const handleCardClicked = (cardId) => {
     if (!isModeAdmin) return;
-    handleItemSelected(cardId)
+    handleItemSelected(cardId);
   };
 
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
     handleDelete(idProductToDelete, username);
-    handleDeleteBasketItem(idProductToDelete) // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
-   
+    handleDeleteBasketItem(idProductToDelete); // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
+
     if (idProductToDelete === cardClickedOn.id) {
       setCardClickedOn(EMPTY_PRODUCT);
     }
-};
+  };
 
   const handleAddButton = (e, idItemToAdd) => {
     e.stopPropagation();
-    // const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)    
+    // const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)
     handleAddToBasket(idItemToAdd);
   };
 
-
-  if (isLoading) {
-    return <Loader />;
-  }
+  if (isLoading) return <Loader />;
 
   // affichage
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
-    return <EmptyMenuAdmin onReset={()=>resetMenu(username)} />;
+    return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
   }
 
   return (
@@ -92,5 +89,4 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-
 `;
