@@ -46,7 +46,7 @@ export default function Menu() {
   const handleAddButton = (e, idItemToAdd) => {
     e.stopPropagation();
     // const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)
-    handleAddToBasket(idItemToAdd);
+    handleAddToBasket(idItemToAdd, username);
   };
 
   if (isLoading) return <Loader />;
