@@ -22,8 +22,6 @@ export default function AddForm() {
       price: replaceFrenchCommaWithDot(newProduct.price)
     };
 
-    console.log('newProductToAdd: ', newProductToAdd)
-
     handleAdd(newProductToAdd, username);
 
     setNewProduct(EMPTY_PRODUCT);

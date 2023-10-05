@@ -8,7 +8,6 @@ import { calculateAmountToPay } from "./helper/mathBasket";
 export default function Header() {
   const { basket, menu } = useContext(OrderContext);
 
-  console.log('basket: ', basket)
   const amountToPay = calculateAmountToPay(basket, menu);
 
   return (

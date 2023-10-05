@@ -5,7 +5,6 @@ import { getLocalStorage } from "../../../utils/window";
   const initializeMenu = async (username, setMenu, setIsLoading) => {
     const menuReceived = await getMenu(username);
     setMenu(menuReceived);
-    // console.log("menuReceived: ", menuReceived);
     setIsLoading(false);
   };
 
