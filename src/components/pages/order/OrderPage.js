@@ -36,8 +36,8 @@ export default function OrderPage() {
   };
 
   useEffect(() => {
-    initialiseUserSession(username, setMenu, setBasket);
-  });
+    initialiseUserSession(username, setMenu, setBasket, setIsLoading);
+  },[]);
 
   const orderContextValue = {
     username,

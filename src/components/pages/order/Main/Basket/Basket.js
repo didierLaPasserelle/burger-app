@@ -18,7 +18,10 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Header />
-      <BasketContent isEmptyBasket={isEmptyBasket} isLoadingContent={menu === undefined} />
+      <BasketContent
+        isEmptyBasket={isEmptyBasket}
+        isLoadingContent={menu === undefined}
+      />
       <Footer />
     </BasketStyled>
   );

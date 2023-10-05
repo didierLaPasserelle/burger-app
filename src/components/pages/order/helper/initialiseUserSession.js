@@ -17,8 +17,9 @@ import { getLocalStorage } from "../../../utils/window";
   // L'idée est que initializeBasket() soit appelé après que initializeMenu() ait terminé.
    export const initialiseUserSession = async ( username,
     setMenu,
-    setBasket) => {
-    await initializeMenu(username, setMenu); // Le basket a besoin des données du menu, donc un await devant l'appel de la fonction
+    setBasket,
+    setIsLoading) => {
+    await initializeMenu(username, setMenu, setIsLoading); // Le basket a besoin des données du menu, donc un await devant l'appel de la fonction
     initializeBasket(username, setBasket);
   };
 
