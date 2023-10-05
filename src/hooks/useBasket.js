@@ -38,12 +38,13 @@ export const useBasket = () => {
 
   };
 
-  const handleDeleteBasketItem = (idOfItemToDelete) => {
+  const handleDeleteBasketItem = (idOfItemToDelete, username) => {
     const basketCopy = deepClone(basket);
     const basketUpdated = basketCopy.filter(
       (item) => item.id !== idOfItemToDelete
     );
     setBasket(basketUpdated);
+    setLocalStorage(username, basketUpdated)
   };
 
   return { basket, setBasket, handleAddToBasket, handleDeleteBasketItem };

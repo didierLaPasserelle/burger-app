@@ -36,7 +36,7 @@ export default function Menu() {
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
     handleDelete(idProductToDelete, username);
-    handleDeleteBasketItem(idProductToDelete); // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
+    handleDeleteBasketItem(idProductToDelete, username); // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
 
     if (idProductToDelete === cardClickedOn.id) {
       setCardClickedOn(EMPTY_PRODUCT);

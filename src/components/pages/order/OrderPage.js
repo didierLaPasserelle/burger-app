@@ -48,15 +48,16 @@ export default function OrderPage() {
     if (basketReceived)
     setBasket(basketReceived)
    }
-  
-  useEffect(() => {
-    initializeMenu();
-  }, []);
-  
-  useEffect(() => {
+   
+   // L'idée est que initializeBasket() soit appelé après que initializeMenu() ait terminé. 
+   const initialiseUserSession = async () => {
+    await initializeMenu() // Le basket a besoin des données du menu, donc un await devant l'appel de la fonction
     initializeBasket()
-  }, []);
+   }
   
+   useEffect(()=> {
+    initialiseUserSession()
+   })
 
   const orderContextValue = {
     username,
