@@ -9,6 +9,7 @@ import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../../../api/product";
+import { getLocalStorage } from "../../utils/window";
 
 export default function OrderPage() {
   // state
@@ -24,7 +25,7 @@ export default function OrderPage() {
 
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
-  const { basket, handleAddToBasket, handleDeleteBasketItem } = useBasket();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketItem } = useBasket();
 
   const handleItemSelected = async (cardId) => {
     const itemClickedOn = menu.find((item) => item.id === cardId);
@@ -34,10 +35,6 @@ export default function OrderPage() {
     titleEditRef.current.focus();
   };
 
-  useEffect(() => {
-    initializeMenu();
-  }, []);
-
   const initializeMenu = async () => {
     const menuReceived = await getMenu(username);
     setMenu(menuReceived);
@@ -45,6 +42,21 @@ export default function OrderPage() {
     setIsLoading(false)
   };
 
+  const initializeBasket = () => { 
+    const basketReceived = getLocalStorage(username);
+    console.log('basketReceived: ', basketReceived)
+    if (basketReceived)
+    setBasket(basketReceived)
+   }
+  
+  useEffect(() => {
+    initializeMenu();
+  }, []);
+  
+  useEffect(() => {
+    initializeBasket()
+  }, []);
+  
 
   const orderContextValue = {
     username,

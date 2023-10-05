@@ -5,12 +5,14 @@ import BasketItems from "./BasketItems";
 export default function BasketContent({
   isEmptyBasket,
   basket,
-  handleDeleteBasketItem
+  handleDeleteBasketItem,
+  isLoadingContent
 }) {
+
   return (
     <>
       {isEmptyBasket ? (
-        <EmptyBasket />
+        <EmptyBasket isLoadingContent={isLoadingContent}/>
       ) : (
         <BasketItems
           basket={basket}
