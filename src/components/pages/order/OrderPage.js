@@ -8,8 +8,7 @@ import { EMPTY_PRODUCT } from "../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
-import { getMenu } from "../../../api/product";
-import { getLocalStorage } from "../../utils/window";
+import { initialiseUserSession } from "./helper/initialiseUserSession";
 
 export default function OrderPage() {
   // state
@@ -25,7 +24,8 @@ export default function OrderPage() {
 
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
-  const { basket, setBasket, handleAddToBasket, handleDeleteBasketItem } = useBasket();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketItem } =
+    useBasket();
 
   const handleItemSelected = async (cardId) => {
     const itemClickedOn = menu.find((item) => item.id === cardId);
@@ -35,29 +35,9 @@ export default function OrderPage() {
     titleEditRef.current.focus();
   };
 
-  const initializeMenu = async () => {
-    const menuReceived = await getMenu(username);
-    setMenu(menuReceived);
-    // console.log("menuReceived: ", menuReceived);
-    setIsLoading(false)
-  };
-
-  const initializeBasket = () => { 
-    const basketReceived = getLocalStorage(username);
-    console.log('basketReceived: ', basketReceived)
-    if (basketReceived)
-    setBasket(basketReceived)
-   }
-   
-   // L'idée est que initializeBasket() soit appelé après que initializeMenu() ait terminé. 
-   const initialiseUserSession = async () => {
-    await initializeMenu() // Le basket a besoin des données du menu, donc un await devant l'appel de la fonction
-    initializeBasket()
-   }
-  
-   useEffect(()=> {
-    initialiseUserSession()
-   })
+  useEffect(() => {
+    initialiseUserSession(username, setMenu, setBasket);
+  });
 
   const orderContextValue = {
     username,
@@ -82,7 +62,7 @@ export default function OrderPage() {
     handleDeleteBasketItem,
     handleItemSelected,
     isLoading,
-    setIsLoading
+    setIsLoading,
   };
 
   //affichage
