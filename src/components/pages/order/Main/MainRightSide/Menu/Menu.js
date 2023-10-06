@@ -9,9 +9,11 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
+import Loader from "./Loader";
 
 export default function Menu() {
   const {
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -19,37 +21,40 @@ export default function Menu() {
     cardClickedOn,
     setCardClickedOn,
     handleAddToBasket,
-    handleDeleteBasketItem,  
-    handleItemSelected
+    handleDeleteBasketItem,
+    handleItemSelected,
+    isLoading,
   } = useContext(OrderContext);
   // state
 
   // gestionnaire d'évent ou event handlers
   const handleCardClicked = (cardId) => {
     if (!isModeAdmin) return;
-    handleItemSelected(cardId)
+    handleItemSelected(cardId);
   };
 
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
-    handleDelete(idProductToDelete);
-    handleDeleteBasketItem(idProductToDelete) // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
-   
+    handleDelete(idProductToDelete, username);
+    handleDeleteBasketItem(idProductToDelete, username); // Lors de la suppression d'une Card dans menu, cela supprime en même temps la card dans basketItems.
+
     if (idProductToDelete === cardClickedOn.id) {
       setCardClickedOn(EMPTY_PRODUCT);
     }
-};
+  };
 
   const handleAddButton = (e, idItemToAdd) => {
     e.stopPropagation();
-    // const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)    
-    handleAddToBasket(idItemToAdd);
+    // const itemToAddToBasket = menu.find((item) => item.id === idItemToAdd)
+    handleAddToBasket(idItemToAdd, username);
   };
+
+  if (isLoading) return <Loader />;
 
   // affichage
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
-    return <EmptyMenuAdmin onReset={resetMenu} />;
+    return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
   }
 
   return (

@@ -7,22 +7,26 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
+import { authenticateUsername } from "../../../api/user";
+import Welcome from "./Welcome";
 
 export default function LoginForm() {
   // state
-  const [inputValue, setInputValue] = useState("didier");
+  const [username, setUsername] = useState("didier");
   // const [inputPassword, setInputPassword] = useState("password");
   const navigate = useNavigate();
 
   // comportements
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setInputValue("");
-    navigate(`order/${inputValue}`);
+
+    authenticateUsername(username)
+    setUsername("");
+    navigate(`order/${username}`);
   };
 
   const handleChange = (event) => {
-    setInputValue(event.target.value);
+    setUsername(event.target.value);
   };
 
   // const handleChangePassword = (e) => {
@@ -32,14 +36,10 @@ export default function LoginForm() {
   // affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <div className="titles">
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-      </div>
+      <Welcome />
       <div>
         <TextInput
-          value={inputValue}
+          value={username}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required
@@ -47,7 +47,6 @@ export default function LoginForm() {
           className="input-login"
           version="normal"
         />
-
         <Button label={"Accéder à mon espace"} Icon={<IoChevronForward />} />
       </div>
     </LoginFormStyled>
@@ -63,15 +62,6 @@ const LoginFormStyled = styled.form`
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
-  .titles {
-    margin: 30px 0;
-  }
-
-  hr {
-    border: 1.5px solid ${theme.colors.loginLine};
-    margin-bottom: ${theme.gridUnit * 5}px;
-    margin-top: ${theme.gridUnit * 5}px;;
-  }
 
   h1 {
     color: ${theme.colors.white};
@@ -87,4 +77,4 @@ const LoginFormStyled = styled.form`
   .input-login {
     margin: 18px 0; // must be handled in Parent
   }
-`
+`;

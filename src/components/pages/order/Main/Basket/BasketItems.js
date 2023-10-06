@@ -7,6 +7,7 @@ import { checkIfProductIsClicked } from "../MainRightSide/Menu/helper";
 
 export default function BasketItems() {
   const {
+    username,
     isModeAdmin,
     basket,
     handleDeleteBasketItem,
@@ -22,7 +23,7 @@ export default function BasketItems() {
 
   const handleOnDelete = (e, id) => {
     e.stopPropagation();
-    handleDeleteBasketItem(id);
+    handleDeleteBasketItem(id, username);
   };
 
   return (
