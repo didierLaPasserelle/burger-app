@@ -10,9 +10,8 @@ import { isEmpty } from "../../../../utils/array";
 export default function Basket() {
   const { basket, menu } = useContext(OrderContext);
 
-  if (menu === undefined) {
-    return <span>Patience ! Ça arrive !</span>;
-  }
+  if (menu === undefined) return <span>Patience ! Ça arrive !</span>;
+
   const isEmptyBasket = isEmpty(basket);
 
   return (
@@ -30,11 +29,11 @@ export default function Basket() {
 const BasketStyled = styled.div`
   background: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.basket};
+;
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   height: 85vh;
-
   /* .head {
     position: sticky;
     top: 0;

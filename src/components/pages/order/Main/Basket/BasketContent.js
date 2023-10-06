@@ -4,20 +4,15 @@ import BasketItems from "./BasketItems";
 
 export default function BasketContent({
   isEmptyBasket,
-  basket,
-  handleDeleteBasketItem,
-  isLoadingContent
+  isLoadingContent,
 }) {
 
   return (
     <>
       {isEmptyBasket ? (
-        <EmptyBasket isLoadingContent={isLoadingContent}/>
+        <EmptyBasket isLoadingContent={isLoadingContent} />
       ) : (
-        <BasketItems
-          basket={basket}
-          handleDeleteBasketItem={handleDeleteBasketItem}
-        />
+        <BasketItems />
       )}
     </>
   );
