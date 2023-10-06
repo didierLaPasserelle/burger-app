@@ -14,7 +14,6 @@ export default function Header() {
   return (
     <HeaderStyled>
       <span>Total</span>
-      {/* <span>{formatPrice(amountToPay)}</span> */}
       <CasinoEffect count={formatPrice(amountToPay)}/>
     </HeaderStyled>
   );
