@@ -32,10 +32,6 @@ const CasinoEffectStyled = styled.div`
     transition: 2s;
   }
 
-  .count-animated-enter-done {
-    background: pink;
-  }
-
   /* UNMOUTING */
 
   .count-animated-exit {

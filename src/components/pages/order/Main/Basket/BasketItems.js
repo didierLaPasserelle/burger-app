@@ -36,12 +36,12 @@ export default function BasketItems() {
           );
           return (
             <CSSTransition
-            classNames={"abricot"}
-            key={menuItem.id}
-            timeout={500}
-            appear={true}
+              classNames={"animation-basket"}
+              key={menuItem.id}
+              timeout={500}
+              appear={true}
             >
-              <div className="basket-card">
+              <div className="card-container">
                 <BasketCard
                   {...menuItem}
                   imageSource={
@@ -57,7 +57,7 @@ export default function BasketItems() {
                   )}
                   isClickable={isModeAdmin}
                   onClick={() => handleCardClickedInBasket(menuItem.id)}
-                  className={"pomme"}
+                  className={"card"}
                 />
               </div>
             </CSSTransition>
@@ -75,52 +75,49 @@ const BasketItemsStyled = styled.div`
   overflow-y: scroll;
   scroll-behavior: smooth;
 
-  .abricot-appear {
-    .pomme {
+  .animation-basket-appear {
+    .card {
       transform: translate(100px);
       opacity: 0%;
     }
   }
-  .abricot-appear-active{
-    .pomme {
+  .animation-basket-appear-active {
+    .card {
       transition: 0.5s;
       transform: translate(0px);
       opacity: 100%;
-
     }
   }
 
-  .abricot-enter {
-    .pomme {
+  .animation-basket-enter {
+    .card {
       transform: translate(100px);
       opacity: 0%;
     }
   }
-  .abricot-enter-active{
-    .pomme {
+  .animation-basket-enter-active {
+    .card {
       transition: 0.5s;
       transform: translate(0px);
       opacity: 100%;
-
     }
   }
 
-  .abricot-exit{
-    .pomme {
+  .animation-basket-exit {
+    .card {
       transform: translate(0px);
       opacity: 100%;
     }
-
   }
-  .abricot-exit-active{
-    .pomme {
+  .animation-basket-exit-active {
+    .card {
       transition: 0.5s;
       opacity: 0%;
       transform: translate(-100px);
     }
   }
 
-  .basket-card {
+  .card-container {
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
@@ -131,6 +128,4 @@ const BasketItemsStyled = styled.div`
       margin-bottom: 20px;
     }
   }
-
-
 `;
