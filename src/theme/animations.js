@@ -15,6 +15,19 @@ export const fadeInFromRight = keyframes`
 
 `;
 
+export const fadeInFromBottom = keyframes`
+  0%{
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+`
+
 export const adminAnimation = css`
   .admin-appear {
     opacity: 0.1;
@@ -30,35 +43,35 @@ export const adminAnimation = css`
 export const basketAnimation = css`
   .animation-basket-appear {
     .card {
-      transform: translate(100px);
+      transform: translateX(100px);
       opacity: 0%;
     }
   }
   .animation-basket-appear-active {
     .card {
       transition: 300ms;
-      transform: translate(0px);
+      transform: translateX(0px);
       opacity: 100%;
     }
   }
 
   .animation-basket-enter {
     .card {
-      transform: translate(100px);
+      transform: translateX(100px);
       opacity: 0%;
     }
   }
   .animation-basket-enter-active {
     .card {
       transition: 300ms;
-      transform: translate(0px);
+      transform: translateX(0px);
       opacity: 100%;
     }
   }
 
   .animation-basket-exit {
     .card {
-      transform: translate(0px);
+      transform: translateX(0px);
       opacity: 100%;
     }
   }
@@ -66,7 +79,30 @@ export const basketAnimation = css`
     .card {
       transition: 300ms;
       opacity: 0%;
-      transform: translate(-100px);
+      transform: translateX(-100px);
     }
+  }
+`;
+
+export const menuAnimation = css`
+  /* MOUNTING */
+  .menu-animation-enter {
+    opacity: 0.01;
+    transform: translateX(-120px);
+  }
+  .menu-animation-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 300ms ease-out;
+  }
+
+  /* UNMOUNTING */
+  .menu-animation-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .menu-animation-exit-active {
+    opacity: 0.01;
+    transition: 300ms ease-out;
   }
 `;

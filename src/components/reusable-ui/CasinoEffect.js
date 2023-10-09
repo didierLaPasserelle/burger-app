@@ -29,7 +29,10 @@ const CasinoEffectStyled = styled.div`
 
   .count-animated-enter-active {
     transform: translateY(0%);
-    transition: 2s;
+    transition: 300ms;
+  }
+
+  .count-animated-enter-done {
   }
 
   /* UNMOUTING */
@@ -42,6 +45,11 @@ const CasinoEffectStyled = styled.div`
   }
   .count-animated-exit-active {
     transform: translateY(-100%);
-    transition: 2s;
+    transition: 300ms;
   }
+
+  .count-animated-exit-done:last-child {
+    transform: translateY(-100%);
+  }
+ 
 `;

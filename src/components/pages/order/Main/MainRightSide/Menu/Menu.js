@@ -10,6 +10,8 @@ import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
 import Loader from "./Loader";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { menuAnimation } from "../../../../../../theme/animations";
 
 export default function Menu() {
   const {
@@ -49,6 +51,7 @@ export default function Menu() {
     handleAddToBasket(idItemToAdd, username);
   };
 
+  //Affichage
   if (isLoading) return <Loader />;
 
   // affichage
@@ -58,25 +61,26 @@ export default function Menu() {
   }
 
   return (
-    <MenuStyled className="menu">
+    <TransitionGroup component={MenuStyled} className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
         return (
-          <Card
-            key={id}
-            title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
-            leftDescription={formatPrice(price)}
-            hasDeleteButton={isModeAdmin}
-            onDelete={(e) => handleCardDelete(e, id)}
-            onClick={() => handleCardClicked(id)}
-            isHoverable={isModeAdmin}
-            // isSelected={id === cardClickedOn.id}
-            isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
-            onAdd={(e) => handleAddButton(e, id)}
-          />
+          <CSSTransition classNames={"menu-animation"}  key={id} timeout={300}>
+            <Card
+              title={title}
+              imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+              leftDescription={formatPrice(price)}
+              hasDeleteButton={isModeAdmin}
+              onDelete={(e) => handleCardDelete(e, id)}
+              onClick={() => handleCardClicked(id)}
+              isHoverable={isModeAdmin}
+              // isSelected={id === cardClickedOn.id}
+              isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
+              onAdd={(e) => handleAddButton(e, id)}
+            />
+          </CSSTransition>
         );
       })}
-    </MenuStyled>
+    </TransitionGroup>
   );
 }
 
@@ -90,4 +94,6 @@ const MenuStyled = styled.div`
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
+
+  ${menuAnimation}
 `;
