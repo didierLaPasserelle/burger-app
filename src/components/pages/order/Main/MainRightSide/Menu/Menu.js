@@ -55,7 +55,7 @@ export default function Menu() {
   if (isLoading) return <Loader />;
 
   // affichage
-  console.log("menu: ", menu);
+  // console.log("menu: ", menu);
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
