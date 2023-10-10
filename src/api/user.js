@@ -30,7 +30,7 @@ export const authenticateUsername = async (userId) => {
 
   //2. sinon tu crées un user
   if (!existingUser) {
-    const newUser = addUser(userId);
+    const newUser = await addUser(userId);
     return newUser;
   }
   return existingUser;
