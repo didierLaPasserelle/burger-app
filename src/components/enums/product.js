@@ -8,6 +8,6 @@ export const EMPTY_PRODUCT = Object.freeze({
 export const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export const BASKET_MESSAGE =  {
-  EMPTY: "Votre commande est vide",
+  EMPTY: "Votre commande est vide.",
   LOADING: "Chargement en cours..."
 }
