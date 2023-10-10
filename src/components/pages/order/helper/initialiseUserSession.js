@@ -7,7 +7,6 @@ const initializeMenu = async (username, setMenu, setIsLoading) => {
   setIsLoading(false);
 };
 
-
 const initializeBasket = (username, setBasket) => {
   const basketReceived = getLocalStorage(username);
   if (basketReceived) setBasket(basketReceived);

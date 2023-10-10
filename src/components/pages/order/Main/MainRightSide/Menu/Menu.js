@@ -55,6 +55,7 @@ export default function Menu() {
   if (isLoading) return <Loader />;
 
   // affichage
+  console.log("menu: ", menu);
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
@@ -64,7 +65,7 @@ export default function Menu() {
     <TransitionGroup component={MenuStyled} className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
         return (
-          <CSSTransition classNames={"menu-animation"}  key={id} timeout={300}>
+          <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
             <Card
               title={title}
               imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}

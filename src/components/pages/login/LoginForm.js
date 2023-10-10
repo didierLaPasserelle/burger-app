@@ -20,9 +20,11 @@ export default function LoginForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    authenticateUsername(username)
+    const userReceived = await authenticateUsername(username);
+    console.log('userReceived: ', userReceived)
+
     setUsername("");
-    navigate(`order/${username}`);
+    navigate(`order/${userReceived.username}`);
   };
 
   const handleChange = (event) => {
@@ -61,7 +63,6 @@ const LoginFormStyled = styled.form`
   padding: 40px ${theme.spacing.lg};
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
-
 
   h1 {
     color: ${theme.colors.white};
