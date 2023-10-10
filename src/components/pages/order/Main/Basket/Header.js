@@ -4,16 +4,18 @@ import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import OrderContext from "../../../../../context/OrderContext";
 import { calculateAmountToPay } from "./helper/mathBasket";
+import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
 
 export default function Header() {
   const { basket, menu } = useContext(OrderContext);
+
 
   const amountToPay = calculateAmountToPay(basket, menu);
 
   return (
     <HeaderStyled>
       <span>Total</span>
-      <span>{formatPrice(amountToPay)}</span>
+      <CasinoEffect count={formatPrice(amountToPay)}/>
     </HeaderStyled>
   );
 }

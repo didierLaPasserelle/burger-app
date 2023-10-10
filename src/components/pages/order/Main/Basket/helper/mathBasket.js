@@ -1,10 +1,12 @@
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 
-export const calculateAmountToPay = (basket, menu) => basket.reduce((total, basketItem) => {
+export const calculateAmountToPay = (basket, menu) =>
+  basket.reduce((total, basketItem) => {
     const menuItem = menu.find((item) => item.id === basketItem.id);
-    if(isNaN(menuItem.price)) return total
+    if (isNaN(menuItem.price)) return total;
     if (menuItem) {
-      total += replaceFrenchCommaWithDot(menuItem.price || 0) * basketItem.quantity;
+      total +=
+        replaceFrenchCommaWithDot(menuItem.price || 0) * basketItem.quantity;
     }
     return total;
   }, 0);
