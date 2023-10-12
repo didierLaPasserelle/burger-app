@@ -57,8 +57,8 @@ const AdminFormStyled = styled.form`
   .input-fields {
     display: grid;
     grid-area: 1 / 2 / -2 / 3;
-    grid-template-rows: (repeat(3, 1fr));
-    grid-template-columns: (repeat(3, 1fr));
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 8px;
     grid-column-gap: 8px;
   }
@@ -71,7 +71,6 @@ const AdminFormStyled = styled.form`
     grid-area: 2/1/3/4;
   }
 
-  /* TO DO, arrange size */
   .price {
     grid-area: 3/1/4/2;
   }
