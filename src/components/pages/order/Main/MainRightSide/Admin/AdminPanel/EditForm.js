@@ -21,7 +21,7 @@ export default function EditForm() {
   const handleChange = (e) => {
     let defaultValue = e.target.value;
     const inputPrice = e.target.name === "price";
-
+    
     if (inputPrice) {
       defaultValue = e.target.value.replace(",", ".");
     }
@@ -30,7 +30,7 @@ export default function EditForm() {
       ...cardClickedOn,
       [e.target.name]: defaultValue,
     };
-
+ 
     setCardClickedOn(productBeingUpdated); // Cela édite le form
     handleEdit(productBeingUpdated, username); // cette ligne update le menu
   };

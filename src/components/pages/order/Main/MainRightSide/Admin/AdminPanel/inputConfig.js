@@ -52,10 +52,10 @@ export const getSelectInputConfig = (newProduct) => [
 
 const isAvailableOptions = [
   { value: true, label: "En stock" },
-  { value: false, label: "En rupture" },
+  { value: false, label: "En rupture" }
 ];
 
 const isPublicisedOptions = [
-  { value: true, label: "Sans pub" },
-  { value: false, label: "Avec pub" },
+  { value: true, label: "Avec pub" },
+  { value: false, label: "Sans pub" }
 ];

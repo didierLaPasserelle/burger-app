@@ -2,15 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
-import { getInputTextsConfig, getSelectInputConfig } from "./inputTextConfig";
+import { getInputTextsConfig, getSelectInputConfig } from "./inputConfig";
 import SelectInput from "../../../../../../reusable-ui/SelectInput";
-
 
 const AdminForm = React.forwardRef(
   ({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
-
     const inputTexts = getInputTextsConfig(product);
-    const inputSelects = getSelectInputConfig(product)
+    const inputSelects = getSelectInputConfig(product);
 
     // affichage
     return (
@@ -28,17 +26,13 @@ const AdminForm = React.forwardRef(
               onBlur={onBlur}
             />
           ))}
-
-          {inputSelects.map(({id,name,value, options, className}) =>(
-            <SelectInput 
-            key={id}
-            id={id}
-            name={name}
-            value={value}
-            options={options}
-            className={className}/>
-          ) )}
-
+          {inputSelects.map((inputSelect) => (
+            <SelectInput
+              {...inputSelect}
+              onChange={onChange}
+              key={inputSelect.id}
+            />
+          ))}
         </div>
 
         <div className="footer">{children}</div>
