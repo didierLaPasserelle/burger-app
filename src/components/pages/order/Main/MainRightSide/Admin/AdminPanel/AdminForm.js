@@ -3,6 +3,17 @@ import styled from "styled-components";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
+import SelectInput from "../../../../../../reusable-ui/SelectInput";
+
+const isAvailableOptions = [
+  { value: true, label: "En stock" },
+  { value: false, label: "En rupture" },
+];
+
+const isPublicisedOptions = [
+  { value: true, label: "Sans pub" },
+  { value: false, label: "Avec pub" },
+];
 
 const AdminForm = React.forwardRef(
   ({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
@@ -23,15 +34,20 @@ const AdminForm = React.forwardRef(
               onFocus={onFocus}
               onBlur={onBlur}
             />
-            ))}
-            <select name="isAvailable" className="is-available" id="3">
-              <option value={true}>En stock</option>
-              <option value={false}>En rupture</option>
-            </select>
-            <select name="isPublicised" className="is-publicised" id="4">
-              <option value={true}>Sans Pub</option>
-              <option value={false}>Avec pub</option>
-            </select>
+          ))}
+
+          <SelectInput
+            name={isAvailableOptions}
+            options={isAvailableOptions}
+            className="is-available"
+            id="3"
+          />
+          <SelectInput
+            name={isPublicisedOptions}
+            options={isPublicisedOptions}
+            className="is-publicised"
+            id="4"
+          />
         </div>
 
         <div className="footer">{children}</div>
@@ -68,6 +84,7 @@ const AdminFormStyled = styled.form`
     grid-area: 2/1/3/4;
   }
 
+  /* TO DO, arrange size */
   .price {
     grid-area: 3/1/4/2;
   }
