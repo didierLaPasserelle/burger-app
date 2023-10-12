@@ -31,6 +31,8 @@ const AdminForm = React.forwardRef(
               {...inputSelect}
               onChange={onChange}
               key={inputSelect.id}
+              onFocus={onFocus}
+              onBlur={onBlur}
             />
           ))}
         </div>
