@@ -62,15 +62,15 @@ const extraStyleNormal = css`
 
 const extraStyleMinimalist = css`
   background-color: ${theme.colors.background_white};
-  padding: 8px 16px;
+  padding: 8px 28px;
   color: ${theme.colors.greyBlue};
 
   input {
-    background: ${theme.colors.background_white}; ////+
+    background: ${theme.colors.background_white};
     color: ${theme.colors.dark};
 
     &:focus {
-      outline: 0; //// add outline
+      outline: 0;
     }
   }
 `

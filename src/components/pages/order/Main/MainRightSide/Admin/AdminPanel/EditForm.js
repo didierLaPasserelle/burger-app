@@ -32,7 +32,7 @@ export default function EditForm() {
     };
  
     setCardClickedOn(productBeingUpdated); // Cela édite le form
-    handleEdit(productBeingUpdated, username); // cette ligne update le menu
+    handleEdit(productBeingUpdated, username); // cette ligne update le menu et la BDD
   };
 
   const handleOnFocus = (e) => {
