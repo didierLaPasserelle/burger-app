@@ -6,7 +6,6 @@ import { getInputTextsConfig } from "./inputTextConfig";
 
 const AdminForm = React.forwardRef(
   ({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
-    
     const inputTexts = getInputTextsConfig(product);
 
     // affichage
@@ -39,17 +38,30 @@ const AdminFormStyled = styled.form`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
-  height: 100%;
-  width: 80%;
   grid-column-gap: 20px;
   grid-row-gap: 8px;
+  height: 100%;
+  width: 80%;
 
   .input-fields {
-    grid-area: 1 / 2 / -2 / 3;
-
     display: grid;
-    
+    grid-area: 1 / 2 / -2 / 3;
+    grid-template-rows: (repeat(3, 1fr));
+    grid-template-columns: (repeat(3, 1fr));
     grid-row-gap: 8px;
+  }
+
+  /* .title {
+    grid-area: 1/1/2/4;
+  }
+
+  .image-source {
+    grid-area: 2/1/3/4;
+  } */
+
+  .price {
+    /* grid-area: 3/1/4/2; */
+    width: 30%;
   }
 
   .footer {
@@ -59,4 +71,4 @@ const AdminFormStyled = styled.form`
     position: relative;
     top: 3px;
   }
-`
+`;
