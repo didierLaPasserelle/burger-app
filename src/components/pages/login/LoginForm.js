@@ -21,7 +21,6 @@ export default function LoginForm() {
     event.preventDefault();
 
     const userReceived = await authenticateUsername(username);
-    // console.log('userReceived: ', userReceived)
 
     setUsername("");
     navigate(`order/${userReceived.username}`);
