@@ -7,7 +7,7 @@ import Card from "../../../../../reusable-ui/Card";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT, IMAGE_OUT_OF_STOCK } from "../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
 import Loader from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -77,6 +77,8 @@ export default function Menu() {
               // isSelected={id === cardClickedOn.id}
               isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
               onAdd={(e) => handleAddButton(e, id)}
+              overlapImageSource = {IMAGE_OUT_OF_STOCK}
+              isOverlapImageVisible = {true}
             />
           </CSSTransition>
         );
