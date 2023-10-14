@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
-import BasketCard from "../BasketCard"
-import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
-import OrderContext from "../../../../../../context/OrderContext"
-import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper"
+import styled from "styled-components/macro";
+import BasketCard from "../BasketCard";
+import { BASKET_MESSAGE, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
+import OrderContext from "../../../../../../context/OrderContext";
+import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { basketAnimation } from "../../../../../../theme/animations"
+import { basketAnimation } from "../../../../../../theme/animations";
+import { formatPrice } from "../../../../../utils/maths";
+import { convertStringToBoolean } from "../../../../../utils/string";
 
 export default function BasketItems() {
   const {
@@ -33,7 +35,10 @@ export default function BasketItems() {
       <TransitionGroup>
         {basket.map((basketItem) => {
           const menuItem = menu.find(
-            (menuItem) => menuItem.id === basketItem.id);
+            (menuItem) => menuItem.id === basketItem.id
+          );
+
+          console.log("menuItem: ", menuItem);
           return (
             <CSSTransition
               classNames={"animation-basket"}
@@ -58,6 +63,11 @@ export default function BasketItems() {
                   isClickable={isModeAdmin}
                   onClick={() => handleCardClickedInBasket(menuItem.id)}
                   className={"card"}
+                  price={
+                    convertStringToBoolean(menuItem.isAvailable)
+                      ? formatPrice(menuItem.price)
+                      : BASKET_MESSAGE.OUT_OF_STOCK
+                  }
                 />
               </div>
             </CSSTransition>

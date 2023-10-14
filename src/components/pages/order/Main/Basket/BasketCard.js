@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { MdDeleteForever } from "react-icons/md";
-import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../../theme";
 import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
 
@@ -31,7 +30,7 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(price)}</span>
+          <span className="price">{price}</span>
         </div>
         <div className="quantity">
           <CasinoEffect count={`x ${quantity}`}/>
@@ -89,7 +88,7 @@ const BasketCardStyled = styled.div`
         line-height: 32px;
         font-weight: ${theme.fonts.weights.bold};
         color: ${theme.colors.dark};
-        /* sans cette div avec "min-width: 0", l'ellipsis ne fonctionne pas dans un span : https://semicolon.dev/tutorial/css/text-overflow-ellipsis-doesnt-work#:~:text=If%20your%20text%2Doverflow%20is,Grid%20or%20on%20a%20Table. */
+  
         min-width: 0;
         span {
           overflow: hidden;
