@@ -5,7 +5,7 @@ import { fadeIn } from "../../../../../../../theme/animations"
 
 export default function ImagePreview({ imageSource, title }) {
   return (
-    <ImagePreviewStyled key={title}>
+    <ImagePreviewStyled>
       {imageSource ? (
         <img src={imageSource} alt={title} />
       ) : (
@@ -26,7 +26,7 @@ const ImagePreviewStyled = styled.div`
     height: 100px;
     object-fit: contain;
     object-position: center;
-    animation: ${fadeIn} 1s;
+    animation: ${fadeIn} 300ms;
   }
 
   .empty-image {

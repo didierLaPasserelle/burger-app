@@ -44,7 +44,7 @@ export const fadeInFromBottom = keyframes`
 export const fadeIn = keyframes`
   from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(60%);
   }
   to {
     opacity: 1;
