@@ -8,6 +8,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketAnimation } from "../../../../../../theme/animations";
 import { formatPrice } from "../../../../../utils/maths";
 import { convertStringToBoolean } from "../../../../../utils/string";
+import Sticker from "../../../../../reusable-ui/Sticker";
 
 export default function BasketItems() {
   const {
@@ -47,6 +48,9 @@ export default function BasketItems() {
               appear={true}
             >
               <div className="card-container">
+                {convertStringToBoolean(menuItem.isPublicised) && (
+                  <Sticker className="badge" />
+                )}
                 <BasketCard
                   {...menuItem}
                   imageSource={
@@ -86,6 +90,7 @@ const BasketItemsStyled = styled.div`
   scroll-behavior: smooth;
 
   .card-container {
+    position: relative;
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
@@ -94,6 +99,15 @@ const BasketItemsStyled = styled.div`
     }
     :last-child {
       margin-bottom: 20px;
+    }
+
+    .badge {
+      position: absolute;
+      z-index: 1;
+      bottom: 16%;
+      left: 23%;
+      transform: translateY(-21%);
+      transform: translateX(-5%);
     }
   }
 
