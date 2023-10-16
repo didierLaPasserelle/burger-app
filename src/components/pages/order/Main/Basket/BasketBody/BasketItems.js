@@ -38,8 +38,6 @@ export default function BasketItems() {
           const menuItem = menu.find(
             (menuItem) => menuItem.id === basketItem.id
           );
-
-          console.log("menuItem: ", menuItem);
           return (
             <CSSTransition
               classNames={"animation-basket"}

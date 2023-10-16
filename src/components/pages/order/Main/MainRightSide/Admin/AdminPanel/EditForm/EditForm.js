@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import OrderContext from "../../../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../../context/OrderContext";
 import EditInfoMessage from "./EditInfoMessage";
-import AdminForm from "./AdminForm";
+import AdminForm from "../Form/AdminForm";
 import SavingMessage from "./SavingMessage";
-import { useSuccessMessage } from "../../../../../../../hooks/useDisplaySuccesMessage";
+import { useSuccessMessage } from "../../../../../../../../hooks/useDisplaySuccesMessage";
 
 export default function EditForm() {
   const {
@@ -21,7 +21,7 @@ export default function EditForm() {
   const handleChange = (e) => {
     let defaultValue = e.target.value;
     const inputPrice = e.target.name === "price";
-    
+
     if (inputPrice) {
       defaultValue = e.target.value.replace(",", ".");
     }
@@ -30,7 +30,7 @@ export default function EditForm() {
       ...cardClickedOn,
       [e.target.name]: defaultValue,
     };
- 
+
     setCardClickedOn(productBeingUpdated); // Cela édite le form
     handleEdit(productBeingUpdated, username); // cette ligne update le menu et la BDD
   };

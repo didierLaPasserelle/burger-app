@@ -1,9 +1,8 @@
-import { AiOutlinePlus } from "react-icons/ai"
-import { MdModeEditOutline } from "react-icons/md"
-import AddForm from "./AdminPanel/AddForm"
-import EditForm from "./AdminPanel/EditForm"
-import EmptyEditFormMessage from "./AdminPanel/EmptyEditFormMessage"
-
+import { AiOutlinePlus } from "react-icons/ai";
+import { MdModeEditOutline } from "react-icons/md";
+import AddForm from "../Admin/AdminPanel/AddForm/AddForm";
+import EditForm from "../Admin/AdminPanel/EditForm/EditForm"
+import EmptyEditFormMessage from "./AdminPanel/EditForm/EmptyEditFormMessage";
 
 export const getTabsConfig = (hasAlreadyBeenClicked) => [
   {
@@ -16,7 +15,6 @@ export const getTabsConfig = (hasAlreadyBeenClicked) => [
     index: "edit",
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
-    Content: hasAlreadyBeenClicked ? <EditForm /> : <EmptyEditFormMessage />
+    Content: hasAlreadyBeenClicked ? <EditForm /> : <EmptyEditFormMessage />,
   },
-]
-
+];
