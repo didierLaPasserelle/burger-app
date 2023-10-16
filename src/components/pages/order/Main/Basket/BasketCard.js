@@ -13,11 +13,14 @@ export default function BasketCard({
   onDelete,
   isClickable,
   onClick,
-  isSelected
+  isSelected,
 }) {
-  
   return (
-    <BasketCardStyled className={className} isClickable={isClickable} onClick={onClick} isSelected={isSelected}
+    <BasketCardStyled
+      className={className}
+      isClickable={isClickable}
+      onClick={onClick}
+      isSelected={isSelected}
     >
       <div className="delete-btn" onClick={onDelete}>
         <MdDeleteForever className="icon" />
@@ -33,7 +36,7 @@ export default function BasketCard({
           <span className="price">{price}</span>
         </div>
         <div className="quantity">
-          <CasinoEffect count={`x ${quantity}`}/>
+          <CasinoEffect count={`x ${quantity}`} />
         </div>
       </div>
     </BasketCardStyled>
@@ -70,16 +73,16 @@ const BasketCardStyled = styled.div`
   .text-info {
     user-select: none;
     box-sizing: border-box;
-
     display: grid;
     grid-template-columns: 70% 1fr;
     font-size: ${theme.fonts.size.P0};
     color: ${theme.colors.primary};
 
     .left-info {
+      /* border: 1px solid red; */
       display: grid;
       grid-template-rows: 60% 40%;
-      margin-left: 21px;
+      margin-left: 12px;
       .title {
         display: flex;
         align-items: center;
@@ -88,8 +91,9 @@ const BasketCardStyled = styled.div`
         line-height: 32px;
         font-weight: ${theme.fonts.weights.bold};
         color: ${theme.colors.dark};
-  
+
         min-width: 0;
+
         span {
           overflow: hidden;
           white-space: nowrap;
@@ -163,8 +167,8 @@ const BasketCardStyled = styled.div`
 
 const selectedStyle = css`
   background: ${theme.colors.primary};
-  .price, 
+  .price,
   .quantity {
     color: ${theme.colors.white};
   }
-`
+`;
