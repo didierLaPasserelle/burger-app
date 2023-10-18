@@ -5,10 +5,7 @@ import { BASKET_MESSAGE, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import OrderContext from "../../../../../../context/OrderContext";
 import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import {
-  badgeAnimation,
-  basketAnimation
-} from "../../../../../../theme/animations";
+import { basketAnimation } from "../../../../../../theme/animations";
 import { formatPrice } from "../../../../../utils/maths";
 import { convertStringToBoolean } from "../../../../../utils/string";
 import Sticker from "../../../../../reusable-ui/Sticker";
@@ -38,7 +35,9 @@ export default function BasketItems() {
     <BasketItemsStyled>
       <TransitionGroup>
         {basket.map((basketItem) => {
-          const menuItem = menu.find((menuItem) => menuItem.id === basketItem.id);
+          const menuItem = menu.find(
+            (menuItem) => menuItem.id === basketItem.id
+          );
           return (
             <CSSTransition
               classNames="animation-basket"
@@ -48,7 +47,7 @@ export default function BasketItems() {
             >
               <div className="card-container">
                 {convertStringToBoolean(menuItem.isPublicised) && (
-                  <Sticker className="badge"/>
+                  <Sticker className="badge" />
                 )}
                 <BasketCard
                   {...menuItem}
@@ -79,7 +78,6 @@ export default function BasketItems() {
       </TransitionGroup>
     </BasketItemsStyled>
   );
-  
 }
 
 const BasketItemsStyled = styled.div`
@@ -88,7 +86,6 @@ const BasketItemsStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   scroll-behavior: smooth;
-
 
   .card-container {
     position: relative;
@@ -107,12 +104,8 @@ const BasketItemsStyled = styled.div`
       z-index: 1;
       bottom: 16%;
       left: 23%;
-      animation: ${badgeAnimation} 0.5s ease-in-out;
     }
   }
-  
+
   ${basketAnimation}
-  
 `;
-
-

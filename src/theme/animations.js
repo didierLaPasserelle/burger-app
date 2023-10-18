@@ -1,16 +1,5 @@
 import { css, keyframes } from "styled-components";
 
-export const badgeAnimation = keyframes`
-  0% {
-    transform: translateY(50%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
 export const fadeInFromRight = keyframes`
 0% {
   position: absolute;
