@@ -12,7 +12,7 @@ import Welcome from "./Welcome";
 
 export default function LoginForm() {
   // state
-  const [username, setUsername] = useState("didier");
+  const [username, setUsername] = useState("");
   // const [inputPassword, setInputPassword] = useState("password");
   const navigate = useNavigate();
 
