@@ -12,7 +12,7 @@ import { initialiseUserSession } from "./helper/initialiseUserSession";
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -37,7 +37,7 @@ export default function OrderPage() {
 
   useEffect(() => {
     initialiseUserSession(username, setMenu, setBasket, setIsLoading);
-  },[]);
+  }, []);
 
   const orderContextValue = {
     username,
@@ -87,7 +87,7 @@ const OrderPageStyled = styled.div`
 
   .container {
     height: 95vh;
-    width: 1300px;
+    width: 1400px;
     display: flex;
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};

@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
-import BasketCard from "../BasketCard"
-import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
-import OrderContext from "../../../../../../context/OrderContext"
-import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper"
+import styled from "styled-components/macro";
+import BasketCard from "../BasketCard";
+import { BASKET_MESSAGE, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
+import OrderContext from "../../../../../../context/OrderContext";
+import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { basketAnimation } from "../../../../../../theme/animations"
+import { basketAnimation } from "../../../../../../theme/animations";
+import { formatPrice } from "../../../../../utils/maths";
+import { convertStringToBoolean } from "../../../../../utils/string";
+import Sticker from "../../../../../reusable-ui/Sticker";
 
 export default function BasketItems() {
   const {
@@ -33,17 +36,22 @@ export default function BasketItems() {
       <TransitionGroup>
         {basket.map((basketItem) => {
           const menuItem = menu.find(
-            (menuItem) => menuItem.id === basketItem.id);
+            (menuItem) => menuItem.id === basketItem.id
+          );
           return (
             <CSSTransition
-              classNames={"animation-basket"}
+              classNames="animation-basket"
               key={menuItem.id}
               timeout={300}
               appear={true}
             >
               <div className="card-container">
+                {convertStringToBoolean(menuItem.isPublicised) && (
+                  <Sticker className="badge" />
+                )}
                 <BasketCard
                   {...menuItem}
+                  className="card"
                   imageSource={
                     menuItem.imageSource
                       ? menuItem.imageSource
@@ -57,7 +65,11 @@ export default function BasketItems() {
                   )}
                   isClickable={isModeAdmin}
                   onClick={() => handleCardClickedInBasket(menuItem.id)}
-                  className={"card"}
+                  price={
+                    convertStringToBoolean(menuItem.isAvailable)
+                      ? formatPrice(menuItem.price)
+                      : BASKET_MESSAGE.OUT_OF_STOCK
+                  }
                 />
               </div>
             </CSSTransition>
@@ -76,6 +88,7 @@ const BasketItemsStyled = styled.div`
   scroll-behavior: smooth;
 
   .card-container {
+    position: relative;
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
@@ -84,6 +97,13 @@ const BasketItemsStyled = styled.div`
     }
     :last-child {
       margin-bottom: 20px;
+    }
+
+    .badge {
+      position: absolute;
+      z-index: 1;
+      bottom: 16%;
+      left: 23%;
     }
   }
 

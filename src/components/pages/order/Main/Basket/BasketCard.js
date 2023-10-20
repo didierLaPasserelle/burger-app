@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { MdDeleteForever } from "react-icons/md";
-import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../../theme";
 import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
 
@@ -14,11 +13,14 @@ export default function BasketCard({
   onDelete,
   isClickable,
   onClick,
-  isSelected
+  isSelected,
 }) {
-  
   return (
-    <BasketCardStyled className={className} isClickable={isClickable} onClick={onClick} isSelected={isSelected}
+    <BasketCardStyled
+      className={className}
+      isClickable={isClickable}
+      onClick={onClick}
+      isSelected={isSelected}
     >
       <div className="delete-btn" onClick={onDelete}>
         <MdDeleteForever className="icon" />
@@ -31,10 +33,10 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(price)}</span>
+          <span className="price">{price}</span>
         </div>
         <div className="quantity">
-          <CasinoEffect count={`x ${quantity}`}/>
+          <CasinoEffect count={`x ${quantity}`} />
         </div>
       </div>
     </BasketCardStyled>
@@ -71,16 +73,16 @@ const BasketCardStyled = styled.div`
   .text-info {
     user-select: none;
     box-sizing: border-box;
-
     display: grid;
     grid-template-columns: 70% 1fr;
     font-size: ${theme.fonts.size.P0};
     color: ${theme.colors.primary};
 
     .left-info {
+      /* border: 1px solid red; */
       display: grid;
       grid-template-rows: 60% 40%;
-      margin-left: 21px;
+      margin-left: 12px;
       .title {
         display: flex;
         align-items: center;
@@ -89,8 +91,9 @@ const BasketCardStyled = styled.div`
         line-height: 32px;
         font-weight: ${theme.fonts.weights.bold};
         color: ${theme.colors.dark};
-        /* sans cette div avec "min-width: 0", l'ellipsis ne fonctionne pas dans un span : https://semicolon.dev/tutorial/css/text-overflow-ellipsis-doesnt-work#:~:text=If%20your%20text%2Doverflow%20is,Grid%20or%20on%20a%20Table. */
+
         min-width: 0;
+
         span {
           overflow: hidden;
           white-space: nowrap;
@@ -164,8 +167,8 @@ const BasketCardStyled = styled.div`
 
 const selectedStyle = css`
   background: ${theme.colors.primary};
-  .price, 
+  .price,
   .quantity {
     color: ${theme.colors.white};
   }
-`
+`;

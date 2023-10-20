@@ -1,16 +1,17 @@
 import { useContext } from "react";
-import OrderContext from "../../../../../../../context/OrderContext";
-import { getInputTextsConfig } from "./inputTextConfig";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
-import AdminForm from "./AdminForm";
+import OrderContext from "../../../../../../../../context/OrderContext";
+import { getInputTextsConfig } from "../Form/inputConfig";
+import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
+import AdminForm from "../Form/AdminForm";
 import SubmitButton from "./SubmitButton";
-import { useSuccessMessage } from "../../../../../../../hooks/useDisplaySuccesMessage";
-import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths";
+import { useSuccessMessage } from "../../../../../../../../hooks/useDisplaySuccesMessage";
+import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths";
 
 export default function AddForm() {
   // state
-  const { username, handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  
+  const { username, handleAdd, newProduct, setNewProduct } =
+    useContext(OrderContext);
+
   const { isSubmitted, showSuccessMessage } = useSuccessMessage(3000);
 
   // Event handler
@@ -19,7 +20,7 @@ export default function AddForm() {
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
-      price: replaceFrenchCommaWithDot(newProduct.price)
+      price: replaceFrenchCommaWithDot(newProduct.price),
     };
 
     handleAdd(newProductToAdd, username);

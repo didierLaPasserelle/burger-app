@@ -12,7 +12,20 @@ export const fadeInFromRight = keyframes`
   opacity: 1;
   transform: translateX(0);
 }
+`;
 
+export const fadeInFromTop = keyframes`
+  0% {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 export const fadeInFromBottom = keyframes`
@@ -26,7 +39,18 @@ export const fadeInFromBottom = keyframes`
     opacity: 1;
   }
 
-`
+`;
+
+export const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(60%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+`;
 
 export const adminAnimation = css`
   .admin-appear {
@@ -42,13 +66,15 @@ export const adminAnimation = css`
 
 export const basketAnimation = css`
   .animation-basket-appear {
-    .card {
+    .card,
+    .badge {
       transform: translateX(100px);
       opacity: 0%;
     }
   }
   .animation-basket-appear-active {
-    .card {
+    .card,
+    .badge {
       transition: 300ms;
       transform: translateX(0px);
       opacity: 100%;
@@ -56,13 +82,15 @@ export const basketAnimation = css`
   }
 
   .animation-basket-enter {
-    .card {
+    .card,
+    .badge {
       transform: translateX(100px);
       opacity: 0%;
     }
   }
   .animation-basket-enter-active {
-    .card {
+    .card,
+    .badge {
       transition: 300ms;
       transform: translateX(0px);
       opacity: 100%;
@@ -70,13 +98,15 @@ export const basketAnimation = css`
   }
 
   .animation-basket-exit {
-    .card {
+    .card,
+    .badge {
       transform: translateX(0px);
       opacity: 100%;
     }
   }
   .animation-basket-exit-active {
-    .card {
+    .card,
+    .badge {
       transition: 300ms;
       opacity: 0%;
       transform: translateX(-100px);

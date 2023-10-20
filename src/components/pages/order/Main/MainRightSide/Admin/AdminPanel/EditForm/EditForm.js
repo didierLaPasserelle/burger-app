@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import OrderContext from "../../../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../../context/OrderContext";
 import EditInfoMessage from "./EditInfoMessage";
-import AdminForm from "./AdminForm";
+import AdminForm from "../Form/AdminForm";
 import SavingMessage from "./SavingMessage";
-import { useSuccessMessage } from "../../../../../../../hooks/useDisplaySuccesMessage";
+import { useSuccessMessage } from "../../../../../../../../hooks/useDisplaySuccesMessage";
 
 export default function EditForm() {
   const {
@@ -32,7 +32,7 @@ export default function EditForm() {
     };
 
     setCardClickedOn(productBeingUpdated); // Cela édite le form
-    handleEdit(productBeingUpdated, username); // cette ligne update le menu
+    handleEdit(productBeingUpdated, username); // cette ligne update le menu et la BDD
   };
 
   const handleOnFocus = (e) => {

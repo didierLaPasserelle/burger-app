@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
-import { fadeInFromRight } from "../../theme/animations";
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animations";
 
 export default function Card({
   title,
@@ -13,11 +13,10 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
-  onAdd
-}) 
-
-
-{
+  onAdd,
+  isOverlapImageVisible,
+  overlapImageSource,
+}) {
   return (
     <CardStyled
       className="produit"
@@ -36,6 +35,12 @@ export default function Card({
           </button>
         )}
         <div className="image">
+          {isOverlapImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img className="overlap-image" src={overlapImageSource} alt="" />
+            </div>
+          )}
           <img src={imageSource} alt={title} />
         </div>
         <div className="text-info">
@@ -43,11 +48,12 @@ export default function Card({
           <div className="description">
             <div className="left-description">{leftDescription}</div>
             <div className="right-description">
-              <Button 
-                className="primary-button" 
+              <Button
+                className="primary-button"
                 label={"Ajouter"}
-                onClick={onAdd} 
-                />
+                onClick={onAdd}
+                disabled={isOverlapImageVisible}
+              />
             </div>
           </div>
         </div>
@@ -81,8 +87,8 @@ const CardStyled = styled.div`
       border: none;
       background: none;
       animation: ${fadeInFromRight} 500ms ease-out;
-      /* z-index: 2;
-    padding: 0; */
+      z-index: 2;
+      padding: 0;
 
       .icon {
         width: 30px;
@@ -106,6 +112,31 @@ const CardStyled = styled.div`
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          animation: ${fadeInFromTop} 500ms;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
       }
     }
 
@@ -154,21 +185,19 @@ const CardStyled = styled.div`
 
           .primary-button {
             font-size: ${theme.fonts.size.XS};
-            cursor: pointer;
             padding: 12px;
           }
         }
       }
     }
 
-    ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && selectedStyle}
   }
 `;
 
 const HoverableStyle = css`
   &:hover {
-    transform: scale(1.05);
-    transition: ease-out 0.4s;
     box-shadow: ${theme.shadows.orangeHighLight};
     cursor: pointer;
   }
