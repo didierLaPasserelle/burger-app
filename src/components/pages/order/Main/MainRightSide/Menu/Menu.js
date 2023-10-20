@@ -58,7 +58,9 @@ export default function Menu() {
     handleAddToBasket(idItemToAdd, username);
   };
 
-  let cardContainerClassName = isModeAdmin ? "card-container is-hoverable" : "card-container"
+  let cardContainerClassName = isModeAdmin
+    ? "card-container is-hoverable"
+    : "card-container";
 
   //Affichage
   if (isLoading) return <Loader />;
@@ -71,31 +73,32 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled} className="menu">
-      {menu.map(({ id, title, imageSource, price, isAvailable, isPublicised }) => {
-        return (
-          <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
-            <div className={cardContainerClassName}>
-              {convertStringToBoolean(isPublicised) && <RibbonAnimated />}  
-              <Card
-                title={title}
-                imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
-                leftDescription={formatPrice(price)}
-                hasDeleteButton={isModeAdmin}
-                onDelete={(e) => handleCardDelete(e, id)}
-                onClick={() => handleCardClicked(id)}
-                isHoverable={isModeAdmin}
-                // isSelected={id === cardClickedOn.id}
-                isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
-                onAdd={(e) => handleAddButton(e, id)}
-                overlapImageSource={IMAGE_OUT_OF_STOCK}
-                isOverlapImageVisible={
-                  convertStringToBoolean(isAvailable) === false
-                }
-              />
-            </div>
-          </CSSTransition>
-        );
-      })}
+      {menu.map(
+        ({ id, title, imageSource, price, isAvailable, isPublicised }) => {
+          return (
+            <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
+              <div className={cardContainerClassName}>
+                {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
+                <Card
+                  title={title}
+                  imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+                  leftDescription={formatPrice(price)}
+                  hasDeleteButton={isModeAdmin}
+                  onDelete={(e) => handleCardDelete(e, id)}
+                  onClick={() => handleCardClicked(id)}
+                  isHoverable={isModeAdmin}
+                  isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
+                  onAdd={(e) => handleAddButton(e, id)}
+                  overlapImageSource={IMAGE_OUT_OF_STOCK}
+                  isOverlapImageVisible={
+                    convertStringToBoolean(isAvailable) === false
+                  }
+                />
+              </div>
+            </CSSTransition>
+          );
+        }
+      )}
     </TransitionGroup>
   );
 }
