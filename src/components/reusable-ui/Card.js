@@ -14,8 +14,10 @@ export default function Card({
   isHoverable,
   isSelected,
   onAdd,
+  onRemove,
   isOverlapImageVisible,
   overlapImageSource,
+  quantity
 }) {
   return (
     <CardStyled
@@ -50,9 +52,23 @@ export default function Card({
             <div className="right-description">
               <Button
                 className="primary-button"
-                label={"Ajouter"}
+                label={"-"}
+                onClick={onRemove}
+                disabled={isOverlapImageVisible}
+                version= "three"
+              />
+              <Button
+                className="primary-button"
+                label={`${quantity}`}
+                disabled={isOverlapImageVisible}
+                version= "three"
+              />
+              <Button
+                className="primary-button"
+                label={"+"}
                 onClick={onAdd}
                 disabled={isOverlapImageVisible}
+                version= "three"
               />
             </div>
           </div>

@@ -27,7 +27,7 @@ export default function OrderPage() {
 
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
-  const { basket, setBasket, handleAddToBasket, handleDeleteBasketItem } =
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketItem, handleRemoveFromBasket } =
     useBasket();
 
   const handleItemSelected = async (cardId) => {
@@ -74,9 +74,7 @@ export default function OrderPage() {
     handleItemSelected,
     isLoading,
     setIsLoading,
-    isBasketVisible,
-    setIsBasketVisible,
-    toggleBasketVisibility,
+    handleRemoveFromBasket
   };
 
   //affichage

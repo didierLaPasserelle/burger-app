@@ -32,6 +32,8 @@ export default function Menu() {
     handleDeleteBasketItem,
     handleItemSelected,
     isLoading,
+    handleRemoveFromBasket,
+    basket,
   } = useContext(OrderContext);
   // state
 
@@ -57,6 +59,10 @@ export default function Menu() {
     handleAddToBasket(idItemToAdd, username);
   };
 
+  const handleRemoveButton = (e, idOfItemToRemove) => {
+    handleRemoveFromBasket(idOfItemToRemove);
+  };
+
   let cardContainerClassName = isModeAdmin
     ? "card-container is-hoverable"
     : "card-container";
@@ -73,14 +79,23 @@ export default function Menu() {
   return (
     <TransitionGroup component={MenuStyled} className="menu">
       {menu.map(
-        ({ id, title, imageSource, price, isAvailable, isPublicised }) => {
+        ({
+          id,
+          title,
+          imageSource,
+          price,
+          isAvailable,
+          isPublicised,
+        }) => {
+          const basketItem = basket.find((item) => item.id === id);
+          const basketQuantity = basketItem ? basketItem.quantity : 0;
           return (
             <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
               <div className={cardContainerClassName}>
                 {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
                 <Card
                   title={title}
-                  imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+                  imageSource={imageSource || IMAGE_BY_DEFAULT}
                   leftDescription={formatPrice(price)}
                   hasDeleteButton={isModeAdmin}
                   onDelete={(e) => handleCardDelete(e, id)}
@@ -88,10 +103,12 @@ export default function Menu() {
                   isHoverable={isModeAdmin}
                   isSelected={checkIfProductIsClicked(id, cardClickedOn.id)}
                   onAdd={(e) => handleAddButton(e, id)}
+                  onRemove={(e) => handleRemoveButton(e, id)}
                   overlapImageSource={IMAGE_OUT_OF_STOCK}
                   isOverlapImageVisible={
                     convertStringToBoolean(isAvailable) === false
                   }
+                  quantity={basketQuantity}
                 />
               </div>
             </CSSTransition>

@@ -29,6 +29,9 @@ export default createContext({
 
   handleAddToBasket:() => {}, 
   handleDeleteBasketItem: () => {},
+  handleRemoveFromBasket: () => {},
+  handleQuantityDecrementation: () => {},
+
 
   isLoading: {},
   setIsLoading: () => {}
