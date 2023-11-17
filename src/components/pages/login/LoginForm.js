@@ -37,44 +37,60 @@ export default function LoginForm() {
   // affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <Welcome />
-      <div>
+      <div className="container">
+        <h2>
+          Chers Artisans, <br />
+          connectez-vous
+        </h2>
         <TextInput
           value={username}
           onChange={handleChange}
-          placeholder={"Entrez votre prénom"}
+          placeholder={"Entrez le nom de votre entreprise"}
           required
           Icon={<BsPersonCircle />}
           className="input-login"
           version="normal"
         />
-        <Button label={"Accéder à mon espace"} Icon={<IoChevronForward />} />
+        <Button
+          label={"Accéder à mon espace client"}
+          Icon={<IoChevronForward />}
+        />
       </div>
     </LoginFormStyled>
   );
 }
 
 const LoginFormStyled = styled.form`
+  border: 1px solid red;
+  background: ${theme.colors.primary};
   text-align: center;
-  max-width: 500px;
-  min-width: 400px;
+
   margin: 0px auto;
-  padding: 40px ${theme.spacing.lg};
+  padding: 50px ${theme.spacing.lg};
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
-  h1 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-  h2 {
-    margin: 20px 10px 10px;
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P4};
+  width: 100%;
+
+  .container {
+    width: 90%;
   }
 
   .input-login {
     margin: 18px 0; // must be handled in Parent
+  }
+
+  h2 {
+    font-size: ${theme.fonts.size.P4};
+    color: ${theme.colors.white};
+    font-family: "Gilroy", sans-serif;
+    font-style: italic;
+    margin-bottom: 50px;
+    /* border: 1px solid red; */
   }
 `;

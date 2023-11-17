@@ -5,18 +5,33 @@ import { theme } from "../../../theme";
 export default function Welcome() {
   return (
     <WelcomeStyled>
-      <h1>Bienvenue chez nous !</h1>
+      <h1>Vive le commerce vivant !</h1>
       <hr />
-      <h2>Connectez-vous</h2>
     </WelcomeStyled>
   );
 }
 
 const WelcomeStyled = styled.div`
-  margin: 30px 0;
-  
+  /* background: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  text-align: center;
+
+  h1 {
+    font-family: "Gilroy", sans-serif;
+    font-weight: ${theme.fonts.weights.extraHeavy};
+    line-height: 5rem;
+    text-transform: uppercase;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P6};
+    /* max-width: 800px; */
+    /* min-width: 400px; */
+  }
+
   hr {
-    border: 1.5px solid ${theme.colors.loginLine};
+    border: 1.5px solid ${theme.colors.primary};
     margin-bottom: ${theme.gridUnit * 5}px;
     margin-top: ${theme.gridUnit * 5}px;
   }
