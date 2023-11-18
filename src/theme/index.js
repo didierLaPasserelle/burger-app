@@ -1,5 +1,6 @@
 const colors = {
   dark: "#17161a",
+  newDark: "#333334",
   incognito: "#333",
   white: "#fff",
   background_white: "#f5f5f7",
@@ -41,7 +42,7 @@ const fonts = {
     P4: "36px",
     P5: "48px",
     P6: "60px",
-    P7: "70px"
+    P7: "70px",
   },
   weights: {
     light: 300,
@@ -50,7 +51,7 @@ const fonts = {
     semiBold: 600,
     bold: 700,
     heavy: 800,
-    extraHeavy: 900
+    extraHeavy: 900,
   },
   families: {
     stylish: `"Amatic SC", cursive`,

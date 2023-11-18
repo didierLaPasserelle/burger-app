@@ -1,26 +1,34 @@
 import styled from "styled-components";
 import LogoEpicery from "../../reusable-ui/LogoEpicery";
 import LoginForm from "./LoginForm";
-import Footer from "./Footer";
 import Welcome from "./Welcome";
+import Banner from "../../reusable-ui/Banner";
+import SocialMedia from "./SocialMedia";
+import Footer from "./Footer";
 
 export default function LoginPage() {
   return (
     <LoginPageStyled>
-      <div className="left-side">
-        <LogoEpicery className={"logo-login-page"} />
-        <Welcome />
-        <Footer />
+      <Banner />
+      <div className="main">
+        <div className="left-side">
+          <LogoEpicery className={"logo-login-page"} />
+          <Welcome />
+        </div>
+        <LoginForm />
       </div>
-      <LoginForm />
+      <Footer />
     </LoginPageStyled>
   );
 }
 
 const LoginPageStyled = styled.div`
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 65% 35%;
+  .main {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    /* border: 1px solid red; */
+  }
 
   background: url("https://www.epicery.com/images/homepage/header-background-refonte.jpg")
     fixed center/cover rgba(0, 0, 0, 0.3);

@@ -19,6 +19,7 @@ const TextInputStyled = styled.div`
   border-radius: ${theme.borderRadius.roundedFull};
   display: flex;
   align-items: center;
+  border: 1px solid ${theme.colors.greyMedium};
 
   .icon {
     font-size: ${theme.fonts.size.SM};
@@ -34,6 +35,10 @@ const TextInputStyled = styled.div`
     &::placeholder {
       color: ${theme.colors.greyMedium};
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 
   /* ${(props) => {
@@ -45,7 +50,7 @@ const TextInputStyled = styled.div`
 `;
 
 const extraStyleNormal = css`
-  background-color: ${theme.colors.white};
+  background-color: #fafafa;
   padding: 18px 28px;
   color: ${theme.colors.greySemiDark};
 

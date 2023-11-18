@@ -12,7 +12,6 @@ export default function Welcome() {
 }
 
 const WelcomeStyled = styled.div`
-  /* background: blue; */
   display: flex;
   justify-content: center;
   align-items: center;
