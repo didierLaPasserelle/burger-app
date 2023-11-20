@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import LeftSide from "./LeftSide";
-import RightSide from "./RightSide";
+import LeftSide from "./leftside/LeftSide";
+import RightSide from "./rightside/RightSide";
 
 export default function LoginPageBody() {
   return (

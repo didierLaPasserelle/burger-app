@@ -5,6 +5,7 @@ import { iconsConfig } from "./iconConfig"
 export default function SocialMedia() {
 
   const iconsTab = iconsConfig
+  
   return (
     <SocialMediaStyled className="social-media">
       {iconsTab.map((Icon) => (
