@@ -25,8 +25,6 @@ const WelcomeStyled = styled.div`
     text-transform: uppercase;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P6};
-    /* max-width: 800px; */
-    /* min-width: 400px; */
   }
 
   hr {

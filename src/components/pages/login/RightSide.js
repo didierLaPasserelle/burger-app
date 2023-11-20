@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { IoChevronForward } from "react-icons/io5";
-import { BsPersonCircle } from "react-icons/bs";
-import { RiLockPasswordFill } from "react-icons/ri";
 import { AiOutlineShop } from "react-icons/ai";
-import { MdOutlinePedalBike } from "react-icons/md";
-
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
 import { authenticateUsername } from "../../../api/user";
-import Welcome from "./Welcome";
 import { BsArrowRight } from "react-icons/bs";
 import { GiPadlock } from "react-icons/gi";
 
-export default function LoginForm() {
+export default function RightSide() {
   // state
   const [username, setUsername] = useState("");
   // const [inputPassword, setInputPassword] = useState("password");
@@ -34,10 +28,6 @@ export default function LoginForm() {
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
-
-  // const handleChangePassword = (e) => {
-  //   setInputPassword(e.target.value);
-  // };
 
   // affichage
   return (

@@ -1,5 +1,3 @@
-import { FaFacebook, FaInstagram } from "react-icons/fa";
-import { CiTwitter } from "react-icons/ci";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import SocialMedia from "./SocialMedia";

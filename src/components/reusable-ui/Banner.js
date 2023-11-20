@@ -2,7 +2,6 @@ import React from "react";
 import { MdOutlinePedalBike } from "react-icons/md";
 import { theme } from "../../theme";
 import styled from "styled-components";
-import Footer from "../pages/login/Footer";
 
 export default function Banner() {
   return (
