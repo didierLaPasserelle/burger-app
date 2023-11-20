@@ -11,13 +11,12 @@ import {
   EMPTY_PRODUCT,
   IMAGE_BY_DEFAULT,
   IMAGE_OUT_OF_STOCK,
-} from "../../../../../enums/product";
+} from "../../../../../../enums/product";
 import { isEmpty } from "../../../../../utils/array";
 import Loader from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { menuAnimation } from "../../../../../../theme/animations";
 import { convertStringToBoolean } from "../../../../../utils/string";
-import Ribbon from "../../../../../reusable-ui/Ribbon";
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated";
 
 export default function Menu() {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import BasketCard from "../BasketCard";
-import { BASKET_MESSAGE, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
+import { BASKET_MESSAGE, IMAGE_BY_DEFAULT } from "../../../../../../enums/product";
 import OrderContext from "../../../../../../context/OrderContext";
 import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
