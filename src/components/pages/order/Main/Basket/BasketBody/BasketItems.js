@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import BasketCard from "../BasketCard";
 import { BASKET_MESSAGE, IMAGE_BY_DEFAULT } from "../../../../../../enums/product";
 import OrderContext from "../../../../../../context/OrderContext";
-import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
+import { checkIfProductIsClicked } from "../../MainLeftSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketAnimation } from "../../../../../../theme/animations";
 import { formatPrice } from "../../../../../utils/maths";
