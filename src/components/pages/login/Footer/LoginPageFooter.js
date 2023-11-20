@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import SocialMedia from "../SocialMedia";
+import SocialMedia from "./SocialMedia";
 
 export default function LoginPageFooter() {
   return (

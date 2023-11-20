@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineShop } from "react-icons/ai";
-import TextInput from "../../reusable-ui/TextInput";
-import Button from "../../reusable-ui/Button";
-import { theme } from "../../../theme";
-import { authenticateUsername } from "../../../api/user";
+import TextInput from "../../../reusable-ui/TextInput";
+import Button from "../../../reusable-ui/Button";
+import { theme } from "../../../../theme";
+import { authenticateUsername } from "../../../../api/user";
 import { BsArrowRight } from "react-icons/bs";
 import { GiPadlock } from "react-icons/gi";
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LogoEpicery from "../../reusable-ui/LogoEpicery";
+import LogoEpicery from "../../../reusable-ui/LogoEpicery";
 import Welcome from "./Welcome";
 
 export default function LeftSide() {

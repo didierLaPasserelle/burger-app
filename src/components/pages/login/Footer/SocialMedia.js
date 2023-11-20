@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import { iconsConfig } from "./Footer/iconConfig"
+import { theme } from "../../../../theme";
+import { iconsConfig } from "./iconConfig"
 
 export default function SocialMedia() {
 

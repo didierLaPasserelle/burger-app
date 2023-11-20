@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Banner from "../../reusable-ui/Banner";
 import Footer from "./Footer/LoginPageFooter";
 
-import LoginPageBody from "./LoginPageBody";
+import LoginPageBody from "./loginpagebody/LoginPageBody";
 
 export default function LoginPage() {
   return (
