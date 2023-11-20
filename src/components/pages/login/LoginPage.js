@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Banner from "../../reusable-ui/Banner";
-import Footer from "./Footer";
+import Footer from "./Footer/LoginPageFooter";
 
 import LoginPageBody from "./LoginPageBody";
 

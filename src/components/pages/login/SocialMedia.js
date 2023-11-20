@@ -1,13 +1,15 @@
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import { iconsConfig } from "./Footer/iconConfig"
 
 export default function SocialMedia() {
+
+  const iconsTab = iconsConfig
   return (
     <SocialMediaStyled className="social-media">
-      <FaFacebook className="social-media-icon" />
-      <FaTwitter className="social-media-icon" />
-      <FaInstagram className="social-media-icon" />
+      {iconsTab.map((Icon) => (
+        <span key={Icon.id}>{Icon.icon}</span>
+      ))}
     </SocialMediaStyled>
   );
 }

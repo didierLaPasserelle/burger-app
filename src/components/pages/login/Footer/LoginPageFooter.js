@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import SocialMedia from "./SocialMedia";
+import { theme } from "../../../../theme";
+import SocialMedia from "../SocialMedia";
 
-export default function Footer() {
+export default function LoginPageFooter() {
   return (
     <FooterStyled>
       <div className="author">
