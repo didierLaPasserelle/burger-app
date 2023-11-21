@@ -5,15 +5,17 @@ import { theme } from "../../../../../theme";
 import { authenticateUsername } from "../../../../../api/user";
 import Mentions from "./Mentions";
 import LoginForm from "./form-section/LoginForm";
+import { VscBellDot } from "react-icons/vsc";
 
 export default function RightSide() {
   // state
   const [username, setUsername] = useState({
-    businessName:"",
-    password:""
+    businessName: "",
+    password: "",
   });
 
   const navigate = useNavigate();
+ 
 
   // comportements
   const handleSubmit = async (event) => {
@@ -21,19 +23,20 @@ export default function RightSide() {
 
     const userReceived = await authenticateUsername(username.businessName);
 
-    setUsername({ businessName: "", password: "" });;
+    setUsername({ businessName: "", password: "" });
     navigate(`order/${userReceived.username}`);
   };
 
   const handleChange = (e) => {
-    const { value, name} = e.target;
-    setUsername({...username, [name]:value})
+    const { value, name } = e.target;
+    setUsername({ ...username, [name]: value });
   };
 
   // affichage
   return (
     <RightSideStyled action="submit" onSubmit={handleSubmit}>
-      <h2>Espace Artisans</h2>
+      <VscBellDot className="bell-icon" size={20} />
+      <h2 className="title">Hello les artisans !</h2>
       <LoginForm username={username} handleChange={handleChange} />
       <Mentions />
     </RightSideStyled>
@@ -45,7 +48,7 @@ const RightSideStyled = styled.form`
   text-align: center;
 
   margin: 0px auto;
-  padding: 50px ${theme.spacing.lg};
+  /* padding: 50px ${theme.spacing.lg}; */
 
   display: flex;
   justify-content: center;
@@ -55,7 +58,20 @@ const RightSideStyled = styled.form`
   width: 100%;
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.2) inset;
 
+  position: relative;
+
   .input-login {
     margin: 18px 0; // must be handled in Parent
+  }
+
+  .bell-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+  }
+ 
+  .title {
+    padding: 70px 0 30px;
   }
 `;
