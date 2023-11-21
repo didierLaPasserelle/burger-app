@@ -16,3 +16,5 @@ export const BASKET_MESSAGE = {
   LOADING: "Chargement en cours...",
   OUT_OF_STOCK : "Non disponible",
 };
+
+export const NO_PASSWORD_MESSAGE = "(Aucun mot de passe requis)"

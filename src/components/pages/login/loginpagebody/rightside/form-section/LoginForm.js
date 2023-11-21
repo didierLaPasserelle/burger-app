@@ -7,6 +7,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { theme } from "../../../../../../theme";
 import styled from "styled-components";
 import { useState } from "react";
+import { NO_PASSWORD_MESSAGE } from "../../../../../../enums/product"
 
 export default function LoginForm({ username, handleChange }) {
   const [isClicked, setIsClicked] = useState(true);
@@ -25,8 +26,7 @@ export default function LoginForm({ username, handleChange }) {
   });
 
   const passwordMessage = linksTab.find(
-    (link) => link.text === "J'accède à la démo" && isClicked
-  );
+    (link) => link.text === "J'accède à la démo");
 
   return (
     <LoginFormStyled>
@@ -41,7 +41,7 @@ export default function LoginForm({ username, handleChange }) {
             />
           </h2>
         ))}
-        <span>{passwordMessage ? "Pas de mot de passe requis" : null}</span>
+        <span>{passwordMessage ? NO_PASSWORD_MESSAGE : null}</span>
       </div>
       {isClicked ? (
         <DemoForm username={username} handleChange={handleChange} />
@@ -56,55 +56,37 @@ export default function LoginForm({ username, handleChange }) {
 
 const LoginFormStyled = styled.div`
   width: 90%;
-  min-height: 500px;
+  min-height: 430px;
   box-shadow: 0 10px 15px 3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  padding: 50px;
-  padding-top: 30px;
+  padding: 40px 50px 0px;
   border-radius: ${theme.borderRadius.extraRound};
+  
 
   .login-modes {
     display: grid;
     grid-template-columns: 50% 50%;
     border-bottom: 1px solid ${theme.colors.greyLight};
-    margin-bottom: 0;
 
-    .version-demo {
-      display: flex;
-      flex-direction: column;
-      h2 {
-        margin: 0;
-        padding-bottom: 5px;
-      }
-    }
-
+    margin-bottom: 40px;
+  
     span {
         font-size: ${theme.fonts.size.XS};
         color: ${theme.colors.greyDark};
-        margin-top: -100px;
+        margin: 5px 0 10px;
         align-self: center;
       }
-
-    .version-client {
-      color: ${theme.colors.primary};
-    }
-    h2 {
-      font-size: ${theme.fonts.size.P2};
-      padding: 20px 10px;
-      font-style: normal;
-      line-height: 32px;
-    }
-    margin-bottom: 40px;
   }
 
   h2 {
-    font-size: ${theme.fonts.size.P4};
+    font-size: ${theme.fonts.size.P2};
     color: ${theme.colors.newDark};
     font-family: "Gilroy", sans-serif;
-    margin-bottom: 50px;
+    line-height: ${theme.spacing.lg};
   }
 
   .icon {
     font-size: ${theme.fonts.size.P2};
   }
+
 
 `;
