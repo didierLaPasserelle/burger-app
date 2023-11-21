@@ -7,7 +7,7 @@ export default function DemoForm({ username, handleChange }) {
       <TextInput
         value={username.businessName}
         onChange={handleChange}
-        placeholder={"Entrez votre nom commerçant"}
+        placeholder={"Entrez le nom de votre enseigne"}
         required
         Icon={<AiOutlineShop />}
         className="input-login"
