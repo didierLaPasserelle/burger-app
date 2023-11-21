@@ -34,6 +34,7 @@ const BannerStyled = styled.div`
   right: 0;
   display: flex;
   align-items: center;
+  z-index: 3;
 
   .icon {
     color: ${theme.colors.greyMedium};
