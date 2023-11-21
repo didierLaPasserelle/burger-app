@@ -59,7 +59,7 @@ const TextInputStyled = styled.div`
 `;
 
 const extraStyleNormal = css`
-  background-color: #fafafa;
+  background-color: ${theme.colors.greyUltraLight};
   padding: 18px 28px;
   color: ${theme.colors.greySemiDark};
 
@@ -68,7 +68,7 @@ const extraStyleNormal = css`
     width: 100%;
 
     &::placeholder {
-      background: ${theme.colors.white};
+      background: #fafafa;
     }
   }
 `;
