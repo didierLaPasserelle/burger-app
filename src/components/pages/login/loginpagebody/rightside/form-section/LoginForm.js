@@ -25,8 +25,10 @@ export default function LoginForm({ username, handleChange }) {
     isClicked,
   });
 
-  const passwordMessage = linksTab.find(
+  const demoPasswordMessage = linksTab.find(
     (link) => link.text === "J'accède à la démo");
+
+  const isInputEmpty = username.businessName === "" && username.password === "" ;
 
   return (
     <LoginFormStyled>
@@ -41,15 +43,14 @@ export default function LoginForm({ username, handleChange }) {
             />
           </h2>
         ))}
-        <span>{passwordMessage ? NO_PASSWORD_MESSAGE : null}</span>
+        <span>{demoPasswordMessage ? NO_PASSWORD_MESSAGE : null}</span>
       </div>
       {isClicked ? (
         <DemoForm username={username} handleChange={handleChange} />
       ) : (
         <ClientForm username={username} handleChange={handleChange} />
       )}
-
-      <Button label={"J'accède à mon espace"} Icon={<BsArrowRight />} />
+      <Button disabled={isInputEmpty} label={"J'accède à mon espace"} Icon={<BsArrowRight />} />
     </LoginFormStyled>
   );
 }
