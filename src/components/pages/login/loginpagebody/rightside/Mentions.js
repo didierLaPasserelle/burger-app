@@ -15,6 +15,7 @@ export default function Mentions() {
 const MentionsStyled = styled.div`
   font-size: ${theme.fonts.size.XS};
   color: ${theme.colors.greyBlue};
-  margin-top: 10px;
+  margin: 40px;
   width: 90%;
+  text-align: left;
 `;
