@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
 import { authenticateUsername } from "../../../../../api/user";
 import Mentions from "./Mentions";
 import LoginForm from "./form-section/LoginForm";
-import { VscBellDot } from "react-icons/vsc";
+import { theme } from "../../../../../theme";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGift } from "@fortawesome/free-solid-svg-icons";
 
 export default function RightSide() {
   // state
@@ -15,7 +16,6 @@ export default function RightSide() {
   });
 
   const navigate = useNavigate();
- 
 
   // comportements
   const handleSubmit = async (event) => {
@@ -35,9 +35,15 @@ export default function RightSide() {
   // affichage
   return (
     <RightSideStyled action="submit" onSubmit={handleSubmit}>
-      <VscBellDot className="bell-icon" size={20} />
+      <div className="notification-badge"></div> 
+      <FontAwesomeIcon icon={faGift} size="lg" className="gift-icon" />
+
       <h2 className="title">Hello les artisans !</h2>
-      <LoginForm username={username} handleChange={handleChange} />
+      <LoginForm
+        username={username}
+        setUsername={setUsername}
+        handleChange={handleChange}
+      />
       <Mentions />
     </RightSideStyled>
   );
@@ -48,7 +54,6 @@ const RightSideStyled = styled.form`
   text-align: center;
 
   margin: 0px auto;
-  /* padding: 50px ${theme.spacing.lg}; */
 
   display: flex;
   justify-content: center;
@@ -60,18 +65,29 @@ const RightSideStyled = styled.form`
 
   position: relative;
 
-  .input-login {
-    margin: 18px 0; // must be handled in Parent
-  }
-
-  .bell-icon {
+  .gift-icon {
     cursor: pointer;
     position: absolute;
-    top: 30px;
+    top: 35px;
     right: 50px;
+    color: ${theme.colors.newDark};
   }
- 
+
+  .notification-badge {
+    position: absolute;
+    top: 28px; 
+    right: 45px; 
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: red; 
+  }
+
   .title {
     padding: 70px 0 30px;
+    color: ${theme.colors.newDark};
+  }
+  .input-login {
+    margin: 18px 0; // must be handled in Parent
   }
 `;
