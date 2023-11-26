@@ -7,7 +7,11 @@ import LogoEpicery from "../../../reusable-ui/LogoEpicery";
 export default function Navbar() {
   return (
     <NavbarStyled>
-      <LogoEpicery className="logo-order-page" onClick={() => refreshPage()} />
+      <LogoEpicery
+        className="logo-order-page"
+        color={theme.colors.newDark}
+        onClick={() => refreshPage()}
+      />
       <NavbarRightSide />
     </NavbarStyled>
   );
@@ -26,6 +30,6 @@ const NavbarStyled = styled.nav`
     display: flex;
     justify-content: center;
     align-content: center;
-    font-family: "Gilroy", "sansserif";
+    font-family: "Gilroy", "sans serif";
   }
 `;

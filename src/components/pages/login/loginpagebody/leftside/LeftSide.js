@@ -5,7 +5,7 @@ import Welcome from "./Welcome";
 export default function LeftSide() {
   return (
     <LetftSideStyled>
-      <LogoEpicery className={"logo-login-page"} />
+      <LogoEpicery color={"#12b981"} className={"logo-login-page"} />
       <Welcome />
     </LetftSideStyled>
   );
