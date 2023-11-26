@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "Gilroy"; /* Nom de votre police */
-  src: url("../public/assets/fonts/gilroy/Gilroy-ExtraboldItalic.ttf")
+  font-family: "Gilroy"; /* Nom de la police */
+  src: url("../public/assets/fonts/gilroy/Gilroy-HeavyItalic.ttf")
     format("ttf");
 }
 
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;

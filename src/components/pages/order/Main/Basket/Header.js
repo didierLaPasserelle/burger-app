@@ -23,11 +23,11 @@ const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: ${theme.fonts.families.stylish};
+  font-family: "Gilroy", sans-serif;
   background: ${theme.colors.background_dark};
   color: ${theme.colors.primary};
   font-size: ${theme.fonts.size.P4};
-  font-weight: ${theme.fonts.weights.bold};
+  font-weight: ${theme.fonts.weights.regular};
   padding: 0px 16px;
   height: 70px;
 `;
