@@ -1,27 +1,32 @@
 import styled from "styled-components";
-import Logo from "../../reusable-ui/Logo";
-import LoginForm from "./LoginForm";
+import Banner from "../../reusable-ui/Banner";
+import Footer from "./Footer/LoginPageFooter";
+
+import LoginPageBody from "./loginpagebody/LoginPageBody";
+import { useState } from "react";
 
 export default function LoginPage() {
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
+
+  const handleDelete = () => { 
+    setIsBannerVisible(false)
+   }
+
   return (
     <LoginPageStyled>
-      <Logo className={"logo-login-page"} />
-      <LoginForm />
+      {isBannerVisible && <Banner onClick={handleDelete} />}
+      <LoginPageBody />
+      <Footer />
     </LoginPageStyled>
   );
 }
 
 const LoginPageStyled = styled.div`
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background: url("/images/burger-and-fries-background.jpg") fixed center/cover rgba(0, 0, 0, 0.7);
-  background-blend-mode: darken;
-
-  .logo-login-page {
-    transform: scale(2.5);
-  }
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
 `;

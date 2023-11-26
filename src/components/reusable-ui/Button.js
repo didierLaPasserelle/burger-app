@@ -7,7 +7,7 @@ export default function Button({
   className,
   version = "normal",
   onClick,
-  disabled
+  disabled,
 }) {
   return (
     <ButtonStyled
@@ -29,7 +29,6 @@ const ButtonStyled = styled.button`
   .icon {
     margin-left: 10px;
   }
-
 `;
 
 const extraStyleNormal = css`
@@ -44,12 +43,12 @@ const extraStyleNormal = css`
   line-height: 1;
 
   padding: 18px 24px;
-  border-radius: 5px;
+  border-radius: ${theme.borderRadius.roundedFull};
   font-size: 15px;
   font-weight: 800;
   color: white;
-  background-color: #ff9f1b;
-  border: 1px solid #ff9f1b;
+  background-color: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
   cursor: pointer;
 
   :hover {

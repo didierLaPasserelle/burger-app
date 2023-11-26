@@ -4,7 +4,7 @@ import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
-import { EMPTY_PRODUCT } from "../../enums/product";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
@@ -84,12 +84,13 @@ const OrderPageStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   .container {
-    height: 95vh;
+    height: 100vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
+
   }
 `;
