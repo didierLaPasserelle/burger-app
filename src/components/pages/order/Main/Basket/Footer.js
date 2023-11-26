@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import LogoEpicery from "../../../../reusable-ui/LogoEpicery";
 
 export default function Footer() {
-  return <FooterStyled>Codé avec ❤️ et React.JS</FooterStyled>;
+  return (
+    <FooterStyled>
+      <LogoEpicery />
+    </FooterStyled>
+  );
 }
 
 const FooterStyled = styled.span`

@@ -1,5 +1,5 @@
 import { linksConfig } from "./linksConfig";
-import { CustomLink } from "../../../../../reusable-ui/CustomLink";
+import { CustomTitle } from "../../../../../reusable-ui/CustomTitle";
 import DemoForm from "./DemoForm";
 import ClientForm from "./ClientForm";
 import Button from "../../../../../reusable-ui/Button";
@@ -39,7 +39,7 @@ export default function LoginForm({ username, setUsername, handleChange }) {
       <div className="login-modes">
         {linksTab.map((link) => (
           <h2 key={link.id}>
-            <CustomLink
+            <CustomTitle
               onClick={link.onClick}
               isActive={link.isActive}
               text={link.text}

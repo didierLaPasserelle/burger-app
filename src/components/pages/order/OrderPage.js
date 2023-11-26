@@ -84,12 +84,13 @@ const OrderPageStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   .container {
-    height: 95vh;
-    width: 1500px;
+    height: 100vh;
+    width: 1400px;
     display: flex;
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
+
   }
 `;
