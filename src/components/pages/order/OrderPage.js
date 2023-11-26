@@ -69,28 +69,23 @@ export default function OrderPage() {
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
-        <div className="container">
-          <Navbar />
-          <Main />
-        </div>
+        <Navbar />
+        <Main />
       </OrderPageStyled>
     </OrderContext.Provider>
   );
 }
 
 const OrderPageStyled = styled.div`
-  background: ${theme.colors.primary};
-  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  .container {
-    height: 100vh;
-    width: 1400px;
-    display: flex;
-    flex-direction: column;
-    border-radius: ${theme.borderRadius.extraRound};
-
-  }
+  flex-direction: column;
+  background: ${theme.colors.primary};
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
+
