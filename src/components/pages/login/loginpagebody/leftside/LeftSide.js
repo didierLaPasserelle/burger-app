@@ -12,15 +12,14 @@ export default function LeftSide() {
 }
 
 const LetftSideStyled = styled.div`
-  background: url("https://www.epicery.com/images/homepage/header-background-refonte.jpg")
-    fixed center/cover rgba(0, 0, 0, 0.3);
+  background: url("/images/background-xmas.jpg") center/cover no-repeat
+    rgba(0, 0, 0, 0.3);
   background-blend-mode: darken;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 70px;
 
   .logo-login-page {
     transform: scale(4);
