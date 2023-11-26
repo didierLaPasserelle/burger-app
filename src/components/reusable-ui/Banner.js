@@ -1,15 +1,9 @@
-import React from "react";
 import { MdOutlinePedalBike } from "react-icons/md";
 import { theme } from "../../theme";
 import styled from "styled-components";
+import { RxCross1 } from "react-icons/rx";
 
-export default function Banner() {
-
-  const handleDelete = () => {
-    const banner = document.querySelector(".banner");
-    if (banner) banner.remove();
-    
-  };
+export default function Banner({ onClick }) {
   return (
     <BannerStyled className="banner">
       <div className="message">
@@ -18,7 +12,9 @@ export default function Banner() {
           Rappel pour vos nouveaux clients : livraison offerte dès 60€ d'achat*
         </span>
       </div>
-      <span className="closing-cross" onClick={handleDelete}>X</span>
+      <button onClick={onClick}>
+        <RxCross1 />
+      </button>
     </BannerStyled>
   );
 }
@@ -50,8 +46,11 @@ const BannerStyled = styled.div`
     }
   }
 
-  .closing-cross {
+  button {
+    background: transparent;
+    border: none;
+    color: ${theme.colors.white};
+    margin-right: 15px;
     cursor: pointer;
-    text-align: right;
   }
 `;
