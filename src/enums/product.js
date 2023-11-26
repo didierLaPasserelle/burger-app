@@ -17,4 +17,4 @@ export const BASKET_MESSAGE = {
   OUT_OF_STOCK : "Non disponible",
 };
 
-export const NO_PASSWORD_MESSAGE = "(Aucun mot de passe requis)"
+export const NO_PASSWORD_MESSAGE = "(aucun mot de passe requis)"
