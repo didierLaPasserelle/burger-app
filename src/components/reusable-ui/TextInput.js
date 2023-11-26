@@ -65,10 +65,12 @@ const extraStyleNormal = css`
 
   input {
     color: ${theme.colors.dark};
+    background-color: ${theme.colors.greyUltraLight};
     width: 100%;
 
     &::placeholder {
-      background: #fafafa;
+      background: ${theme.colors.greyUltraLight};
+    
     }
   }
 `;
