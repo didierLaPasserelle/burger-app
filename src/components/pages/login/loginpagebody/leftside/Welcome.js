@@ -5,8 +5,7 @@ import { theme } from "../../../../../theme";
 export default function Welcome() {
   return (
     <WelcomeStyled>
-      <h1>Vive le commerce vivant !</h1>
-      <hr />
+      <h1>Vive le commerce <br /> vivant !</h1>
     </WelcomeStyled>
   );
 }
@@ -17,19 +16,13 @@ const WelcomeStyled = styled.div`
   align-items: center;
   font-style: italic;
   text-align: center;
+  font-family: "Gilroy", sans-serif;
 
   h1 {
-    font-family: "Gilroy", sans-serif;
-    font-weight: ${theme.fonts.weights.extraHeavy};
     line-height: 5rem;
     text-transform: uppercase;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P6};
   }
 
-  hr {
-    border: 1.5px solid ${theme.colors.primary};
-    margin-bottom: ${theme.gridUnit * 5}px;
-    margin-top: ${theme.gridUnit * 5}px;
-  }
 `;
