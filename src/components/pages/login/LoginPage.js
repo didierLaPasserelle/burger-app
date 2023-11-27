@@ -1,20 +1,10 @@
 import styled from "styled-components";
-import Banner from "../../reusable-ui/Banner";
 import Footer from "./Footer/LoginPageFooter";
-
 import LoginPageBody from "./loginpagebody/LoginPageBody";
-import { useState } from "react";
 
 export default function LoginPage() {
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
-
-  const handleDelete = () => { 
-    setIsBannerVisible(false)
-   }
-
   return (
     <LoginPageStyled>
-      {isBannerVisible && <Banner onClick={handleDelete} />}
       <LoginPageBody />
       <Footer />
     </LoginPageStyled>

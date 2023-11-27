@@ -9,6 +9,7 @@ import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helper/initialiseUserSession";
+import Banner from "../../reusable-ui/Banner";
 
 export default function OrderPage() {
   // state
@@ -18,6 +19,8 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [cardClickedOn, setCardClickedOn] = useState(EMPTY_PRODUCT);
   const [isLoading, setIsLoading] = useState(true);
+  const [isBasketVisible, setIsBasketVisible] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
 
   const { username } = useParams();
   const titleEditRef = useRef();
@@ -33,6 +36,14 @@ export default function OrderPage() {
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     titleEditRef.current.focus();
+  };
+
+  const handleBannerDelete = () => {
+    setIsBannerVisible(false);
+  };
+
+  const toggleBasketVisibility = () => {
+    setIsBasketVisible(!isBasketVisible);
   };
 
   useEffect(() => {
@@ -63,12 +74,16 @@ export default function OrderPage() {
     handleItemSelected,
     isLoading,
     setIsLoading,
+    isBasketVisible,
+    setIsBasketVisible,
+    toggleBasketVisibility,
   };
 
   //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
+        {isBannerVisible && <Banner onClick={handleBannerDelete} />}
         <Navbar />
         <Main />
       </OrderPageStyled>
@@ -88,4 +103,3 @@ const OrderPageStyled = styled.div`
   right: 0;
   bottom: 0;
 `;
-
