@@ -1,20 +1,26 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import { formatPrice } from "../../../../utils/maths";
 import OrderContext from "../../../../../context/OrderContext";
-import { calculateAmountToPay } from "./helper/mathBasket";
 import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
 
 export default function Header() {
-  const { basket, menu } = useContext(OrderContext);
+  const { basket } = useContext(OrderContext);
 
-  const amountToPay = calculateAmountToPay(basket, menu);
+  const totalQuantity = basket.reduce((totalQuantity, basketItem) => {
+    totalQuantity += basketItem.quantity;
+    return totalQuantity;
+  }, 0);
 
   return (
     <HeaderStyled>
-      <span>Total</span>
-      <CasinoEffect count={formatPrice(amountToPay)} />
+      <span>
+        <span className="title">Mon panier</span> |{" "}
+        <span className="article">
+          <CasinoEffect count={totalQuantity} />
+          <span className="label"> article(s)</span>
+        </span>
+      </span>
     </HeaderStyled>
   );
 }
@@ -24,10 +30,30 @@ const HeaderStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   font-family: "Gilroy", sans-serif;
-  background: ${theme.colors.background_dark};
-  color: ${theme.colors.primary};
-  font-size: ${theme.fonts.size.P4};
+  background: ${theme.colors.primary};
+  color: ${theme.colors.white};
+  font-size: ${theme.fonts.size.P2};
   font-weight: ${theme.fonts.weights.regular};
-  padding: 0px 16px;
-  height: 70px;
+  padding: 15px 14px;
+
+  .title {
+    font-weight: ${theme.fonts.weights.bold};
+  }
+
+  .article {
+    display: inline-flex;
+    font-size: ${theme.fonts.size.P0};
+
+    .label {
+      margin-left: 3px;
+    }
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    color: ${theme.colors.white};
+    margin-right: 8px;
+    cursor: pointer;
+  }
 `;
