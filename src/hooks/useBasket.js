@@ -60,7 +60,7 @@ export const useBasket = () => {
     const indexOfBasketItemToIncrement = basketCopy.findIndex(
       (item) => item.id === idItemToAdd
     );
-    if (basketCopy[indexOfBasketItemToIncrement].quantity >= 10) {
+    if (basketCopy[indexOfBasketItemToIncrement].quantity >= 50) {
       displayStopOrderMessage();
     } else {
       basketCopy[indexOfBasketItemToIncrement].quantity += 1;
@@ -85,7 +85,7 @@ export const useBasket = () => {
   };
 
   const displayStopOrderMessage = () => {
-    alert("Et bien mon cohon, quel appétit ! Mais tu ne peux pas commander davantage !");
+    alert("Quel appétit ! Mais tu ne peux pas commander davantage !");
   };
 
   return {
@@ -97,49 +97,3 @@ export const useBasket = () => {
   };
 };
 
-// const decrementQuantity = (idOfItemToDecrement, basketCopy, username) => {
-//   const index = basketCopy.findIndex(
-//     (item) => item.id === idOfItemToDecrement
-//   );
-
-//   if (index === -1) return;
-
-//     const isItemAlreadyInBasket = basketCopy[index].quantity > 1
-
-//   if (isItemAlreadyInBasket) {
-//     basketCopy[index].quantity--;
-//   } else {
-//     basketCopy.splice(index, 1);
-//   }
-
-//   setBasket(basketCopy);
-//   setLocalStorage(username, basketCopy);
-// };
-
-// const handleQuantityToDelete = (idOfItemToDelete, username) => {
-//   const basketCopy = deepClone(basket);
-
-//   decrementQuantity(idOfItemToDelete, basketCopy, username);
-// };
-
-//Gestionnaire de state qui appelle directement les setters dédiés
-
-// const decrementQuantity = (idOfItemToDelete, basketCopy, username) => {
-//   const indexOfBasketItemToDecrement = basketCopy.findIndex(
-//     (item) => item.id === idOfItemToDelete
-//   );
-//   if (basketCopy[indexOfBasketItemToDecrement].quantity > 1) {
-//     basketCopy[indexOfBasketItemToDecrement].quantity -= 1;
-//     setBasket(basketCopy);
-//     setLocalStorage(username, basketCopy);
-//     return;
-//   }
-
-//   const basketUpdated = basketCopy.filter(
-//     (item) => item.id !== idOfItemToDelete
-//   );
-//   setBasket(basketUpdated);
-//   setLocalStorage(username, basketUpdated);
-// };
-
-//Gestionnaire de state qui appelle directement les setters dédiés

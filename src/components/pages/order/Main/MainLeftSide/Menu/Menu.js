@@ -3,7 +3,7 @@ import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
-import Card from "../../../../../reusable-ui/Card";
+import Card from "../../../../../reusable-ui/Card/Card";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";

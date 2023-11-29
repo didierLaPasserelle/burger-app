@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme";
-import Button from "./Button";
-import { TiDelete } from "react-icons/ti";
-import { fadeInFromRight, fadeInFromTop } from "../../theme/animations";
+import { theme } from "../../../theme";
+import Button from "../Button";
+import { fadeInFromRight, fadeInFromTop } from "../../../theme/animations";
+import { FaTrashAlt } from "react-icons/fa";
+import { getCardButtons } from "./buttonConfig";
 
 export default function Card({
   title,
@@ -17,8 +18,15 @@ export default function Card({
   onRemove,
   isOverlapImageVisible,
   overlapImageSource,
-  quantity
+  quantity,
 }) {
+  const cardButtons = getCardButtons(
+    isOverlapImageVisible,
+    onRemove,
+    onAdd,
+    quantity
+  );
+
   return (
     <CardStyled
       className="produit"
@@ -33,7 +41,7 @@ export default function Card({
             aria-label="delete-button"
             onClick={onDelete}
           >
-            <TiDelete className="icon" />
+            <FaTrashAlt className="icon" />
           </button>
         )}
         <div className="image">
@@ -50,26 +58,16 @@ export default function Card({
           <div className="description">
             <div className="left-description">{leftDescription}</div>
             <div className="right-description">
-              <Button
-                className="primary-button"
-                label={"-"}
-                onClick={onRemove}
-                disabled={isOverlapImageVisible}
-                version= "three"
-              />
-              <Button
-                className="primary-button"
-                label={`${quantity}`}
-                disabled={isOverlapImageVisible}
-                version= "three"
-              />
-              <Button
-                className="primary-button"
-                label={"+"}
-                onClick={onAdd}
-                disabled={isOverlapImageVisible}
-                version= "three"
-              />
+              {cardButtons.map((cardButton) => (
+                <Button
+                  key={cardButton.id}
+                  className={cardButton.className}
+                  label={cardButton.label}
+                  onClick={cardButton.onClick}
+                  disabled={cardButton.disabled}
+                  version={cardButton.version}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -81,12 +79,12 @@ export default function Card({
 const CardStyled = styled.div`
   ${(props) => props.isHoverable && HoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
-  height: 330px;
+  height: 280px;
 
   .card {
     background: ${theme.colors.white};
     width: 240px;
-    height: 330px;
+    height: 280px;
     display: grid;
     grid-template-rows: 65% 1fr;
     padding: 20px 20px 10px;
@@ -96,8 +94,8 @@ const CardStyled = styled.div`
 
     .delete-button {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 20px;
+      right: 25px;
       cursor: pointer;
       color: ${theme.colors.primary};
       border: none;
@@ -107,8 +105,8 @@ const CardStyled = styled.div`
       padding: 0;
 
       .icon {
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
 
         :hover {
           color: ${theme.colors.red};
@@ -164,22 +162,23 @@ const CardStyled = styled.div`
 
       .title {
         margin: auto 0;
-        font-size: ${theme.fonts.size.P4};
+        font-size: ${theme.fonts.size.P1};
         position: relative;
         bottom: 10px;
-        font-weight: ${theme.fonts.weights.bold};
+        font-weight: ${theme.fonts.weights.extraHeavy};
         color: ${theme.colors.dark};
         text-align: left;
         white-space: nowrap;
         overflow: hidden;
         width: 100%;
         text-overflow: ellipsis;
-        font-family: "Amatic SC", cursive;
+        font-family: ${theme.fonts.families.gilroy};
       }
 
       .description {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        font-family: ${theme.fonts.families.gilroy};
 
         .left-description {
           display: flex;
@@ -202,6 +201,15 @@ const CardStyled = styled.div`
           .primary-button {
             font-size: ${theme.fonts.size.XS};
             padding: 12px;
+            &.left {
+              border-top-left-radius: ${theme.borderRadius.roundedFull};
+              border-bottom-left-radius: ${theme.borderRadius.roundedFull};
+            }
+
+            &.right {
+              border-top-right-radius: ${theme.borderRadius.roundedFull};
+              border-bottom-right-radius: ${theme.borderRadius.roundedFull};
+            }
           }
         }
       }
