@@ -7,7 +7,7 @@ export default function SubmitButton({ isSubmitted }) {
     <>
       <Button
         className="submit-button"
-        label={"Ajouter un nouveau produit au menu"}
+        label={"Ajouter un nouveau produit à votre carte"}
         version="success"
       />
       {isSubmitted && <SubmitMessage />}
