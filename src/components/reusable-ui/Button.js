@@ -8,7 +8,7 @@ export default function Button({
   version = "normal",
   onClick,
   disabled,
-  quantity
+  quantity,
 }) {
   return (
     <ButtonStyled
@@ -94,26 +94,27 @@ const extraStyleNormal = css`
 const extraStyleSuccess = css`
   cursor: pointer;
   color: ${theme.colors.white};
-  background: ${theme.colors.success};
-  border: 1px solid ${theme.colors.success};
-  border-radius: ${theme.borderRadius.round};
+  background: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
+  border-radius: ${theme.borderRadius.roundedFull};
   height: 100%;
-  padding: 0 1.5em;
+  /* padding: 0 1.5em; */
+  padding: 0 2rem;
   font-weight: ${theme.fonts.weights.semiBold};
   :hover {
     background: ${theme.colors.white};
-    color: ${theme.colors.success};
-    border: 1px solid ${theme.colors.success};
+    color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
   }
   :active {
     color: ${theme.colors.white};
-    background: ${theme.colors.success};
-    border: 1px solid ${theme.colors.success};
+    background: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
   }
 `;
 
 const extraStyleThree = css`
-width: 100%;
+  min-width: 39px;
   border: 1px solid red;
   display: inline-flex;
   justify-content: center;
@@ -128,9 +129,10 @@ width: 100%;
   font-size: 15px;
   font-weight: 800;
   color: white;
-  background-color: #ff9f1b;
-  border: 1px solid #ff9f1b;
+  background-color: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
   cursor: pointer;
+  /* border-radius: ${theme.borderRadius.roundedFull}; */
 
   :hover {
     color: ${theme.colors.primary};
@@ -163,11 +165,10 @@ width: 100%;
       color: ${theme.colors.primary};
     }
   }
-  
-`
+`;
 
 const extraStyle = {
   normal: extraStyleNormal,
   success: extraStyleSuccess,
-  three: extraStyleThree
+  three: extraStyleThree,
 };
