@@ -13,10 +13,6 @@ export default function LoginPage() {
 
 const LoginPageStyled = styled.div`
   min-height: 100vh;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-x: hidden;
+  display: grid;
+  grid-template-rows: 87% 1fr;
 `;
