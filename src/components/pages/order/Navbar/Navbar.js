@@ -5,6 +5,7 @@ import { refreshPage } from "../../../utils/window";
 import LogoEpicery from "../../../reusable-ui/LogoEpicery";
 
 export default function Navbar() {
+
   return (
     <NavbarStyled>
       <LogoEpicery
