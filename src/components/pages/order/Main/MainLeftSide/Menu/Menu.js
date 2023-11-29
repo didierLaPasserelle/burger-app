@@ -79,14 +79,7 @@ export default function Menu() {
   return (
     <TransitionGroup component={MenuStyled} className="menu">
       {menu.map(
-        ({
-          id,
-          title,
-          imageSource,
-          price,
-          isAvailable,
-          isPublicised,
-        }) => {
+        ({ id, title, imageSource, price, isAvailable, isPublicised }) => {
           const basketItem = basket.find((item) => item.id === id);
           const basketQuantity = basketItem ? basketItem.quantity : 0;
           return (
@@ -121,9 +114,11 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
+  background: url("/images/background-bread.jpg") center/cover no-repeat
+    rgba(0, 0, 0, 0.5);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
