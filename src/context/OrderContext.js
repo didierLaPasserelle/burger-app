@@ -1,7 +1,7 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
 export default createContext({
-  username : "",
+  username: "",
   isModeAdmin: false,
   setIsModeAdmin: () => {},
 
@@ -25,15 +25,18 @@ export default createContext({
   handleItemSelected: () => {},
 
   titleEditRef: {},
-  basket:[],
+  basket: [],
 
-  handleAddToBasket:() => {}, 
+  handleAddToBasket: () => {},
   handleDeleteBasketItem: () => {},
   handleRemoveFromBasket: () => {},
   handleQuantityDecrementation: () => {},
 
-
   isLoading: {},
-  setIsLoading: () => {}
+  setIsLoading: () => {},
 
- })
+  isBasketVisible: true,
+  setIsBasketVisible: () => {},
+
+  toggleBasketVisibility: () => {},
+});

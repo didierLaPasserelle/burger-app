@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helper/initialiseUserSession";
 import Banner from "../../reusable-ui/Banner";
+import { useBannerContext } from "../../../context/BannerContextProvider";
 
 export default function OrderPage() {
   // state
@@ -19,16 +20,22 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [cardClickedOn, setCardClickedOn] = useState(EMPTY_PRODUCT);
   const [isLoading, setIsLoading] = useState(true);
-  const [isBasketVisible, setIsBasketVisible] = useState(false);
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const [isBasketVisible, setIsBasketVisible] = useState(true);
 
   const { username } = useParams();
   const titleEditRef = useRef();
 
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
-  const { basket, setBasket, handleAddToBasket, handleDeleteBasketItem, handleRemoveFromBasket } =
-    useBasket();
+  const {
+    basket,
+    setBasket,
+    handleAddToBasket,
+    handleDeleteBasketItem,
+    handleRemoveFromBasket,
+  } = useBasket();
+
+  const { isBannerVisible, handleBannerDelete } = useBannerContext();
 
   const handleItemSelected = async (cardId) => {
     const itemClickedOn = menu.find((item) => item.id === cardId);
@@ -36,10 +43,6 @@ export default function OrderPage() {
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     titleEditRef.current.focus();
-  };
-
-  const handleBannerDelete = () => {
-    setIsBannerVisible(false);
   };
 
   const toggleBasketVisibility = () => {
@@ -74,7 +77,10 @@ export default function OrderPage() {
     handleItemSelected,
     isLoading,
     setIsLoading,
-    handleRemoveFromBasket
+    handleRemoveFromBasket,
+    toggleBasketVisibility,
+    isBasketVisible,
+    setIsBasketVisible,
   };
 
   //affichage

@@ -1,7 +1,7 @@
 import { MdOutlinePedalBike } from "react-icons/md";
 import { theme } from "../../theme";
 import styled from "styled-components";
-import { RxCross1 } from "react-icons/rx";
+import { ImCross } from "react-icons/im";
 
 export default function Banner({ onClick }) {
   return (
@@ -13,7 +13,7 @@ export default function Banner({ onClick }) {
         </span>
       </div>
       <button onClick={onClick}>
-        <RxCross1 />
+        <ImCross />
       </button>
     </BannerStyled>
   );
@@ -52,5 +52,8 @@ const BannerStyled = styled.div`
     color: ${theme.colors.white};
     margin-right: 15px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
