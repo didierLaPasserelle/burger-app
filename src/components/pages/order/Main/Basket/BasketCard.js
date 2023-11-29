@@ -79,15 +79,14 @@ const BasketCardStyled = styled.div`
     color: ${theme.colors.primary};
 
     .left-info {
-      /* border: 1px solid red; */
       display: grid;
       grid-template-rows: 60% 40%;
       margin-left: 12px;
       .title {
         display: flex;
         align-items: center;
-        font-family: ${theme.fonts.families.stylish};
-        font-size: ${theme.fonts.size.P3};
+        font-family: ${theme.fonts.families.gilroy};
+        font-size: ${theme.fonts.size.P0};
         line-height: 32px;
         font-weight: ${theme.fonts.weights.bold};
         color: ${theme.colors.dark};
@@ -104,7 +103,7 @@ const BasketCardStyled = styled.div`
       .price {
         font-size: ${theme.fonts.size.SM};
         font-weight: ${theme.fonts.weights.medium};
-        font-family: ${theme.fonts.families.openSans};
+        font-family: ${theme.fonts.families.gilroy};
       }
     }
 
@@ -126,6 +125,7 @@ const BasketCardStyled = styled.div`
 
   /* hover de la card */
   :hover {
+    opacity: 80%;
     .delete-btn {
       border: none;
       box-sizing: border-box;
