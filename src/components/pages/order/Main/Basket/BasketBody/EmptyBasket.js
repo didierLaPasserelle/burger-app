@@ -14,21 +14,18 @@ export default function EmptyBasket({ isLoadingContent }) {
 }
 
 const EmptyBasketStyled = styled.div`
+  display: flex;
   flex: 1;
+  justify-content: center;
+  align-content: center;
   background: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.basket};
 
   .empty-message {
-    display: flex;
-    height: calc(95vh - 10vh - 70px - 70px);
-    text-align: center;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
     align-self: center;
     line-height: 2;
-    font-family: ${theme.fonts.families.stylish};
-    font-size: ${theme.fonts.size.P4};
+    font-family: ${theme.fonts.families.gilroy};
+    font-size: ${theme.fonts.size.P3};
     color: ${theme.colors.greyBlue};
   }
 `;
