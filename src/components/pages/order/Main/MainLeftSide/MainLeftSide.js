@@ -4,6 +4,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import Admin from "./Admin/Admin";
 import Menu from "./Menu/Menu";
 import { adminAnimation } from "../../../../../theme/animations";
+import LoginPageFooter from "../../../login/Footer/LoginPageFooter";
 
 export default function MainLeftSide() {
   const { isModeAdmin } = useContext(OrderContext);
