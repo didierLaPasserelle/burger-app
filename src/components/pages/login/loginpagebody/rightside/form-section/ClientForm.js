@@ -14,6 +14,7 @@ export default function ClientForm({ username, handleChange }) {
         className="input-login"
         version="normal"
         name="businessName"
+        autoComplete="off"
       />
       <TextInput
         value={username.password}
@@ -24,6 +25,7 @@ export default function ClientForm({ username, handleChange }) {
         className="input-login"
         version="normal"
         name="password"
+        autoComplete="off"
       />
     </div>
   );

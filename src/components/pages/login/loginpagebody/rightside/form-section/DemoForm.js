@@ -13,6 +13,7 @@ export default function DemoForm({ username, handleChange }) {
         className="input-login"
         version="normal"
         name="businessName"
+        autoComplete="off"
       />
     </div>
   );
