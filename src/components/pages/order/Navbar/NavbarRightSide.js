@@ -4,7 +4,7 @@ import { useContext } from "react";
 import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
 import OrderContext from "../../../../context/OrderContext";
-import { GoBell } from "react-icons/go";
+import { CiBellOn } from "react-icons/ci";
 
 export default function NavbarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
@@ -27,7 +27,7 @@ export default function NavbarRightSide() {
 
   return (
     <NavbarRightSideStyled>
-      <GoBell size={25} className="icon"/>
+      <CiBellOn size={28} className="icon"/>
       <Profile displayToastNotification={displayToastNotification} />
       <ToastAdmin />
     </NavbarRightSideStyled>
