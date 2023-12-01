@@ -2,16 +2,16 @@ import React from 'react'
 import { CustomTitle } from '../../../../../reusable-ui/CustomTitle';
 import { NO_PASSWORD_MESSAGE } from "../../../../../../enums/product";
 
-export default function LoginModes({linksTab, demoPasswordMessage}) {
+export default function LoginModes({FormTitles, demoPasswordMessage}) {
   return (
      <div className="login-modes">
-        {linksTab.map((link) => (
-          <h2 key={link.id}>
+        {FormTitles.map((title) => (
+          <h2 key={title.id}>
             <CustomTitle
-              onClick={link.onClick}
-              isActive={link.isActive}
-              text={link.text}
-              className={link.isActive ? "is-active" : ""}
+              onClick={title.onClick}
+              isActive={title.isActive}
+              text={title.text}
+              className={title.isActive ? "is-active" : ""}
             />
           </h2>
         ))}

@@ -1,4 +1,3 @@
-import { linksConfig } from "./linksConfig";
 import DemoForm from "./DemoForm";
 import ClientForm from "./ClientForm";
 import Button from "../../../../../reusable-ui/Button";
@@ -11,6 +10,7 @@ import {
   findDemoPasswordMessage,
 } from "./helper/login-form";
 import LoginModes from "./LoginModes";
+import { getFormTitlesConfig } from "./formTitlesConfig";
 
 export default function LoginForm({ username, setUsername, handleChange }) {
   const [isClicked, setIsClicked] = useState(true);
@@ -25,19 +25,19 @@ export default function LoginForm({ username, setUsername, handleChange }) {
     setUsername({ businessName: "", password: "" });
   };
 
-  const linksTab = linksConfig({
+  const FormTitles = getFormTitlesConfig({
     handleDemoFormClick,
     handleClientFormClick,
     isClicked,
   });
 
   const isInputEmpty = checkIsInputEmpty(isClicked, username);
-  const demoPasswordMessage = findDemoPasswordMessage(linksTab);
+  const demoPasswordMessage = findDemoPasswordMessage(FormTitles);
 
   return (
     <LoginFormStyled>
       <LoginModes
-        linksTab={linksTab}
+        FormTitles={FormTitles}
         demoPasswordMessage={demoPasswordMessage}
       />
       {isClicked ? (

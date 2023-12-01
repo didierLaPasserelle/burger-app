@@ -1,5 +1,5 @@
-export const linksConfig = ({ handleDemoFormClick, handleClientFormClick, isClicked }) => {
-    const linksData = [
+export const getFormTitlesConfig = ({ handleDemoFormClick, handleClientFormClick, isClicked }) => {
+    const formTitlesData = [
       {
         id: "1",
         onClick: handleDemoFormClick,
@@ -13,5 +13,5 @@ export const linksConfig = ({ handleDemoFormClick, handleClientFormClick, isClic
         text: 'J\'ai déjà un compte'
       }
     ]
-    return linksData
+    return formTitlesData
   }
