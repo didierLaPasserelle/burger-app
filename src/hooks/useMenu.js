@@ -16,8 +16,7 @@ export const useMenu = () => {
 
     // 3. update du state
     setMenu(menuUpdated);
-    synchBothMenus(username, menuUpdated)
-
+    synchBothMenus(username, menuUpdated);
   };
 
   const handleDelete = (idOfProductToDelete, username) => {
@@ -28,10 +27,10 @@ export const useMenu = () => {
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
     );
-  
+
     //3. update du state
     setMenu(menuUpdated);
-    synchBothMenus(username, menuUpdated)
+    synchBothMenus(username, menuUpdated);
   };
 
   const handleEdit = (productBeingEdited, username) => {
@@ -47,13 +46,13 @@ export const useMenu = () => {
 
     //3. update du state
     setMenu(menuCopy);
-    synchBothMenus(username, menuCopy)
+    synchBothMenus(username, menuCopy);
   };
 
   const resetMenu = (username) => {
-    setMenu(fakeMenu.SMALL);
-    synchBothMenus(username, fakeMenu.SMALL)
+    setMenu(fakeMenu.MEDIUM);
+    synchBothMenus(username, fakeMenu.MEDIUM);
   };
 
-  return { menu, setMenu,handleAdd, handleDelete, handleEdit, resetMenu };
+  return { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu };
 };

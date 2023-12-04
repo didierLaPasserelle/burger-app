@@ -11,7 +11,7 @@ const colors = {
   red: "#e25549",
   redSecondary: "#c4151c",
   blue: "#51a7e1",
-  greyUltraLight: "#fafafa", 
+  greyUltraLight: "#fafafa",
   greyLight: "#e4e5e9",
   greyMedium: "#a7a8ad",
   greySemiDark: "#93a2b1",
@@ -39,13 +39,14 @@ const fonts = {
     P0: "16px",
     P1: "18px",
     P2: "20px",
-    P3: "24px",
+    P3: "30px",
     P4: "36px",
     P5: "48px",
     P6: "60px",
     P7: "70px",
   },
   weights: {
+    ultraLight: 100,
     light: 300,
     regular: 400,
     medium: 500,
@@ -56,6 +57,7 @@ const fonts = {
   },
   families: {
     stylish: `"Amatic SC", cursive`,
+    gilroy: "'Gilroy-Regular', sans-serif",
   },
 };
 const gridUnit = 8;

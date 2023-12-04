@@ -9,6 +9,8 @@ import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helper/initialiseUserSession";
+import Banner from "../../reusable-ui/Banner";
+import { useBannerContext } from "../../../context/BannerContextProvider";
 
 export default function OrderPage() {
   // state
@@ -18,14 +20,23 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [cardClickedOn, setCardClickedOn] = useState(EMPTY_PRODUCT);
   const [isLoading, setIsLoading] = useState(true);
+  const [isBasketVisible, setIsBasketVisible] = useState(true);
 
   const { username } = useParams();
   const titleEditRef = useRef();
 
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
-  const { basket, setBasket, handleAddToBasket, handleDeleteBasketItem } =
-    useBasket();
+    
+  const {
+    basket,
+    setBasket,
+    handleAddToBasket,
+    handleDeleteBasketItem,
+    handleRemoveFromBasket,
+  } = useBasket();
+
+  const { isBannerVisible, handleBannerDelete } = useBannerContext();
 
   const handleItemSelected = async (cardId) => {
     const itemClickedOn = menu.find((item) => item.id === cardId);
@@ -33,6 +44,10 @@ export default function OrderPage() {
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     titleEditRef.current.focus();
+  };
+
+  const toggleBasketVisibility = () => {
+    setIsBasketVisible(!isBasketVisible);
   };
 
   useEffect(() => {
@@ -63,34 +78,33 @@ export default function OrderPage() {
     handleItemSelected,
     isLoading,
     setIsLoading,
+    handleRemoveFromBasket,
+    toggleBasketVisibility,
+    isBasketVisible,
+    setIsBasketVisible,
   };
 
   //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
-        <div className="container">
-          <Navbar />
-          <Main />
-        </div>
+        {isBannerVisible && <Banner onClick={handleBannerDelete} />}
+        <Navbar />
+        <Main />
       </OrderPageStyled>
     </OrderContext.Provider>
   );
 }
 
 const OrderPageStyled = styled.div`
-  background: ${theme.colors.primary};
-  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  .container {
-    height: 100vh;
-    width: 1400px;
-    display: flex;
-    flex-direction: column;
-    border-radius: ${theme.borderRadius.extraRound};
-
-  }
+  flex-direction: column;
+  background: ${theme.colors.primary};
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;

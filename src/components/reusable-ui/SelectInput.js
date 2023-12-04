@@ -34,11 +34,11 @@ export default function SelectInput({
 
 const SelectInputStyled = styled.div`
   background: ${theme.colors.background_white};
-  border-radius: ${theme.borderRadius.round};
+  border-radius: ${theme.borderRadius.extraRound};
   display: flex;
   align-items: center;
-  padding: 8px 16px;
-  /* border: none; */
+  padding: 8px 20px;
+  border: 0.1px solid ${theme.colors.greyDark};
 
   .icon {
     font-size: ${theme.fonts.P1};

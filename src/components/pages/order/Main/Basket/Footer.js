@@ -1,26 +1,62 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
-import LogoEpicery from "../../../../reusable-ui/LogoEpicery";
+import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
+import { calculateAmountToPay } from "./helper/mathBasket";
+import { formatPrice } from "../../../../utils/maths";
+import Button from "../../../../reusable-ui/Button";
 
 export default function Footer() {
+  const { basket, menu } = useContext(OrderContext);
+
+  const amountToPay = calculateAmountToPay(basket, menu);
   return (
     <FooterStyled>
-      <LogoEpicery />
+      <div className="container">
+        <span>
+          Total <span className="no-delivery"> (sans livraison)</span>
+        </span>
+        <CasinoEffect count={formatPrice(amountToPay)} />
+      </div>
+      <div className="btn-container">
+        <Button version="normal" label="Valider mon panier" />
+      </div>
     </FooterStyled>
   );
 }
 
 const FooterStyled = styled.span`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70px;
-  background: ${theme.colors.background_dark};
+  flex-direction: column;
+  background: ${theme.colors.white};
   color: ${theme.colors.primary};
-  font-size: ${theme.fonts.size.P2};
-  font-family: ${theme.fonts.families.stylish};
+  font-size: ${theme.fonts.size.P0};
   font-weight: ${theme.fonts.weights.bold};
   color: ${theme.colors.white};
-  padding: 0px 16px;
+  font-family: "Gilroy" "sans serif";
+  border-top-left-radius: ${theme.borderRadius.extraRound};
+  border-top-right-radius: ${theme.borderRadius.extraRound};
+
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: ${theme.colors.newDark};
+    margin: 20px;
+  }
+
+  .no-delivery{
+    font-weight: ${theme.fonts.weights.ultraLight};
+    font-size: ${theme.fonts.size.XS}
+  }
+
+  .btn-container {
+    margin: 0 50px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;

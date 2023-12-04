@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import OrderContext from "../../../../../../../../context/OrderContext";
+import { useState } from "react";
 import EditInfoMessage from "./EditInfoMessage";
 import AdminForm from "../Form/AdminForm";
 import SavingMessage from "./SavingMessage";
 import { useSuccessMessage } from "../../../../../../../../hooks/useDisplaySuccesMessage";
+import { useOrderContext } from "../../../../../../../../hooks/useOrderContext";
 
 export default function EditForm() {
   const {
@@ -12,7 +12,9 @@ export default function EditForm() {
     setCardClickedOn,
     handleEdit,
     titleEditRef,
-  } = useContext(OrderContext);
+  } = useOrderContext();
+
+
 
   const [valueOnFocus, setValueOnFocus] = useState();
 
