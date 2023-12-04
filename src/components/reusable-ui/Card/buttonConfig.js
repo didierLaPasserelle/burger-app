@@ -23,7 +23,7 @@ export const getCardButtons = (
   {
     id: "3",
     className: "primary-button right",
-    label: "-",
+    label: "+",
     onClick: onAdd,
     disabled: isOverlapImageVisible,
     version: "three",

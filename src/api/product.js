@@ -17,7 +17,7 @@ export const synchBothMenus = (userId, menuUpdated) => {
   
     const docSnapshot = await getDoc(docRef)
     if (docSnapshot.exists()) {
-      const { menu } = docSnapshot.data() // On déstructure l'objet pour ne récupérer ce qu'il nous intéresse, à savoir menu  f
+      const { menu } = docSnapshot.data() 
       return menu
     }
   }
